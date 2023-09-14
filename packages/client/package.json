@@ -1,0 +1,17 @@
+{
+  "name": "@supeffective/dataset-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'dev:WIP'",
+    "build": "echo 'build:WIP'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supeffective/dataset-schemas": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
