@@ -1,3 +1,13 @@
+const coveragePathIgnorePatterns = [
+  'types.ts',
+  'index.ts',
+  'index.tsx',
+  '.d.ts',
+  '/node_modules/',
+  '/.ignore/',
+  '/_ignore/',
+]
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -8,7 +18,7 @@ module.exports = {
     {
       displayName: 'DOM',
       // 'types.ts', 'index.ts', 'index.tsx' are supposed to not have any logic, just type definitions and exports
-      coveragePathIgnorePatterns: ['types.ts', 'index.ts', 'index.tsx', '.d.ts', '/node_modules/'],
+      coveragePathIgnorePatterns,
       testEnvironment: `${__dirname}/testing/jest.env-browser.js`,
       testMatch: ['**/*.test.ts', '**/*.test.tsx'],
       testPathIgnorePatterns: ['/node_modules/', '/.local/', '/.ignore/', '/_ignore/', '/dist/'],
@@ -31,7 +41,7 @@ module.exports = {
     },
     {
       displayName: 'NodeJS',
-      coveragePathIgnorePatterns: ['types.ts', 'index.ts', '.d.ts', '/node_modules/'],
+      coveragePathIgnorePatterns,
       testEnvironment: 'node',
       testMatch: ['**/*.test.ts'],
       testPathIgnorePatterns: ['/node_modules/', '/.local/', '/.ignore/', '/_ignore/', '/dist/', '.dom.test.ts'],
