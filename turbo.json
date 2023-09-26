@@ -11,17 +11,35 @@
     "lint": {
       "dependsOn": []
     },
+    "//#lint": {
+      "dependsOn": []
+    },
     "lint-fix": {
+      "dependsOn": []
+    },
+    "//#lint-fix": {
       "dependsOn": []
     },
     "publint": {
       "dependsOn": ["^build", "build"]
+    },
+    "//#publint": {
+      "dependsOn": []
     },
     "typelint": {
       "dependsOn": []
     },
     "test": {
       "outputs": ["coverage/**"]
+    },
+    "//#test": {
+      "dependsOn": []
+    },
+    "test:ci": {
+      "outputs": ["coverage/**"]
+    },
+    "//#test:ci": {
+      "dependsOn": []
     },
     "dev": {
       "cache": false,

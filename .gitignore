@@ -28,6 +28,7 @@ dist-ssr
 *.sw?
 
 # Development ignored files and folders
+.dev/
 .local/
 .ignore/
 _ignore/
@@ -35,3 +36,27 @@ _ignore/
 _tmp/
 _temp/
 .temp/
+
+# Jest coverage
+coverage/
+
+# CSS libraries
+## Panda CSS
+styled-system/
+styled-system-studio/
+
+
+# Frameworks
+## Next.js
+out/
+.cache/
+.next/
+.vercel/
+
+## Nuxt.js
+.nuxt/
+dist/
+build/
+
+## Vite
+.vite/
