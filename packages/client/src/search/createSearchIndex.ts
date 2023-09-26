@@ -1,5 +1,5 @@
-import { Entity } from '../core'
-import { SearchEngineIndex } from './types'
+import type { Entity } from '../core'
+import type { SearchEngineIndex } from './types'
 
 export function createSearchIndex<R extends Entity>(tokenSeparator = ':'): SearchEngineIndex<R> {
   const _index = new Map<string, string>()
@@ -66,8 +66,8 @@ export function createSearchIndex<R extends Entity>(tokenSeparator = ':'): Searc
 
       return new Set(
         Array.from(_index)
-          .filter(entry => {
-            return tokens.some(token => {
+          .filter((entry) => {
+            return tokens.some((token) => {
               if (token.startsWith('!')) {
                 const negatedToken = token.slice(1)
 
@@ -77,7 +77,7 @@ export function createSearchIndex<R extends Entity>(tokenSeparator = ':'): Searc
               return entry[1].includes(token)
             })
           })
-          .map(entry => entry[0]),
+          .map((entry) => entry[0]),
       )
     },
     async search(text, entities) {
@@ -90,7 +90,7 @@ export function createSearchIndex<R extends Entity>(tokenSeparator = ':'): Searc
         return []
       }
 
-      return entities.filter(item => hits.has(item.id))
+      return entities.filter((item) => hits.has(item.id))
     },
   }
 }

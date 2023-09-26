@@ -1,7 +1,7 @@
+import { type Ability, abilitySchema } from '@supeffective/dataset-schemas'
 import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
 import type { Repository, RepositoryDataProvider } from '../core/types'
-import { Ability, abilitySchema } from '../schemas'
-import { createSearchIndex, SearchEngine } from '../search'
+import { type SearchEngine, createSearchIndex } from '../search'
 import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
 
 export function createAbilityRepository(dataProvider: RepositoryDataProvider): Repository<Ability> {

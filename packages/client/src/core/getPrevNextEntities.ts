@@ -7,7 +7,7 @@ export function getPrevNextEntities(
   prev: Entity | null
   next: Entity | null
 } {
-  const index = collection.findIndex(entity => entity.id === id)
+  const index = collection.findIndex((entity) => entity.id === id)
   const prev = index <= 0 ? null : collection[index - 1]
   const next = index < collection.length - 1 ? collection[index + 1] : null
 

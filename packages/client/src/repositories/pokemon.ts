@@ -1,13 +1,8 @@
+import { type CompactPokemon, type Pokemon, pokemonCompactSchema, pokemonSchema } from '@supeffective/dataset-schemas'
 import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../assets'
 import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
 import type { Repository, RepositoryDataProvider } from '../core/types'
-import {
-  CompactPokemon,
-  pokemonCompactSchema,
-  pokemonSchema,
-  type Pokemon,
-} from '../schemas/pokemon'
-import { createSearchIndex, SearchEngine, SearchEngineIndex } from '../search'
+import { type SearchEngine, type SearchEngineIndex, createSearchIndex } from '../search'
 import createSearchEngine from '../search/createSearchEngine'
 
 // ----  Search hydrator ----
@@ -19,21 +14,21 @@ async function pokemonSearchIndexHydrator<K extends CompactPokemon | Pokemon>(
   await searchIndex.index(entities, [
     [
       'num',
-      pk => {
+      (pk) => {
         const dexNum = (pk.dexNum >= 5000 ? 0 : pk.dexNum).toString()
 
         return [dexNum, dexNum.padStart(3, '0'), dexNum.padStart(4, '0')]
       },
     ],
-    ['name', pk => [pk.id, pk.name, pk.name.replace(/ /g, '').replace(/\s/g, '')]],
-    ['type', pk => [pk.type1, pk.type2].filter(Boolean) as string[]],
-    ['base', pk => pk.baseSpecies || pk.id],
-    ['color', pk => pk.color || null],
-    ['id', pk => pk.id || null],
-    ['storable', pk => (pk.storableIn.length > 0 ? pk.storableIn : null)],
+    ['name', (pk) => [pk.id, pk.name, pk.name.replace(/ /g, '').replace(/\s/g, '')]],
+    ['type', (pk) => [pk.type1, pk.type2].filter(Boolean) as string[]],
+    ['base', (pk) => pk.baseSpecies || pk.id],
+    ['color', (pk) => pk.color || null],
+    ['id', (pk) => pk.id || null],
+    ['storable', (pk) => (pk.storableIn.length > 0 ? pk.storableIn : null)],
     [
       'obtainable',
-      pk => {
+      (pk) => {
         if ('obtainableIn' in pk) {
           return pk.obtainableIn.length > 0 ? pk.obtainableIn : null
         }
@@ -61,9 +56,7 @@ export function createPokemonSearchEngine(repository: Repository<Pokemon>): Sear
 
 // ----  Compact Pokemon ----
 
-export function createCompactPokemonRepository(
-  dataProvider: RepositoryDataProvider,
-): Repository<CompactPokemon> {
+export function createCompactPokemonRepository(dataProvider: RepositoryDataProvider): Repository<CompactPokemon> {
   return createReadOnlyRepository<CompactPokemon>({
     id: 'pokemon-compact',
     resourcePath: 'data/pokemon-compact.min.json',
@@ -72,14 +65,8 @@ export function createCompactPokemonRepository(
   })
 }
 
-export function createCompactPokemonSearchEngine(
-  repository: Repository<CompactPokemon>,
-): SearchEngine<CompactPokemon> {
-  return createSearchEngine<CompactPokemon>(
-    repository,
-    createSearchIndex(),
-    pokemonSearchIndexHydrator,
-  )
+export function createCompactPokemonSearchEngine(repository: Repository<CompactPokemon>): SearchEngine<CompactPokemon> {
+  return createSearchEngine<CompactPokemon>(repository, createSearchIndex(), pokemonSearchIndexHydrator)
 }
 
 export function createPlaceholderPokemon(): Pokemon {

@@ -10,7 +10,7 @@ export function createHttpDataProvider(assetsUrl: string): RepositoryDataProvide
     async readFile(relativePath) {
       const uri = this.resolveUri(relativePath)
 
-      const data = await fetch(uri).then(res => {
+      const data = await fetch(uri).then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error ${res.status} on GET ${res.url}`)
         }

@@ -1,11 +1,5 @@
-import { Entity, Repository } from '../core'
-import {
-  SearchEngine,
-  SearchEngineIndex,
-  SearchEngineIndexHydrator,
-  SearchFilter,
-  SearchQuery,
-} from './types'
+import type { Entity, Repository } from '../core'
+import type { SearchEngine, SearchEngineIndex, SearchEngineIndexHydrator, SearchFilter, SearchQuery } from './types'
 
 function applyFilter<R extends Entity>(entity: R, filter: SearchFilter<R>): boolean {
   const { field, value, operator } = filter
@@ -72,21 +66,18 @@ function applyFilter<R extends Entity>(entity: R, filter: SearchFilter<R>): bool
 }
 
 function applyQuery<R extends Entity>(entities: R[], query: SearchQuery<R>): R[] {
-  return entities.filter(entity => {
-    return query.some(filterGroup => {
+  return entities.filter((entity) => {
+    return query.some((filterGroup) => {
       // For each group of filters, check if any of them (OR) pass for the entity
-      return filterGroup.every(filter => applyFilter(entity, filter))
+      return filterGroup.every((filter) => applyFilter(entity, filter))
     })
   })
 }
 
-export const defaultSearchIndexHydrator: SearchEngineIndexHydrator<any> = async (
-  entities,
-  searchIndex,
-) => {
+export const defaultSearchIndexHydrator: SearchEngineIndexHydrator<any> = async (entities, searchIndex) => {
   await searchIndex.index(entities, [
-    ['id', ent => ent.id],
-    ['name', ent => ent.name],
+    ['id', (ent) => ent.id],
+    ['name', (ent) => ent.name],
   ])
 }
 
@@ -105,20 +96,18 @@ export default function createSearchEngine<R extends Entity>(
   }
 
   const repo: SearchEngine<R> = {
-    id: repository.id + '_search',
+    id: `${repository.id}_search`,
     async search(
       q: string | SearchQuery<R>,
-      limit: number = 0,
-      offset: number = 0,
+      limit = 0,
+      offset = 0,
       sortBy?: keyof R,
       sortDir: 'asc' | 'desc' = 'asc',
     ): Promise<R[]> {
       const allEntities = await hydrate(q)
 
       let filteredEntities =
-        typeof q === 'string'
-          ? await searchIndex.search(q, allEntities)
-          : applyQuery<R>(allEntities, q)
+        typeof q === 'string' ? await searchIndex.search(q, allEntities) : applyQuery<R>(allEntities, q)
 
       // Sort the filtered entities if sortBy is provided
       if (sortBy) {

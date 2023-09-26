@@ -1,10 +1,8 @@
 import { z } from 'zod'
 
-import { Entity, RepositoryConfig, type Repository } from './types'
+import { Entity, type Repository, RepositoryConfig } from './types'
 
-export function createReadOnlyRepository<R extends Entity>(
-  config: RepositoryConfig<R>,
-): Repository<R> {
+export function createReadOnlyRepository<R extends Entity>(config: RepositoryConfig<R>): Repository<R> {
   const getAll = async () => {
     return await config.dataProvider.readFile<R>(config.resourcePath)
   }
@@ -16,7 +14,7 @@ export function createReadOnlyRepository<R extends Entity>(
     },
     async getById(id) {
       const data = await getAll()
-      const found = data.find(item => item.id === id)
+      const found = data.find((item) => item.id === id)
 
       if (!found) {
         throw new Error(`${config.id} with id ${id} not found`)
@@ -31,10 +29,10 @@ export function createReadOnlyRepository<R extends Entity>(
       this.getById(id)
     },
     async findById(id) {
-      return getAll().then(data => data.find(item => item.id === id))
+      return getAll().then((data) => data.find((item) => item.id === id))
     },
     async getManyByIds(ids) {
-      return getAll().then(data => data.filter(item => ids.includes(item.id)))
+      return getAll().then((data) => data.filter((item) => ids.includes(item.id)))
     },
     validate(data) {
       const result = config.schema.safeParse(data)

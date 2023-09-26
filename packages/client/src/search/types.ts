@@ -1,4 +1,4 @@
-import { Entity, Repository } from '../core'
+import type { Entity, Repository } from '../core'
 
 export interface SearchFilter<R extends Entity> {
   field: keyof R
@@ -64,10 +64,7 @@ export type SearchEngineIndex<R extends Entity> = {
    * const results = await searchEngine.searchWith(entities, 'Jane')
    * // results = [{ id: '2', name: 'Jane Doe' }]
    **/
-  index: (
-    entities: R[],
-    tokens: Array<[keyof R | string, (entity: R) => string[] | string | null]>,
-  ) => Promise<void>
+  index: (entities: R[], tokens: Array<[keyof R | string, (entity: R) => string[] | string | null]>) => Promise<void>
 
   /**
    * @returns Number of indexed entities
