@@ -5,16 +5,19 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "codegen": {
+      "dependsOn": []
+    },
     "lint": {
-      "dependsOn": ["^build", "build"]
+      "dependsOn": []
     },
     "lint-fix": {
+      "dependsOn": []
+    },
+    "publint": {
       "dependsOn": ["^build", "build"]
     },
-    "type-check": {
-      "dependsOn": ["^build", "build"]
-    },
-    "publint-check": {
+    "typelint": {
       "dependsOn": []
     },
     "test": {

@@ -1,24 +1,54 @@
 {
-  "name": "supereffective-dataset",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev --no-cache --parallel --concurrency 20",
     "build": "turbo build",
-    "preview": "echo '//preview:WIP'",
-    "type-check": "turbo type-check"
+    "codegen": "turbo codegen",
+    "deps": "pnpm install",
+    "deps:update": "pnpm -r update",
+    "deps:upgrade": "pnpm --recursive update --latest",
+    "dev": "pnpm --parallel --recursive dev",
+    "format": "pnpm lint-fix",
+    "format-package-json": "sort-package-json && pnpm -r exec sort-package-json",
+    "hooks:pre-commit": "pnpm lint-staged",
+    "hooks:pre-push": "pnpm quality-checks",
+    "postinstall": "pnpm format-package-json",
+    "lint": "biome lint .",
+    "lint-fix": "biome check --apply . && pnpm format-package-json",
+    "prepare": "husky install",
+    "pretty": "pnpm lint-fix",
+    "preview": "pnpm --parallel --recursive preview",
+    "publint": "turbo publint",
+    "quality-checks": "pnpm lint && pnpm typelint && pnpm build && pnpm publint && pnpm test:ci",
+    "test": "bun test",
+    "test:ci": "bun test --coverage --bail 5",
+    "test:coverage": "bun test --coverage",
+    "typelint": "turbo typelint",
+    "version:bump": "semver-release version:bump",
+    "version:publish": "semver-release version:release --npm --filter '@supeffective/*'",
+    "version:publish-notes": "semver-release version:release --github"
   },
-  "workspaces": [
-    "packages/*"
-  ],
-  "dependencies": {
-
+  "lint-staged": {
+    "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json}": [
+      "biome check --no-errors-on-unmatched --apply"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "bun-types": "^1.0.1",
-    "turbo": "^1.10.13"
+    "@biomejs/biome": "1.2.2",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@itsjavi/semver-release": "^0.4.3",
+    "@types/node": "^20.7.0",
+    "bun-types": "^1.0.3",
+    "changelogen": "^0.5.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "sort-package-json": "^2.5.1",
+    "turbo": "^1.10.14",
+    "typescript": "^5.2.2"
   },
-  "packageManager": "bun@^1.0.1"
+  "packageManager": "pnpm@8.7.5"
 }

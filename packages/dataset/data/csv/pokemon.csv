@@ -1,0 +1,7 @@
+id,dexnum,nid,name,type1,type2
+1,1,"0001","Bulbasaur",Grass,Poison
+2,2,"0002","Ivysaur",Grass,Poison
+3,3,"0003","Venusaur",Grass,Poison
+3,3,"0003-f","Venusaur (Female)",Grass,Poison
+3,3,"0003-mega","Mega Venusaur",Grass,Poison
+3,3,"0003-gmax","Gigantamax Venusaur",Grass,Poison

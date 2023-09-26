@@ -12,6 +12,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.turbo
+.next
+.vercel
 
 # Editor directories and files
 .vscode/*
@@ -25,7 +28,11 @@ dist-ssr
 *.sw?
 
 # Development ignored files and folders
-.dev/*
-.local/*
-.ignore/*
-.ignored/*
+.dev/
+.local/
+.ignore/
+.ignored/
+_tmp/
+_temp/
+.tmp/
+.temp/

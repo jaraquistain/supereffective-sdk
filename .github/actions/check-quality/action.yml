@@ -1,0 +1,19 @@
+name: 'Check code quality'
+description: 'Checks code quality: prettier, linters, build and test'
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: pnpm quality-checks
+
+    # - shell: bash
+    #   run: pnpm typelint
+
+    # - shell: bash
+    #   run: pnpm build
+
+    # - shell: bash
+    #   run: pnpm publint
+
+    # - shell: bash
+    #   run: pnpm test:ci
