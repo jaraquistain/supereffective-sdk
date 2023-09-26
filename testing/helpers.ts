@@ -1,4 +1,6 @@
-import type { jest } from 'bun:test'
+export function waitForAllPromises() {
+  return new Promise(process.nextTick)
+}
 
 export type Mocked<T> = T extends (...args: any) => any
   ? jest.Mock<T>

@@ -1,4 +1,4 @@
-import { Entity } from './types'
+import type { Entity } from './types'
 
 export function getPrevNextEntities(
   collection: Entity[],

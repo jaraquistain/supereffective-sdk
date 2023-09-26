@@ -30,7 +30,7 @@
     "forceConsistentCasingInFileNames": true,
 
     /* Paths and files */
-    "types": ["bun-types"]
+    "types": ["jest"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "build", "coverage"]

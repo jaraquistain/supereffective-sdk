@@ -29,13 +29,10 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch --clean=false",
-    "publint": "publint",
     "typelint": "tsc --noEmit"
   },
   "dependencies": {},
   "devDependencies": {
-    "bun-types": "^1.0.3",
-    "publint": "^0.2.2",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }

@@ -3,6 +3,9 @@
   "organizeImports": {
     "enabled": true
   },
+  "files": {
+    "ignore": ["data/**/*", "package.json"]
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -12,6 +15,11 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "suspicious": {
+        "noExplicitAny": {
+          "level": "warn"
+        }
+      },
       "correctness": {
         "noUnusedVariables": "warn",
         "noChildrenProp": "error",

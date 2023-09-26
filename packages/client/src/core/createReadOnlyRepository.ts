@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { Entity, type Repository, RepositoryConfig } from './types'
+import type { Entity, Repository, RepositoryConfig } from './types'
 
 export function createReadOnlyRepository<R extends Entity>(config: RepositoryConfig<R>): Repository<R> {
   const getAll = async () => {

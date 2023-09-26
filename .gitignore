@@ -28,11 +28,10 @@ dist-ssr
 *.sw?
 
 # Development ignored files and folders
-.dev/
 .local/
 .ignore/
-.ignored/
+_ignore/
+.tmp/
 _tmp/
 _temp/
-.tmp/
 .temp/

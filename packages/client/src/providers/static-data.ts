@@ -7,13 +7,13 @@ import _pokemonRegions from '@supeffective/dataset/data/regions.json'
 import _pokemonTypes from '@supeffective/dataset/data/types.json'
 
 import {
-  Color,
-  Game,
-  Language,
-  Nature,
-  OriginMark,
-  PokeType,
-  Region,
+  type Color,
+  type Game,
+  type Language,
+  type Nature,
+  type OriginMark,
+  type PokeType,
+  type Region,
   colorSchema,
   gameSchema,
   languageSchema,
@@ -21,7 +21,7 @@ import {
   originMarkSchema,
   pokeTypeSchema,
   regionSchema,
-} from '../schemas'
+} from '@supeffective/dataset-schemas'
 
 // This file only contains Pokémon static data that almost never changes (types, natures, etc.).
 // It should only import lightweight JSON files (< 75KB).
