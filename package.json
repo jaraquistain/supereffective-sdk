@@ -19,7 +19,7 @@
     "pretty": "pnpm lint-fix",
     "preview": "pnpm --parallel --recursive preview",
     "publint": "pnpm -r exec pnpm publint",
-    "quality-checks": "turbo lint && turbo typelint && turbo build && turbo publint && turbo test:ci",
+    "quality-checks": "turbo build && turbo lint && turbo typelint && turbo publint && turbo test:ci",
     "test": "jest",
     "test:ci": "jest --ci --coverage --bail=5",
     "test:coverage": "jest --coverage",
