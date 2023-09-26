@@ -8,4 +8,4 @@ Pokémon main series data source, type checker and bundler for supereffective.gg
 - Turbo: Monorepo manager
 - Biome: Linter and formatter
 - tsup and Vite: Bundler and dev server
-- Bun: Test and script runner
+- Jest + SWC: Test and script runner
