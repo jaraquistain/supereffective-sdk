@@ -2,6 +2,7 @@ import type { SafeParseReturnType } from 'zod'
 
 import _records from '../../data/pokemon.json'
 
+import type { IDType } from '@supeffective/dataset-schemas'
 import { type Pokemon, pokemonSchema } from '@supeffective/dataset-schemas'
 import { LATEST_GAMESET, LATEST_GENERATION, LATEST_REGION } from '../constants'
 import { SWITCH_GAMESET_IDS } from './gamesets'
@@ -69,8 +70,8 @@ export function getPreviousAndNextPokemon(
   const next = index < list.length - 1 ? list[index + 1] : null
 
   return {
-    prev,
-    next,
+    prev: prev ?? null,
+    next: next ?? null,
   }
 }
 
@@ -81,7 +82,7 @@ export function getAllPokemonMappedById(): Map<IDType, Pokemon> {
 export function getPokemonMissingOnSwitchGames(): Pokemon[] {
   return getAllPokemon()
     .filter((pkm) => {
-      return !pkm.obtainableIn.some((gs) => SWITCH_GAMESET_IDS.includes(gs))
+      return !pkm.obtainableIn.some((gs: string) => SWITCH_GAMESET_IDS.includes(gs))
     })
     .filter((pkm) => pkm.dexNum > 0)
 }
@@ -129,7 +130,7 @@ export function getPokemonForGameSet(gameSetId: string): PokemonForGameSet {
 export function getExclusivePokemonForGame(gameId: string): Pokemon[] {
   return getAllPokemon()
     .filter((pkm) => {
-      return pkm.versionExclusiveIn.some((g) => gameId === g)
+      return pkm.versionExclusiveIn.some((g: string) => gameId === g)
     })
     .filter((pkm) => pkm.dexNum > 0)
 }

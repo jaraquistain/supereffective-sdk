@@ -22,7 +22,8 @@
     "import-data": "bun ./src/scripts/import.ts",
     "minify-json": "bun ./src/scripts/minify.ts ./data && bun ./src/scripts/minify.ts ./data/legacy",
     "prettify": "cd ../.. && pnpm prettier --write ./packages/dataset/data",
-    "typelint": "tsc --noEmit"
+    "typelint": "tsc --noEmit",
+    "validate-data": "bun ./validate/validate.ts"
   },
   "dependencies": {
     "@supeffective/dataset-schemas": "workspace:*"
