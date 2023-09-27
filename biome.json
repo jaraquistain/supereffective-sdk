@@ -4,7 +4,7 @@
     "enabled": true
   },
   "files": {
-    "ignore": ["data/**/*", "package.json"]
+    "ignore": ["*.json"]
   },
   "vcs": {
     "enabled": true,
@@ -54,10 +54,7 @@
   },
   "json": {
     "formatter": {
-      "enabled": true,
-      "lineWidth": 120,
-      "indentSize": 2,
-      "indentStyle": "space"
+      "enabled": false
     }
   }
 }

@@ -1099,12 +1099,7 @@
         },
         {
           "title": "Kalos Alt. 2",
-          "pokemon": [
-            "zygarde--power-construct",
-            "zygarde-10",
-            "zygarde-10--power-construct",
-            "hoopa-unbound"
-          ]
+          "pokemon": ["zygarde--power-construct", "zygarde-10", "zygarde-10--power-construct", "hoopa-unbound"]
         },
         {
           "title": "Vivillon Patt.",
@@ -15368,13 +15363,7 @@
           ]
         },
         {
-          "pokemon": [
-            "minior-green",
-            "minior-blue",
-            "minior-indigo",
-            "minior-violet",
-            "magearna-original"
-          ]
+          "pokemon": ["minior-green", "minior-blue", "minior-indigo", "minior-violet", "magearna-original"]
         }
       ]
     },
@@ -18914,15 +18903,7 @@
           ]
         },
         {
-          "pokemon": [
-            "xurkitree",
-            "celesteela",
-            "kartana",
-            "guzzlord",
-            "necrozma",
-            "magearna",
-            "marshadow"
-          ]
+          "pokemon": ["xurkitree", "celesteela", "kartana", "guzzlord", "necrozma", "magearna", "marshadow"]
         }
       ]
     }
@@ -21965,15 +21946,7 @@
           ]
         },
         {
-          "pokemon": [
-            "chiyu",
-            "roaringmoon",
-            "ironvaliant",
-            "koraidon",
-            "miraidon",
-            "walkingwake",
-            "ironleaves"
-          ]
+          "pokemon": ["chiyu", "roaringmoon", "ironvaliant", "koraidon", "miraidon", "walkingwake", "ironleaves"]
         },
         {
           "pokemon": [
@@ -22732,14 +22705,7 @@
           ]
         },
         {
-          "pokemon": [
-            "roaringmoon",
-            "ironvaliant",
-            "koraidon",
-            "miraidon",
-            "walkingwake",
-            "ironleaves"
-          ]
+          "pokemon": ["roaringmoon", "ironvaliant", "koraidon", "miraidon", "walkingwake", "ironleaves"]
         }
       ]
     }
@@ -38529,15 +38495,7 @@
           ]
         },
         {
-          "pokemon": [
-            "magearna-original",
-            "marshadow",
-            "poipole",
-            "naganadel",
-            "stakataka",
-            "blacephalon",
-            "zeraora"
-          ]
+          "pokemon": ["magearna-original", "marshadow", "poipole", "naganadel", "stakataka", "blacephalon", "zeraora"]
         }
       ]
     },
@@ -47886,14 +47844,7 @@
           ]
         },
         {
-          "pokemon": [
-            "snover-f",
-            "abomasnow-f",
-            "weavile-f",
-            "rhyperior-f",
-            "tangrowth-f",
-            "mamoswine-f"
-          ]
+          "pokemon": ["snover-f", "abomasnow-f", "weavile-f", "rhyperior-f", "tangrowth-f", "mamoswine-f"]
         }
       ]
     },
@@ -52075,14 +52026,7 @@
           ]
         },
         {
-          "pokemon": [
-            "arceus-ice",
-            "arceus-dragon",
-            "arceus-dark",
-            "arceus-fairy",
-            "arceus-legendary",
-            "shaymin-sky"
-          ]
+          "pokemon": ["arceus-ice", "arceus-dragon", "arceus-dark", "arceus-fairy", "arceus-legendary", "shaymin-sky"]
         }
       ]
     },

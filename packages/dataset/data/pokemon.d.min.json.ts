@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noExplicitAny: not important for this file
 declare const pokemon: any[]
 export default pokemon
 

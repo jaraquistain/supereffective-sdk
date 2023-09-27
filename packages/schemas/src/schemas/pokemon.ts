@@ -1,7 +1,6 @@
-import { z } from 'zod'
+import z from 'zod'
 
 import { generationSchema, nameSchema, slugSchema } from './common'
-import { pokeTypeIdSchema } from './types'
 
 export const pokemonSchema = z
   .object({
@@ -14,8 +13,8 @@ export const pokemonSchema = z
     formName: nameSchema.nullable(),
     region: slugSchema,
     generation: generationSchema,
-    type1: pokeTypeIdSchema,
-    type2: pokeTypeIdSchema.nullable(),
+    type1: slugSchema,
+    type2: slugSchema.nullable(),
     color: slugSchema,
     abilities: z
       .object({
@@ -77,7 +76,7 @@ export const pokemonSchema = z
     family: slugSchema.nullable().optional(),
     evolvesFrom: z
       .object({
-        pokemon: slugSchema,
+        pokemon: slugSchema.nullable().optional(),
         level: z.coerce.number().int().min(1).max(100).optional(),
         item: slugSchema.nullable().optional(),
         move: slugSchema.nullable().optional(),
@@ -125,3 +124,46 @@ export const pokemonCompactSchema = pokemonSchema
   .strict()
 
 export type CompactPokemon = z.infer<typeof pokemonCompactSchema>
+
+export type LegacyPokemon = {
+  id: string
+  nid: string
+  dexNum: number
+  formId: string | null
+  name: string
+  formName: string | null
+  region: string
+  generation: number
+  type1: string
+  type2: string | null
+  color: string
+  isDefault: boolean
+  isForm: boolean
+  isSpecialAbilityForm: boolean
+  isCosmeticForm: boolean
+  isFemaleForm: boolean
+  hasGenderDifferences: boolean
+  isBattleOnlyForm: boolean
+  isSwitchableForm: boolean
+  isMega: boolean
+  isPrimal: boolean
+  isGmax: boolean
+  canGmax: boolean
+  canDynamax: boolean
+  canBeAlpha: boolean
+  debutIn: string
+  obtainableIn: string[]
+  versionExclusiveIn: string[]
+  eventOnlyIn: string[]
+  storableIn: string[]
+  shinyReleased: boolean
+  shinyBase: string | null
+  baseSpecies: string | null
+  forms: string[] | null
+  refs: {
+    bulbapedia: string | null
+    serebii: string | null
+    smogon: string | null
+    showdown: string | null
+  }
+}

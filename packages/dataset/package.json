@@ -12,28 +12,27 @@
   },
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
-    "dist",
     "data",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch --clean=false",
+    "build": "pnpm import-data && pnpm minify-json && pnpm prettify",
+    "import-data": "bun ./src/scripts/import.ts",
+    "minify-json": "bun ./src/scripts/minify.ts ./data && bun ./src/scripts/minify.ts ./data/legacy",
+    "prettify": "cd ../.. && pnpm prettier --write ./packages/dataset/data",
     "typelint": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@supeffective/dataset-schemas": "workspace:*"
+  },
   "devDependencies": {
+    "@pkmn/dex": "^0.7.52",
+    "@pkmn/dex-types": "^0.7.52",
+    "@types/node": "^20.7.1",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "zod": "^3.22.2"
   }
 }

@@ -1,0 +1,22 @@
+# Ignore:
+dist
+build
+public
+coverage
+.next
+.turbo
+node_modules
+pnpm-*.yaml
+v8-compile-cache-*
+.pnpm-store
+.vercel/
+.ignore/
+*.min.json
+*.min.js
+*.min.css
+
+# JS 
+*.js
+*.jsx
+*.ts
+*.tsx

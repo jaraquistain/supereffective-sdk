@@ -7,7 +7,7 @@ export const languageSchema = z.object({
   name: z.string(),
   isoCode: z.string().max(5),
   locale: z.string().max(3).nullable(),
-  urlSlug: z.string().max(5),
+  urlSlug: z.string().max(3),
 })
 
 export type Language = z.infer<typeof languageSchema>

@@ -2,15 +2,15 @@ import z from 'zod'
 
 import { generationSchema, nameSchema, slugSchema } from './common'
 
-export const legacyGameSchema = z.object({
+export const gameSchema = z.object({
   id: slugSchema,
   name: nameSchema,
   gameSet: slugSchema,
 })
 
-export type LegacyGame = z.infer<typeof legacyGameSchema>
+export type Game = z.infer<typeof gameSchema>
 
-export const gameSchema = z.object({
+export const gameSchemaV2 = z.object({
   id: slugSchema,
   name: nameSchema,
   generation: generationSchema,
@@ -49,4 +49,4 @@ export const gameSchema = z.object({
   }),
 })
 
-export type Game = z.infer<typeof gameSchema>
+export type GameV2 = z.infer<typeof gameSchemaV2>
