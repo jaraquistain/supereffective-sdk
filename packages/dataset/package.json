@@ -13,14 +13,14 @@
   "license": "MIT",
   "type": "module",
   "files": [
-    "data",
+    "dist",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
     "build": "pnpm import-data && pnpm minify-json && pnpm prettify",
     "import-data": "bun ./src/scripts/import.ts",
-    "minify-json": "bun ./src/scripts/minify.ts ./data && bun ./src/scripts/minify.ts ./data/legacy",
+    "minify-json": "bun ./src/scripts/minify.ts ./data ./dist/data",
     "prettify": "cd ../.. && pnpm prettier --write ./packages/dataset/data",
     "typelint": "tsc --noEmit",
     "validate-data": "bun ./validate/validate.ts"
@@ -32,6 +32,7 @@
     "@pkmn/dex": "^0.7.52",
     "@pkmn/dex-types": "^0.7.52",
     "@types/node": "^20.7.1",
+    "glob": "^10.3.10",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "zod": "^3.22.2"

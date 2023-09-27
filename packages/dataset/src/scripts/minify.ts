@@ -1,57 +1,51 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { globSync } from 'glob'
 
-// Function to minify a JSON object
-function minifyJSON(json: object): string {
-  return JSON.stringify(json)
+const inputDirArg = process.argv[2]
+const outputDirArg = process.argv[3]
+
+if (!inputDirArg || !outputDirArg) {
+  console.error('Usage: node minify-json.ts <input-dir-or-glob> <output-dir>')
+  process.exit(1)
 }
-
-// Function to read a JSON file and minify its contents
-function minifyJSONFile(filePath: string): void {
-  try {
-    const jsonData = fs.readFileSync(filePath, 'utf8')
-    const jsonObject = JSON.parse(jsonData)
-    const minifiedJSON = minifyJSON(jsonObject)
-    const minifiedFilePath = filePath.replace('.json', '.min.json')
-    fs.writeFileSync(minifiedFilePath, minifiedJSON, 'utf8')
-    console.log(`Minified "${path.basename(filePath)}" => "${path.basename(minifiedFilePath)}"`)
-  } catch (err) {
-    console.error(`Error processing file "${filePath}": ${err}`)
+;((inputDir: string, outputDir: string) => {
+  function createOutputPath(inputPath: string): string {
+    const relativePath = path.relative(inputDir, inputPath)
+    const outputPath = path.join(outputDir, relativePath)
+    return outputPath.replace(/\.json$/, '.min.json')
   }
-}
 
-// Function to read all JSON files from a directory and minify them
-function minifyJSONFilesFromDirectory(dirPath: string): void {
-  fs.readdirSync(dirPath).forEach((file) => {
-    const filePath = path.join(dirPath, file)
-    const stat = fs.statSync(filePath)
-    if (stat.isFile() && path.extname(filePath) === '.json' && !filePath.endsWith('.min.json')) {
-      minifyJSONFile(filePath)
+  function minify(data: string): string {
+    return JSON.stringify(JSON.parse(data))
+  }
+
+  const files = globSync(path.join(inputDir, '**', '*.json'))
+
+  files.forEach((file) => {
+    if (file.endsWith('.min.json')) {
+      return
     }
+
+    const outputPath = createOutputPath(file)
+
+    fs.readFile(file, 'utf8', (readErr, data) => {
+      if (readErr) {
+        console.error('Error reading file:', readErr)
+        process.exit(1)
+      }
+
+      const minifiedData = minify(data)
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true })
+
+      fs.writeFile(outputPath, minifiedData, (writeErr) => {
+        if (writeErr) {
+          console.error('Error writing file:', writeErr)
+          process.exit(1)
+        }
+
+        console.log(`Minified ${file} to ${outputPath}`)
+      })
+    })
   })
-}
-
-// Get the directory path from command-line arguments
-const args = process.argv.slice(2)
-const dirPath = args[0]
-
-// Check if a directory path is provided
-if (!dirPath) {
-  console.error('Please provide the path to the directory containing JSON files.')
-  process.exit(1)
-}
-
-// Check if the provided path is a valid directory
-try {
-  const stat = fs.statSync(dirPath)
-  if (!stat.isDirectory()) {
-    console.error(`"${dirPath}" is not a valid directory.`)
-    process.exit(1)
-  }
-} catch (err) {
-  console.error(`Error accessing directory "${dirPath}": ${err}`)
-  process.exit(1)
-}
-
-// Minify JSON files in the directory
-minifyJSONFilesFromDirectory(dirPath)
+})(path.resolve(inputDirArg), outputDirArg)
