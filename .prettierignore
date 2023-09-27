@@ -17,6 +17,10 @@ v8-compile-cache-*
 
 # JS 
 *.js
+*.cjs
+*.mjs
 *.jsx
 *.ts
+*.cts
+*.mts
 *.tsx
