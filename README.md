@@ -6,7 +6,8 @@ Pokémon main series data source, type checker and bundler for supereffective.gg
 
 - PNPM: Package manager
 - Turbo: Monorepo manager
-- Biome: Linter and formatter
+- Biome: JS/TS linter and formatter
+- Prettier: Formatter for non JS/TS files
 - tsup or Vite: Bundler and dev server
 - Jest + SWC: Test runner
 - Bun: script/task runner
