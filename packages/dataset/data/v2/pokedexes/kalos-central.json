@@ -1,0 +1,12 @@
+{
+  "id": "kalos-central",
+  "name": "Central Kalos Pokédex",
+  "region": "kalos",
+  "generation": 6,
+  "gameSets": [
+    "xy"
+  ],
+  "baseDex": "kalos",
+  "isUnofficial": false,
+  "entries": []
+}

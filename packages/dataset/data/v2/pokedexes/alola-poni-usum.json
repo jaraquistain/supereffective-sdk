@@ -1,0 +1,12 @@
+{
+  "id": "alola-poni-usum",
+  "name": "Poni Island Pokédex",
+  "region": "alola",
+  "generation": 7,
+  "gameSets": [
+    "usum"
+  ],
+  "baseDex": "alola-usum",
+  "isUnofficial": false,
+  "entries": []
+}
