@@ -43,6 +43,40 @@ function splitEntitiesToFiles(filename: string): void {
   writeFile(destIndexFile, indexDoc)
 }
 
+function splitLegacyBoxPresets(): void {
+  const destDirname = 'box-presets'
+  const destIndexFile = getDataPath(`v2/${destDirname}.json`)
+  const srcFile = getDataPath('v1/legacy/box-presets.json')
+
+  const data = readFileAsJson<Record<string, Record<string, any>>>(srcFile)
+  const records = Object.entries(data)
+  let indexDoc = '[\n'
+
+  for (const [gameSetId, presetsData] of records) {
+    const presetRecords = Object.entries(presetsData)
+    const destDir = getDataPath(`v2/${destDirname}/${gameSetId}`)
+
+    ensureDir(destDir)
+
+    for (const [, record] of presetRecords) {
+      const jsonDoc = `${JSON.stringify(record, null, 2)}\n`
+      const destFile = path.join(destDir, `${record.id}.json`)
+      indexDoc += `  ${JSON.stringify({
+        gamesetId: gameSetId,
+        id: record.id,
+        name: record.name,
+        isHidden: record.isHidden ? true : undefined,
+      })},\n`
+      writeFile(destFile, jsonDoc)
+    }
+  }
+
+  indexDoc = indexDoc.replace(/,\n$/, '\n')
+  indexDoc += ']\n'
+
+  writeFile(destIndexFile, indexDoc)
+}
+
 const files = [
   'abilities.json',
   'colors.json',
@@ -70,3 +104,5 @@ for (const file of files) {
 for (const file of splitFiles) {
   splitEntitiesToFiles(file)
 }
+
+splitLegacyBoxPresets()
