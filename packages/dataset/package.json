@@ -18,15 +18,18 @@
     "README.md"
   ],
   "scripts": {
-    "build": "pnpm import-data && pnpm minify-json && pnpm prettify",
-    "import-data": "bun ./src/scripts/import.ts",
-    "minify-json": "bun ./src/scripts/minify.ts ./data ./dist/data",
-    "prettify": "cd ../.. && pnpm prettier --write ./packages/dataset/data",
+    "build": "pnpm build:data && pnpm minify:data && pnpm build:js",
+    "build:data": "bun ./src/scripts/import.ts && pnpm prettify:data",
+    "build:js": "tsup",
+    "dev": "tsup --watch --clean=false",
+    "minify:data": "bun ./src/scripts/minify.ts ./data ./dist/data",
+    "prettify:data": "cd ../.. && pnpm prettier --write ./packages/dataset/data",
+    "split-data": "bun ./src/scripts/split-data.ts",
     "typelint": "tsc --noEmit",
-    "validate-data": "bun ./validate/validate.ts"
+    "validate-data": "bun ./src/validate/validate.ts"
   },
   "dependencies": {
-    "@supeffective/dataset-schemas": "workspace:*"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@pkmn/dex": "^0.7.52",

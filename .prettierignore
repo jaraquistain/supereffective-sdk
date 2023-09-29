@@ -11,11 +11,14 @@ v8-compile-cache-*
 .pnpm-store
 .vercel/
 .ignore/
+
+# Code files
 *.min.json
 *.min.js
 *.min.css
-
-# JS 
+*.json
+*.json5
+*.jsonl
 *.js
 *.cjs
 *.mjs

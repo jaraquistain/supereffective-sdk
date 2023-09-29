@@ -1,5 +1,6 @@
-import fs from 'node:fs'
+import fs, { createReadStream } from 'node:fs'
 import path from 'node:path'
+import { createInterface } from 'node:readline'
 
 const DATA_PATH = path.resolve(path.join(__dirname, '..', '..', 'data'))
 
@@ -39,6 +40,24 @@ export function getSafeDataPathOrFail(filename: string, basePath?: string): stri
 
 export function readFile(filename: string): string {
   return fs.readFileSync(filename, 'utf8')
+}
+
+export async function* readFileAsLines(filename: string): AsyncGenerator<string> {
+  const fileStream = createReadStream(filename)
+  const rl = createInterface({
+    input: fileStream,
+    crlfDelay: Infinity,
+  })
+
+  for await (const line of rl) {
+    yield line
+  }
+}
+
+export function createFileWriter(filename: string): fs.WriteStream {
+  const fileStream = fs.createWriteStream(filename, { flags: 'a' })
+
+  return fileStream
 }
 
 export function readFileAsJson<T = any>(filename: string): T {

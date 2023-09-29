@@ -33,6 +33,6 @@
     /* Paths and files */
     "types": ["@types/node", "jest"]
   },
-  "include": ["data", "src", "tests"],
+  "include": ["data", "src"],
   "exclude": ["node_modules", "dist", "build", "coverage"]
 }

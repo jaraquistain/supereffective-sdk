@@ -13,3 +13,10 @@ export const hexColorSchema = z.string().regex(/^#[0-9a-f]{6}$/i)
 export const statIdSchema = z.enum(['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'acc', 'eva'])
 
 export type IDType = string
+
+export const baseEntitySchema = z.object({
+  id: slugSchema,
+  name: nameSchema,
+})
+
+export type BaseEntity = z.infer<typeof baseEntitySchema>
