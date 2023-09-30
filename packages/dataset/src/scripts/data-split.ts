@@ -19,21 +19,35 @@ function transformToJsonLines(filename: string): void {
   writeFile(destFile, jsonlDoc)
 }
 
-function splitEntitiesToFiles(filename: string): void {
+function splitEntitiesToFiles(filename: string, subdirProp?: string): void {
   const destDirname = filename.replace('.json', '')
-  const destDir = getDataPath(`v2/${destDirname}`)
   const destIndexFile = getDataPath(`v2/${destDirname}.json`)
   const srcFile = getDataPath(`v1/${filename}`)
-
-  ensureDir(destDir)
 
   const records = readFileAsJson<BaseEntity[]>(srcFile)
   let indexDoc = '[\n'
 
   for (const record of records) {
+    const destDir =
+      subdirProp && (record as any)[subdirProp]
+        ? getDataPath(`v2/${destDirname}/${(record as any)[subdirProp]}`)
+        : getDataPath(`v2/${destDirname}`)
+
+    ensureDir(destDir)
+
     const jsonDoc = `${JSON.stringify(record, null, 2)}\n`
     const destFile = path.join(destDir, `${record.id}.json`)
-    indexDoc += `  ${JSON.stringify({ id: record.id, name: record.name })},\n`
+    const indexPayload = subdirProp
+      ? {
+          id: record.id,
+          [subdirProp]: (record as any)[subdirProp],
+          name: record.name,
+        }
+      : {
+          id: record.id,
+          name: record.name,
+        }
+    indexDoc += `  ${JSON.stringify(indexPayload)},\n`
     writeFile(destFile, jsonDoc)
   }
 
@@ -62,7 +76,7 @@ function splitLegacyBoxPresets(): void {
       const jsonDoc = `${JSON.stringify(record, null, 2)}\n`
       const destFile = path.join(destDir, `${record.id}.json`)
       indexDoc += `  ${JSON.stringify({
-        gamesetId: gameSetId,
+        gameSet: gameSetId,
         id: record.id,
         name: record.name,
         isHidden: record.isHidden ? true : undefined,
@@ -95,14 +109,11 @@ const files = [
   'types.json',
 ]
 
-const splitFiles = ['pokedexes.json', 'pokemon.json']
-
 for (const file of files) {
   transformToJsonLines(file)
 }
 
-for (const file of splitFiles) {
-  splitEntitiesToFiles(file)
-}
+splitEntitiesToFiles('pokedexes.json', 'region')
+splitEntitiesToFiles('pokemon.json', 'region')
 
 splitLegacyBoxPresets()
