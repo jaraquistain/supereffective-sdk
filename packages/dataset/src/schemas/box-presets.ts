@@ -18,6 +18,7 @@ export const boxPresetBoxSchema = z.object({
 
 export const boxPresetSchema = z.object({
   id: slugSchema,
+  legacyId: slugSchema,
   name: nameSchema,
   version: z.coerce.number().int().min(0),
   gameSet: slugSchema,

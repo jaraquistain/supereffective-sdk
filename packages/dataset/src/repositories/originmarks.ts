@@ -1,6 +1,6 @@
-import _records from '../../data/originmarks.json'
+import _records from '../../data/v2/originmarks.json'
 
-import type { OriginMark } from '@supeffective/dataset-schemas'
+import type { OriginMark } from '../schemas'
 
 export function getOriginMarks(): OriginMark[] {
   return _records as OriginMark[]

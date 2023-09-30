@@ -1,6 +1,6 @@
-import _records from '../../data/marks.json'
+import _records from '../../data/v2/marks.json'
 
-import type { Mark } from '@supeffective/dataset-schemas'
+import type { Mark } from '../schemas'
 
 export function getMarks(): Mark[] {
   return _records as Mark[]

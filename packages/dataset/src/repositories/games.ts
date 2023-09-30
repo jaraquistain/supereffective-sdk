@@ -1,7 +1,7 @@
-import _gameRecords from '../../data/games.json'
-import _gameSetRecords from '../../data/gamesets.json'
+import _gameSetRecords from '../../data/v1/gamesets.json'
+import _gameRecords from '../../data/v2/games.json'
 
-import type { Game, GameV2 } from '@supeffective/dataset-schemas'
+import type { Game, GameV2 } from '../schemas'
 
 const _records: Game[] = _gameSetRecords.flatMap(({ id: gameSetId, games }) => {
   return Object.entries(games).map(([id, game]) => ({

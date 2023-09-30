@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-import _records from '../../data/abilities.json'
+import _records from '../../data/v2/abilities.json'
 
-import { type Ability, abilitySchema } from '@supeffective/dataset-schemas'
+import { type Ability, abilitySchema } from '../schemas'
 
 export function getAbilities(): Ability[] {
   return _records

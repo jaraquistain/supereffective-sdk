@@ -1,8 +1,14 @@
 import { Dex, Item as DexItem } from '@pkmn/dex'
 import { z } from 'zod'
 
-import { type Item, type ItemCategory, itemSchema } from '@supeffective/dataset-schemas'
-import { type DataOverrideDefinition, getDataPath, readFileAsJson, writeFileAsJson } from '../../utils/fs'
+import { type Item, type ItemCategory, itemSchema } from '../../schemas'
+import {
+  type DataOverrideDefinition,
+  getDataPath,
+  readFileAsJson,
+  writeEntitiesFileAsJson,
+  writeFileAsJson,
+} from '../../utils/fs'
 
 function getItemCategory(item: DexItem): ItemCategory {
   if (item.isBerry) {
@@ -18,8 +24,8 @@ function getItemCategory(item: DexItem): ItemCategory {
   return 'other'
 }
 export const importShowdownItems = function (): void {
-  const overrides = readFileAsJson<DataOverrideDefinition>(getDataPath('overrides/items.json'))
-  const outFile = getDataPath('items.json')
+  const overrides = readFileAsJson<DataOverrideDefinition>(getDataPath('v2/_overrides/items.json'))
+  const outFile = getDataPath('v2/items.json')
   const transformedRows: Item[] = []
 
   const rawRows = Array.from(Dex.items.all())
@@ -60,5 +66,5 @@ export const importShowdownItems = function (): void {
     transformedRows.push(record)
   })
 
-  writeFileAsJson(outFile, transformedRows)
+  writeEntitiesFileAsJson(outFile, transformedRows)
 }

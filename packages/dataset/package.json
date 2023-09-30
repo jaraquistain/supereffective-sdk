@@ -18,11 +18,12 @@
     "README.md"
   ],
   "scripts": {
-    "build": "pnpm build:data && pnpm data:minify && pnpm build:js",
-    "build:data": "bun ./src/scripts/import.ts && pnpm data:join",
+    "build": "pnpm build:data && pnpm build:js && pnpm data:minify",
+    "build:data": "bun ./src/scripts/import.ts && pnpm data:join && pnpm data:legacy-gen",
     "build:js": "tsup",
     "data:join": "bun ./src/scripts/data-join.ts",
-    "data:minify": "bun ./src/scripts/minify.ts ./data ./dist/data",
+    "data:legacy-gen": "bun ./src/scripts/data-legacy-gen.ts",
+    "data:minify": "bun ./src/scripts/minify.ts ./data/v2 ./dist/data",
     "data:split-v1": "bun ./src/scripts/data-split.ts",
     "dev": "tsup --watch --clean=false",
     "typelint": "tsc --noEmit",
@@ -34,7 +35,7 @@
   "devDependencies": {
     "@pkmn/dex": "^0.7.52",
     "@pkmn/dex-types": "^0.7.52",
-    "@types/node": "^20.7.1",
+    "@types/node": "^20.7.2",
     "glob": "^10.3.10",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",

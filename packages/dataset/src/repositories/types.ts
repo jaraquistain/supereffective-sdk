@@ -1,6 +1,6 @@
-import _records from '../../data/types.json'
+import _records from '../../data/v2/types.json'
 
-import type { PokeType } from '@supeffective/dataset-schemas'
+import type { PokeType } from '../schemas'
 
 export function getTypes(): PokeType[] {
   return _records as PokeType[]

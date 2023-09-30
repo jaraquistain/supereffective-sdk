@@ -1,11 +1,11 @@
 import { Dex } from '@pkmn/dex'
 import { z } from 'zod'
 
-import { type Move, moveSchema } from '@supeffective/dataset-schemas'
-import { getDataPath, writeFileAsJson } from '../../utils/fs'
+import { type Move, moveSchema } from '../../schemas'
+import { getDataPath, writeEntitiesFileAsJson, writeFileAsJson } from '../../utils/fs'
 
 export const importShowdownMoves = function (): void {
-  const outFile = getDataPath('moves.json')
+  const outFile = getDataPath('v2/moves.json')
   const transformedRows: Move[] = []
 
   const rawRows = Array.from(Dex.moves.all())
@@ -72,5 +72,5 @@ export const importShowdownMoves = function (): void {
     transformedRows.push(record)
   })
 
-  writeFileAsJson(outFile, transformedRows)
+  writeEntitiesFileAsJson(outFile, transformedRows)
 }

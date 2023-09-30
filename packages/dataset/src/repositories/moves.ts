@@ -1,6 +1,6 @@
-import _records from '../../data/moves.json'
+import _records from '../../data/v2/moves.json'
 
-import type { Move } from '@supeffective/dataset-schemas'
+import type { Move } from '../schemas'
 
 export function getMoves(): Move[] {
   return _records as Move[]

@@ -1,4 +1,4 @@
-import { type Move, moveSchema } from '@supeffective/dataset-schemas'
+import { type Move, moveSchema } from '../../schemas'
 import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
 import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, createSearchIndex } from '../search'

@@ -1,11 +1,11 @@
 import { Dex } from '@pkmn/dex'
 import { z } from 'zod'
 
-import { type Ability, abilitySchema } from '@supeffective/dataset-schemas'
-import { getDataPath, writeFileAsJson } from '../../utils/fs'
+import { type Ability, abilitySchema } from '../../schemas'
+import { getDataPath, writeEntitiesFileAsJson, writeFileAsJson } from '../../utils/fs'
 
 export const importShowdownAbilities = function (): void {
-  const outFile = getDataPath('abilities.json')
+  const outFile = getDataPath('v2/abilities.json')
   const transformedRows: Ability[] = []
 
   const rawRows = Array.from(Dex.abilities.all())
@@ -41,5 +41,5 @@ export const importShowdownAbilities = function (): void {
     transformedRows.push(record)
   })
 
-  writeFileAsJson(outFile, transformedRows)
+  writeEntitiesFileAsJson(outFile, transformedRows)
 }

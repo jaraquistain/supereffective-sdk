@@ -1,11 +1,10 @@
 import type { SafeParseReturnType } from 'zod'
 
-import _records from '../../data/pokemon.json'
+import _records from '../../data/v2/pokemon.json'
 
-import type { IDType } from '@supeffective/dataset-schemas'
-import { type Pokemon, pokemonSchema } from '@supeffective/dataset-schemas'
-import { LATEST_GAMESET, LATEST_GENERATION, LATEST_REGION } from '../constants'
-import { SWITCH_GAMESET_IDS } from './gamesets'
+import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION, SWITCH_GAMESET_IDS } from '../constants'
+import type { IDType } from '../schemas'
+import { type Pokemon, pokemonSchema } from '../schemas'
 
 const _pokemonList = _records as any[]
 const _pokemonMap = new Map<string, Pokemon>(
@@ -159,8 +158,8 @@ export function createPlaceholderPokemon(): Pokemon {
     name: 'Untitled',
     psName: 'unknown',
     formName: null,
-    region: LATEST_REGION,
-    generation: LATEST_GENERATION,
+    region: PKM_LATEST_REGION,
+    generation: PKM_LATEST_GENERATION,
     type1: 'normal',
     type2: null,
     color: 'white',
@@ -190,7 +189,7 @@ export function createPlaceholderPokemon(): Pokemon {
     canGmax: false,
     canDynamax: false,
     canBeAlpha: false,
-    debutIn: LATEST_GAMESET,
+    debutIn: PKM_LATEST_GAMESET,
     obtainableIn: [],
     versionExclusiveIn: [],
     eventOnlyIn: [],

@@ -1,5 +1,5 @@
-import { type CompactPokemon, type Pokemon, pokemonCompactSchema, pokemonSchema } from '@supeffective/dataset-schemas'
-import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../assets'
+import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../../constants'
+import { type CompactPokemon, type Pokemon, pokemonCompactSchema, pokemonSchema } from '../../schemas'
 import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
 import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, type SearchEngineIndex, createSearchIndex } from '../search'

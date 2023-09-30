@@ -1,11 +1,11 @@
 import { Dex } from '@pkmn/dex'
 
-import type { Pokemon } from '@supeffective/dataset-schemas'
 import { getAbilityByShowdownNameOrFail } from '../../repositories/abilities'
 import { getItemByShowdownNameOrFail } from '../../repositories/items'
 import { getMoveByShowdownNameOrFail } from '../../repositories/moves'
 import { getAllPokemon, getPokemonByShowdownNameOrFail } from '../../repositories/pokemon'
 import { updateManyPokemon } from '../../repositories/pokemon-ssr'
+import type { Pokemon } from '../../schemas'
 
 export const importShowdownPokemon = function (): void {
   const allPokemon = getAllPokemon()

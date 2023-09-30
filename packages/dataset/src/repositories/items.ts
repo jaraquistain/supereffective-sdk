@@ -1,6 +1,6 @@
-import _records from '../../data/items.json'
+import _records from '../../data/v2/items.json'
 
-import type { Item } from '@supeffective/dataset-schemas'
+import type { Item } from '../schemas'
 
 export function getItems(): Item[] {
   return _records as Item[]

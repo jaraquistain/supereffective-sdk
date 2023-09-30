@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import _records from '../../data/legacy/box-presets.json'
+import _records from '../../data/v2/box-presets.json'
 
 import {
   type BoxPreset,
@@ -9,25 +9,38 @@ import {
   type BoxPresetRecord,
   type GameSet,
   type Pokemon,
-  boxPresetMapSchema,
-} from '@supeffective/dataset-schemas'
+  boxPresetSchema,
+} from '../schemas'
 
-const recordsMap = new Map(
-  Object.entries(_records).map(([gameSet, presetsObject]) => {
-    return [gameSet, new Map(Object.entries(presetsObject))]
-  }),
-)
-
-export function getBoxPresetsAsRecords(): BoxPresetRecord {
+export function getBoxPresets(): BoxPreset[] {
   return _records
 }
 
-export function getBoxPresets(): BoxPresetMap {
-  return recordsMap
+export function getBoxPresetsGrouped(): BoxPresetRecord {
+  const boxPresetsGrouped: BoxPresetRecord = {}
+
+  for (const preset of _records) {
+    boxPresetsGrouped[preset.gameSet] = {
+      ...boxPresetsGrouped[preset.gameSet],
+      [preset.id]: preset,
+    }
+  }
+
+  return boxPresetsGrouped
+}
+
+export function getBoxPresetsMap(): BoxPresetMap {
+  const boxPresetsGrouped = getBoxPresetsGrouped()
+
+  return new Map(
+    Object.entries(boxPresetsGrouped).map(([gameSet, presetsObject]) => {
+      return [gameSet, new Map(Object.entries(presetsObject))]
+    }),
+  )
 }
 
 export function getBoxPresetsByGameSet(gameSet: string): BoxPreset[] {
-  const records = getBoxPresets()
+  const records = getBoxPresetsMap()
   const presets = records.get(gameSet)
 
   if (!presets) {
@@ -38,7 +51,7 @@ export function getBoxPresetsByGameSet(gameSet: string): BoxPreset[] {
 }
 
 export function getBoxPresetsByGameSetAndId(gameSet: string, presetId: string): BoxPreset {
-  const records = getBoxPresets()
+  const records = getBoxPresetsMap()
   const presets = records.get(gameSet)
 
   if (!presets) {
@@ -56,7 +69,7 @@ export function getBoxPresetsByGameSetAndId(gameSet: string, presetId: string): 
 export function validateBoxPresets() {
   const records = getBoxPresets()
 
-  return z.array(boxPresetMapSchema).safeParse(records)
+  return z.array(boxPresetSchema).safeParse(records)
 }
 
 export function flattenBoxes(preset: BoxPreset): Array<string | null> {

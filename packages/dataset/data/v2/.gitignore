@@ -1,3 +1,5 @@
 pokemon.json
 pokedexes.json
 box-presets.json
+legacy-*.json
+compact-*.json

@@ -1,22 +1,13 @@
 import path from 'node:path'
 import type { BaseEntity } from '../schemas'
-import { ensureDir, getDataPath, readFileAsJson, writeFile } from '../utils/fs'
+import { ensureDir, getDataPath, readFileAsJson, writeEntitiesFileAsJson, writeFile } from '../utils/fs'
 
 function transformToJsonLines(filename: string): void {
   const srcFile = getDataPath(`v1/${filename}`)
   const destFile = getDataPath(`v2/${filename}`)
   const records = readFileAsJson<BaseEntity[]>(srcFile)
 
-  let jsonlDoc = '[\n'
-
-  for (const record of records) {
-    jsonlDoc += `  ${JSON.stringify(record)},\n`
-  }
-
-  jsonlDoc = jsonlDoc.replace(/,\n$/, '\n')
-  jsonlDoc += ']\n'
-
-  writeFile(destFile, jsonlDoc)
+  writeEntitiesFileAsJson(destFile, records)
 }
 
 function splitEntitiesToFiles(filename: string, subdirProp?: string): void {

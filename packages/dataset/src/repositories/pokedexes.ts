@@ -1,6 +1,6 @@
-import _records from '../../data/pokedexes.json'
+import _records from '../../data/v2/pokedexes.json'
 
-import type { Pokedex } from '@supeffective/dataset-schemas'
+import type { Pokedex } from '../schemas'
 
 export function getPokedexes(): Pokedex[] {
   return _records as Pokedex[]

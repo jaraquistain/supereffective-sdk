@@ -1,6 +1,7 @@
 import fs, { createReadStream } from 'node:fs'
 import path from 'node:path'
 import { createInterface } from 'node:readline'
+import type { BaseEntity } from '../schemas'
 
 const DATA_PATH = path.resolve(path.join(__dirname, '..', '..', 'data'))
 
@@ -72,8 +73,21 @@ export function writeFile(filename: string, data: string): void {
   fs.writeFileSync(filename, data)
 }
 
-export function writeFileAsJson(basename: string, data: any): void {
-  writeFile(basename, JSON.stringify(data, null, 2))
+export function writeFileAsJson(filename: string, data: any): void {
+  writeFile(filename, `${JSON.stringify(data, null, 2)}\n`)
+}
+
+export function writeEntitiesFileAsJson(filename: string, records: BaseEntity[]): void {
+  let jsonlDoc = '[\n'
+
+  for (const record of records) {
+    jsonlDoc += `  ${JSON.stringify(record)},\n`
+  }
+
+  jsonlDoc = jsonlDoc.replace(/,\n$/, '\n')
+  jsonlDoc += ']\n'
+
+  writeFile(filename, jsonlDoc)
 }
 
 export function pathExists(absPath: string): boolean {
