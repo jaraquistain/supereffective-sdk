@@ -18,9 +18,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "pnpm build:data && pnpm build:js && pnpm data:minify",
-    "build:data": "bun ./src/scripts/import.ts && pnpm data:join && pnpm data:legacy-gen",
+    "build": "rm -rf dist && pnpm build:data && pnpm build:js && pnpm data:minify",
+    "build:data": "pnpm data:gen && bun ./src/scripts/import.ts && pnpm data:gen",
     "build:js": "tsup",
+    "data:gen": "pnpm data:join && pnpm data:legacy-gen",
     "data:join": "bun ./src/scripts/data-join.ts",
     "data:legacy-gen": "bun ./src/scripts/data-legacy-gen.ts",
     "data:minify": "bun ./src/scripts/minify.ts ./data/v2 ./dist/data",
