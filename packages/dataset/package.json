@@ -18,13 +18,13 @@
     "README.md"
   ],
   "scripts": {
-    "build": "pnpm build:data && pnpm minify:data && pnpm build:js",
-    "build:data": "bun ./src/scripts/import.ts",
+    "build": "pnpm build:data && pnpm data:minify && pnpm build:js",
+    "build:data": "bun ./src/scripts/import.ts && pnpm data:join",
     "build:js": "tsup",
+    "data:join": "bun ./src/scripts/data-join.ts",
+    "data:minify": "bun ./src/scripts/minify.ts ./data ./dist/data",
+    "data:split-v1": "bun ./src/scripts/data-split.ts",
     "dev": "tsup --watch --clean=false",
-    "join-data": "bun ./src/scripts/data-join.ts",
-    "minify:data": "bun ./src/scripts/minify.ts ./data ./dist/data",
-    "split-data": "bun ./src/scripts/data-split.ts",
     "typelint": "tsc --noEmit",
     "validate-data": "bun ./src/validate/validate.ts"
   },

@@ -20,7 +20,8 @@ if (!inputDirArg || !outputDirArg) {
     return JSON.stringify(JSON.parse(data))
   }
 
-  const files = globSync(path.join(inputDir, '**', '*.json'))
+  // const files = globSync(path.join(inputDir, '**', '*.json'))
+  const files = globSync(path.join(inputDir, '*.json'))
 
   files.forEach((file) => {
     if (file.endsWith('.min.json')) {

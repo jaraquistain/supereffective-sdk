@@ -21,7 +21,8 @@ function transformToJsonLines(filename: string): void {
 
 function splitEntitiesToFiles(filename: string, subdirProp?: string): void {
   const destDirname = filename.replace('.json', '')
-  const destIndexFile = getDataPath(`v2/${destDirname}.json`)
+  const destIndexFile = getDataPath(`v2/${destDirname}-index.json`)
+  const destFullFile = getDataPath(`v2/${destDirname}.json`)
   const srcFile = getDataPath(`v1/${filename}`)
 
   const records = readFileAsJson<BaseEntity[]>(srcFile)
@@ -55,11 +56,13 @@ function splitEntitiesToFiles(filename: string, subdirProp?: string): void {
   indexDoc += ']\n'
 
   writeFile(destIndexFile, indexDoc)
+  writeFile(destFullFile, indexDoc)
 }
 
 function splitLegacyBoxPresets(): void {
   const destDirname = 'box-presets'
-  const destIndexFile = getDataPath(`v2/${destDirname}.json`)
+  const destIndexFile = getDataPath(`v2/${destDirname}-index.json`)
+  const destFullFile = getDataPath(`v2/${destDirname}.json`)
   const srcFile = getDataPath('v1/legacy/box-presets.json')
 
   const data = readFileAsJson<Record<string, Record<string, any>>>(srcFile)
@@ -99,6 +102,7 @@ function splitLegacyBoxPresets(): void {
   indexDoc += ']\n'
 
   writeFile(destIndexFile, indexDoc)
+  writeFile(destFullFile, indexDoc)
 }
 
 const files = [
