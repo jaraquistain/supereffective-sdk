@@ -73,13 +73,23 @@ function splitLegacyBoxPresets(): void {
     ensureDir(destDir)
 
     for (const [, record] of presetRecords) {
-      const jsonDoc = `${JSON.stringify(record, null, 2)}\n`
-      const destFile = path.join(destDir, `${record.id}.json`)
+      const uid = `${gameSetId}-${record.id}`
+      record.gameSet = gameSetId
+      const { id: legacyId, ...oldRecord } = record
+      const newRecord = {
+        id: uid,
+        legacyId,
+        ...oldRecord,
+      }
+
+      const jsonDoc = `${JSON.stringify(newRecord, null, 2)}\n`
+      const destFile = path.join(destDir, `${uid}.json`)
       indexDoc += `  ${JSON.stringify({
+        id: uid,
         gameSet: gameSetId,
-        id: record.id,
-        name: record.name,
-        isHidden: record.isHidden ? true : undefined,
+        legacyId: legacyId,
+        isHidden: newRecord.isHidden ? true : undefined,
+        name: newRecord.name,
       })},\n`
       writeFile(destFile, jsonDoc)
     }
