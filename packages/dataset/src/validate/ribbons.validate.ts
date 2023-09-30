@@ -1,8 +1,8 @@
 import { type SafeParseReturnType, z } from 'zod'
 
-import recordList from '../data/ribbons.json'
+import recordList from '../../data/v2/ribbons.json'
 
-import { type Ribbon, ribbonSchema } from '@supeffective/dataset-schemas'
+import { type Ribbon, ribbonSchema } from '../schemas'
 
 const listSchema = z.array(ribbonSchema)
 
