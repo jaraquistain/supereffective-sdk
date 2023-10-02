@@ -38,7 +38,7 @@ export function updatePokemon(data: UpdatePokemon): void {
 }
 
 // function updateCompactPokemonFile(data: Pokemon[]): void {
-//   const dataFile = getDataPath('v1/pokemon-compact.json')
+//   const dataFile = getDataPath('v2/pokemon-compact.json')
 //   const result: CompactPokemon[] = []
 
 //   for (const pkm of data) {
