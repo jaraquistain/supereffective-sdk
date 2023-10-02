@@ -39,8 +39,8 @@ jobs:
 
       - name: Build the project
         run: |
-          if [[ ! -d ./packages/docs ]]; then
-            echo "No docs folder found"
+          if [[ ! -d ./packages/dataset ]]; then
+            echo "No dataset folder found"
             exit 1
           fi
 
