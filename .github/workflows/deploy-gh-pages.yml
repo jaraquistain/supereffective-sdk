@@ -45,9 +45,10 @@ jobs:
           fi
 
           pnpm -r run build
-          ls -la ./packages/docs/dist
+          ls -la ./packages/dataset/dist
           echo "Moving dist to _site"
-          rm -rf _site && mv ./packages/docs/dist ./_site
+          rm -rf _site && mv ./packages/dataset/dist ./_site
+          cp README.md ./_site
           ls -la ./_site
 
       - name: Upload artifact

@@ -45,7 +45,7 @@ if (!inputDirArg || !outputDirArg) {
           process.exit(1)
         }
 
-        console.log(`Minified ${file} to ${outputPath}`)
+        console.log(`Minified ${outputPath}`)
       })
     })
   })

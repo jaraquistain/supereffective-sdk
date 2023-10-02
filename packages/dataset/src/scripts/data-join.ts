@@ -29,7 +29,7 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
     if (!existsSync(destRecordFile)) {
       throw new Error(`Record file does not exist: ${destRecordFile}`)
     }
-    const record = readFileAsJson<BaseEntity[]>(destRecordFile)
+    const record = readFileAsJson<BaseEntity>(destRecordFile)
 
     jsonlDoc += `  ${JSON.stringify(record)},\n`
   }

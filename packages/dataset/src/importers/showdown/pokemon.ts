@@ -3,9 +3,26 @@ import { Dex } from '@pkmn/dex'
 import { getAbilityByShowdownNameOrFail } from '../../repositories/abilities'
 import { getItemByShowdownNameOrFail } from '../../repositories/items'
 import { getMoveByShowdownNameOrFail } from '../../repositories/moves'
-import { getAllPokemon, getPokemonByShowdownNameOrFail } from '../../repositories/pokemon'
-import { updateManyPokemon } from '../../repositories/pokemon-ssr'
+import { getAllPokemon, getPokemonByShowdownNameOrFail, updateManyPokemon } from '../../repositories/pokemon'
 import type { Pokemon } from '../../schemas'
+
+const ignoredShowdownIds = [
+  'pikachucosplay',
+  'pikachurockstar',
+  'pikachubelle',
+  'pikachupopstar',
+  'pikachuphd',
+  'pikachulibre',
+  'pikachustarter',
+  'eeveestarter',
+  'pichuspikyeared',
+  'floetteeternal',
+  // Skip these for now:
+  'ogerpontealtera',
+  'ogerponwellspringtera',
+  'ogerponhearthflametera',
+  'ogerponcornerstonetera',
+]
 
 export const importShowdownPokemon = function (): void {
   const allPokemon = getAllPokemon()
@@ -42,26 +59,7 @@ export const importShowdownPokemon = function (): void {
   const sortedShowdownRecords = showdownRecords
     .filter((row) => Number(row.num) > 0)
     .filter((row) => {
-      if (
-        row.id.endsWith('totem') ||
-        [
-          'pikachucosplay',
-          'pikachurockstar',
-          'pikachubelle',
-          'pikachupopstar',
-          'pikachuphd',
-          'pikachulibre',
-          'pikachustarter',
-          'eeveestarter',
-          'pichuspikyeared',
-          'floetteeternal',
-          // Skip these for now:
-          'ogerpontealtera',
-          'ogerponwellspringtera',
-          'ogerponhearthflametera',
-          'ogerponcornerstonetera',
-        ].includes(row.id)
-      ) {
+      if (row.id.endsWith('totem') || ignoredShowdownIds.includes(row.id)) {
         return false
       }
 

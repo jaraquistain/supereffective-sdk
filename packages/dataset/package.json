@@ -18,25 +18,23 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rm -rf dist && pnpm build:data && pnpm build:js && pnpm data:minify",
-    "build:data": "pnpm data:gen && bun ./src/scripts/import.ts && pnpm data:gen",
-    "build:js": "tsup",
-    "data:gen": "pnpm data:join && pnpm data:legacy-gen",
-    "data:join": "bun ./src/scripts/data-join.ts",
-    "data:legacy-gen": "bun ./src/scripts/data-legacy-gen.ts",
-    "data:minify": "bun ./src/scripts/minify.ts ./data/v2 ./dist/data",
-    "data:split-v1": "bun ./src/scripts/data-split.ts",
+    "build": "rm -rf dist && pnpm build:data && pnpm build:lib",
+    "build:data": "pnpm data:update && pnpm data:transform && pnpm data:format && pnpm data:validate",
+    "build:lib": "tsup",
+    "data:format": "bun ./src/scripts/data-format.ts && bun ./src/scripts/minify.ts ./data/v2 ./dist/data",
+    "data:transform": "bun ./src/scripts/data-join.ts && bun ./src/scripts/data-legacy-gen.ts",
+    "data:update": "bun ./src/scripts/import.ts",
+    "data:validate": "bun ./src/validate/validate.ts",
     "dev": "tsup --watch --clean=false",
-    "typelint": "tsc --noEmit",
-    "validate-data": "bun ./src/validate/validate.ts"
+    "typelint": "tsc --noEmit"
   },
   "dependencies": {
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@pkmn/dex": "^0.7.52",
-    "@pkmn/dex-types": "^0.7.52",
-    "@types/node": "^20.7.2",
+    "@pkmn/dex": "^0.7.53",
+    "@pkmn/dex-types": "^0.7.53",
+    "@types/node": "^20.8.0",
     "glob": "^10.3.10",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",

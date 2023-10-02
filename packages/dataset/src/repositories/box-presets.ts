@@ -1,7 +1,5 @@
 import { z } from 'zod'
 
-import _records from '../../data/v2/box-presets.json'
-
 import {
   type BoxPreset,
   type BoxPresetBoxPokemon,
@@ -11,15 +9,25 @@ import {
   type Pokemon,
   boxPresetSchema,
 } from '../schemas'
+import { mergeEntityIndex } from '../utils/merge'
+
+let _data: Map<string, BoxPreset> = new Map()
+let _dataInitialized = false
 
 export function getBoxPresets(): BoxPreset[] {
-  return _records
+  if (!_dataInitialized) {
+    _data = mergeEntityIndex<BoxPreset>('box-presets-index.json', 'gameSet')
+    _dataInitialized = true
+  }
+
+  return Array.from(_data.values())
 }
 
 export function getBoxPresetsGrouped(): BoxPresetRecord {
+  const boxPresetsList = getBoxPresets()
   const boxPresetsGrouped: BoxPresetRecord = {}
 
-  for (const preset of _records) {
+  for (const preset of boxPresetsList) {
     boxPresetsGrouped[preset.gameSet] = {
       ...boxPresetsGrouped[preset.gameSet],
       [preset.id]: preset,
