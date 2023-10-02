@@ -5,7 +5,7 @@ import { type Ability, abilitySchema } from '../../schemas'
 import { getDataPath, writeEntitiesFileAsJson } from '../../utils/fs'
 
 export const importShowdownAbilities = function (): void {
-  const outFile = getDataPath('v2/abilities.json')
+  const outFile = getDataPath('abilities.json')
   const transformedRows: Ability[] = []
 
   const rawRows = Array.from(Dex.abilities.all())

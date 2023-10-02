@@ -8,7 +8,7 @@ export function softMerge<T extends object = any>(left: T, ...right: Array<T | P
 
 export function mergeEntityIndex<E extends BaseEntity>(filename: string, subdirProp?: string): Map<string, E> {
   const baseFileName = filename.replace('-index.json', '')
-  const srcFile = getDataPath(`v2/${filename}`)
+  const srcFile = getDataPath(`${filename}`)
   const records = readFileAsJson<E[]>(srcFile)
   const recordMap = new Map<string, E>()
 
@@ -24,8 +24,8 @@ export function mergeEntityIndex<E extends BaseEntity>(filename: string, subdirP
   for (const baseRecord of records) {
     const srcRecordFile =
       subdirProp && (baseRecord as any)[subdirProp]
-        ? getDataPath(`v2/${baseFileName}/${(baseRecord as any)[subdirProp]}/${baseRecord.id}.json`)
-        : getDataPath(`v2/${baseFileName}/${baseRecord.id}.json`)
+        ? getDataPath(`${baseFileName}/${(baseRecord as any)[subdirProp]}/${baseRecord.id}.json`)
+        : getDataPath(`${baseFileName}/${baseRecord.id}.json`)
 
     if (!existsSync(srcRecordFile)) {
       throw new Error(`Record file does not exist: ${srcRecordFile}`)

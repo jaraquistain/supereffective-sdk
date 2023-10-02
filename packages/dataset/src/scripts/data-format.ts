@@ -3,14 +3,14 @@ import type { BaseEntity, BoxPreset, Pokedex } from '../schemas'
 import { getDataPath, readFileAsJson, writeFile } from '../utils/fs'
 
 function formatBoxPresets(): void {
-  const srcFile = getDataPath('v2/box-presets-index.json')
+  const srcFile = getDataPath('box-presets-index.json')
   const records = readFileAsJson<BaseEntity[]>(srcFile)
 
   for (const baseRecord of records) {
     const gameSet = (baseRecord as any).gameSet
     const srcRecordFile = gameSet
-      ? getDataPath(`v2/box-presets/${gameSet}/${baseRecord.id}.json`)
-      : getDataPath(`v2/box-presets/${baseRecord.id}.json`)
+      ? getDataPath(`box-presets/${gameSet}/${baseRecord.id}.json`)
+      : getDataPath(`box-presets/${baseRecord.id}.json`)
 
     if (!existsSync(srcRecordFile)) {
       throw new Error(`Record file does not exist: ${srcRecordFile}`)
@@ -40,14 +40,14 @@ function formatBoxPresets(): void {
 }
 
 function formatPokedexes(): void {
-  const srcFile = getDataPath('v2/pokedexes-index.json')
+  const srcFile = getDataPath('pokedexes-index.json')
   const records = readFileAsJson<BaseEntity[]>(srcFile)
 
   for (const baseRecord of records) {
     const region = (baseRecord as any).region
     const srcRecordFile = region
-      ? getDataPath(`v2/pokedexes/${region}/${baseRecord.id}.json`)
-      : getDataPath(`v2/pokedexes/${baseRecord.id}.json`)
+      ? getDataPath(`pokedexes/${region}/${baseRecord.id}.json`)
+      : getDataPath(`pokedexes/${baseRecord.id}.json`)
 
     if (!existsSync(srcRecordFile)) {
       throw new Error(`Record file does not exist: ${srcRecordFile}`)

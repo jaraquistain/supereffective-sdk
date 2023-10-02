@@ -257,10 +257,10 @@ export function updateManyPokemon(batch: UpdatePokemon[]): void {
     }
     allPkm.set(id, newPkm)
 
-    const dataFileDir = getDataPath(`v2/pokemon/${data.region}`)
+    const dataFileDir = getDataPath(`pokemon/${data.region}`)
     ensureDir(dataFileDir)
 
-    const dataFile = getDataPath(`v2/pokemon/${data.region}/${data.id}.json`)
+    const dataFile = getDataPath(`pokemon/${data.region}/${data.id}.json`)
 
     writeFileAsJson(dataFile, newPkm)
   }

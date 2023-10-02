@@ -4,8 +4,8 @@ import { getDataPath, readFileAsJson, writeFile } from '../utils/fs'
 
 function joinIndexFile(filename: string, subdirProp?: string): void {
   const baseFileName = filename.replace('-index.json', '')
-  const srcFile = getDataPath(`v2/${filename}`)
-  const destFile = getDataPath(`v2/${baseFileName}.json`)
+  const srcFile = getDataPath(`${filename}`)
+  const destFile = getDataPath(`${baseFileName}.json`)
   const records = readFileAsJson<BaseEntity[]>(srcFile)
   const recordMap = new Map<string, BaseEntity>()
 
@@ -23,8 +23,8 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
   for (const baseRecord of records) {
     const destRecordFile =
       subdirProp && (baseRecord as any)[subdirProp]
-        ? getDataPath(`v2/${baseFileName}/${(baseRecord as any)[subdirProp]}/${baseRecord.id}.json`)
-        : getDataPath(`v2/${baseFileName}/${baseRecord.id}.json`)
+        ? getDataPath(`${baseFileName}/${(baseRecord as any)[subdirProp]}/${baseRecord.id}.json`)
+        : getDataPath(`${baseFileName}/${baseRecord.id}.json`)
 
     if (!existsSync(destRecordFile)) {
       throw new Error(`Record file does not exist: ${destRecordFile}`)

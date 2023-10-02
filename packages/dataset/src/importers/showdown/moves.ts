@@ -5,7 +5,7 @@ import { type Move, moveSchema } from '../../schemas'
 import { getDataPath, writeEntitiesFileAsJson } from '../../utils/fs'
 
 export const importShowdownMoves = function (): void {
-  const outFile = getDataPath('v2/moves.json')
+  const outFile = getDataPath('moves.json')
   const transformedRows: Move[] = []
 
   const rawRows = Array.from(Dex.moves.all())

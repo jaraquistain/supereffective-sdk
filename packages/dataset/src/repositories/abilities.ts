@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import _records from '../../data/v2/abilities.json'
+import _records from '../../data/abilities.json'
 
 import { type Ability, abilitySchema } from '../schemas'
 

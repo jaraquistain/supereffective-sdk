@@ -1,4 +1,4 @@
-import _records from '../../data/v2/moves.json'
+import _records from '../../data/moves.json'
 
 import type { Move } from '../schemas'
 

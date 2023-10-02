@@ -1,10 +1,10 @@
-import _pokemonColors from '../../../data/v2/colors.json'
-import _pokemonGames from '../../../data/v2/games.json'
-import _pokemonLanguages from '../../../data/v2/languages.json'
-import _pokemonNatures from '../../../data/v2/natures.json'
-import _pokemonOriginMarks from '../../../data/v2/originmarks.json'
-import _pokemonRegions from '../../../data/v2/regions.json'
-import _pokemonTypes from '../../../data/v2/types.json'
+import _pokemonColors from '../../../data/colors.json'
+import _pokemonGames from '../../../data/games.json'
+import _pokemonLanguages from '../../../data/languages.json'
+import _pokemonNatures from '../../../data/natures.json'
+import _pokemonOriginMarks from '../../../data/originmarks.json'
+import _pokemonRegions from '../../../data/regions.json'
+import _pokemonTypes from '../../../data/types.json'
 
 import {
   type Color,

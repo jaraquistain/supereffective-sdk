@@ -1,6 +1,6 @@
 import { type SafeParseReturnType, z } from 'zod'
 
-import recordList from '../../data/v2/pokemon.json'
+import recordList from '../../data/pokemon.json'
 
 import { type Pokemon, pokemonSchema } from '../schemas'
 

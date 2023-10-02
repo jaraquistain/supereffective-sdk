@@ -1,4 +1,4 @@
-import _records from '../../data/v2/items.json'
+import _records from '../../data/items.json'
 
 import type { Item } from '../schemas'
 

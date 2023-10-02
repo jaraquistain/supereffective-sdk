@@ -4,7 +4,7 @@ import type { BoxPreset, LegacyPokemon, Pokemon } from '../schemas'
 import { getDataPath, writeFile, writeFileAsJson } from '../utils/fs'
 
 function updateLegacyBoxPresets(data: BoxPreset[]): void {
-  const dataFile = getDataPath('v2/legacy-box-presets.json')
+  const dataFile = getDataPath('legacy-box-presets.json')
   const result: Record<string, Record<string, BoxPreset>> = {}
 
   for (const preset of data) {
@@ -18,7 +18,7 @@ function updateLegacyBoxPresets(data: BoxPreset[]): void {
 }
 
 function updateLegacyPokemonFile(data: Pokemon[]): void {
-  const dataFile = getDataPath('v2/legacy-pokemon.json')
+  const dataFile = getDataPath('legacy-pokemon.json')
   const result: LegacyPokemon[] = []
 
   for (const pkm of data) {

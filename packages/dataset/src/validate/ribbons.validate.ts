@@ -1,6 +1,6 @@
 import { type SafeParseReturnType, z } from 'zod'
 
-import recordList from '../../data/v2/ribbons.json'
+import recordList from '../../data/ribbons.json'
 
 import { type Ribbon, ribbonSchema } from '../schemas'
 

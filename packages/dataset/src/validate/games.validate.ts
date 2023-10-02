@@ -1,7 +1,7 @@
 import { type SafeParseReturnType, z } from 'zod'
 import { type GameV2, gameSchemaV2 } from '../schemas'
 
-import recordList from '../../data/v2/games.json'
+import recordList from '../../data/games.json'
 
 const listSchema = z.array(gameSchemaV2)
 

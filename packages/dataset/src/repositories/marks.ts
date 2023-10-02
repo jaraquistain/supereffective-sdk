@@ -1,4 +1,4 @@
-import _records from '../../data/v2/marks.json'
+import _records from '../../data/marks.json'
 
 import type { Mark } from '../schemas'
 

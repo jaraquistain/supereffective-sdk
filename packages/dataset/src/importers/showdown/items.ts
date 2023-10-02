@@ -18,8 +18,8 @@ function getItemCategory(item: DexItem): ItemCategory {
   return 'other'
 }
 export const importShowdownItems = function (): void {
-  const overrides = readFileAsJson<DataOverrideDefinition>(getDataPath('v2/_overrides/items.json'))
-  const outFile = getDataPath('v2/items.json')
+  const overrides = readFileAsJson<DataOverrideDefinition>(getDataPath('_overrides/items.json'))
+  const outFile = getDataPath('items.json')
   const transformedRows: Item[] = []
 
   const rawRows = Array.from(Dex.items.all())
