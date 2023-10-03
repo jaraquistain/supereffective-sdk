@@ -1,8 +1,8 @@
 import { type Move, moveSchema } from '../../schemas'
-import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, createSearchIndex } from '../search'
 import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
+import { createReadOnlyRepository } from './core/createReadOnlyRepository'
+import type { Repository, RepositoryDataProvider } from './core/types'
 
 export function createMoveRepository(dataProvider: RepositoryDataProvider): Repository<Move> {
   return createReadOnlyRepository<Move>({

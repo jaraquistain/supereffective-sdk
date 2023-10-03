@@ -1,0 +1,77 @@
+import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../../../constants'
+import type { CompactPokemon, Pokemon } from '../../../schemas'
+
+export function createPlaceholderPokemon(): Pokemon {
+  return {
+    id: 'unknown',
+    nid: '0000-unknown',
+    dexNum: 0,
+    formId: null,
+    name: 'Untitled',
+    psName: 'unknown',
+    formName: null,
+    region: PKM_LATEST_REGION,
+    generation: PKM_LATEST_GENERATION,
+    type1: 'normal',
+    type2: null,
+    color: 'white',
+    abilities: {
+      primary: 'pressure',
+      secondary: null,
+      hidden: null,
+    },
+    isDefault: true,
+    isForm: false,
+    isLegendary: false,
+    isMythical: false,
+    isUltraBeast: false,
+    ultraBeastCode: null,
+    isSpecialAbilityForm: false,
+    isCosmeticForm: false,
+    isFemaleForm: false,
+    hasGenderDifferences: false,
+    isBattleOnlyForm: false,
+    isSwitchableForm: false,
+    isFusion: false,
+    fusedWith: null,
+    isMega: false,
+    isPrimal: false,
+    isGmax: false,
+    isRegional: false,
+    canGmax: false,
+    canDynamax: false,
+    canBeAlpha: false,
+    debutIn: PKM_LATEST_GAMESET,
+    obtainableIn: [],
+    versionExclusiveIn: [],
+    eventOnlyIn: [],
+    storableIn: [],
+    shinyReleased: false,
+    shinyBase: null,
+    baseStats: {
+      hp: 0,
+      atk: 0,
+      def: 0,
+      spa: 0,
+      spd: 0,
+      spe: 0,
+    },
+    weight: 0,
+    height: 0,
+    baseSpecies: null,
+    baseForms: [],
+    forms: [],
+    evolvesFrom: null,
+    family: null,
+    refs: {
+      smogon: 'unknown',
+      showdown: 'unknown',
+      serebii: 'unknown',
+      bulbapedia: 'unknown',
+    },
+  }
+}
+
+export function isPlaceholderPokemon(pkm: Pokemon | CompactPokemon): boolean {
+  return pkm.id === 'unknown'
+}

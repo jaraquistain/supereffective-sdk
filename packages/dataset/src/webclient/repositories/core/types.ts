@@ -28,19 +28,6 @@ export interface RepositoryDataProvider {
 
 export type EntityUpdate<R extends Entity> = Partial<R> & { id: Entity['id'] }
 
-export interface MutableRepository<R extends Entity> extends Repository<R> {
-  create(entity: R): Promise<R>
-  createMany(entities: Array<R>): Promise<Array<R>>
-  update(entity: EntityUpdate<R>): Promise<void>
-  updateMany(entities: Array<EntityUpdate<R>>): Promise<void>
-  delete(id: string): Promise<void>
-  deleteMany(ids: Array<string>): Promise<void>
-}
-
-export interface MutableRepositoryDataProvider extends RepositoryDataProvider {
-  writeFile<R extends Entity>(relativePath: string, data: Array<R>): Promise<void>
-}
-
 export type RepositoryConfig<R extends Entity, S extends RepositoryDataProvider = RepositoryDataProvider> = {
   id: string
   schema: z.ZodSchema<R>

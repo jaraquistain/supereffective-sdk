@@ -1,8 +1,8 @@
 import { type Ability, abilitySchema } from '../../schemas'
-import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, createSearchIndex } from '../search'
 import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
+import { createReadOnlyRepository } from './core/createReadOnlyRepository'
+import type { Repository, RepositoryDataProvider } from './core/types'
 
 export function createAbilityRepository(dataProvider: RepositoryDataProvider): Repository<Ability> {
   return createReadOnlyRepository<Ability>({

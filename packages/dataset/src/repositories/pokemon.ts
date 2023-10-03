@@ -1,6 +1,6 @@
 import type { SafeParseReturnType } from 'zod'
 
-import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION, SWITCH_GAMESET_IDS } from '../constants'
+import { PKM_SWITCH_GAMESET_IDS } from '../constants'
 import type { IDType } from '../schemas'
 import { type Pokemon, pokemonSchema } from '../schemas'
 import { ensureDir, getDataPath, writeFileAsJson } from '../utils/fs'
@@ -99,7 +99,7 @@ export function getAllPokemonMappedById(): Map<IDType, Pokemon> {
 export function getPokemonMissingOnSwitchGames(): Pokemon[] {
   return getAllPokemon()
     .filter((pkm) => {
-      return !pkm.obtainableIn.some((gs: string) => SWITCH_GAMESET_IDS.includes(gs))
+      return !pkm.obtainableIn.some((gs: string) => PKM_SWITCH_GAMESET_IDS.includes(gs))
     })
     .filter((pkm) => pkm.dexNum > 0)
 }
@@ -160,81 +160,6 @@ export function getPokemonOrFail(id: string): Pokemon {
   }
 
   return validatePokemonOrFail(entry)
-}
-
-export function createPlaceholderPokemon(): Pokemon {
-  return {
-    id: 'unknown',
-    nid: '0000-unknown',
-    dexNum: 0,
-    formId: null,
-    name: 'Untitled',
-    psName: 'unknown',
-    formName: null,
-    region: PKM_LATEST_REGION,
-    generation: PKM_LATEST_GENERATION,
-    type1: 'normal',
-    type2: null,
-    color: 'white',
-    abilities: {
-      primary: 'pressure',
-      secondary: null,
-      hidden: null,
-    },
-    isDefault: true,
-    isForm: false,
-    isLegendary: false,
-    isMythical: false,
-    isUltraBeast: false,
-    ultraBeastCode: null,
-    isSpecialAbilityForm: false,
-    isCosmeticForm: false,
-    isFemaleForm: false,
-    hasGenderDifferences: false,
-    isBattleOnlyForm: false,
-    isSwitchableForm: false,
-    isFusion: false,
-    fusedWith: null,
-    isMega: false,
-    isPrimal: false,
-    isGmax: false,
-    isRegional: false,
-    canGmax: false,
-    canDynamax: false,
-    canBeAlpha: false,
-    debutIn: PKM_LATEST_GAMESET,
-    obtainableIn: [],
-    versionExclusiveIn: [],
-    eventOnlyIn: [],
-    storableIn: [],
-    shinyReleased: false,
-    shinyBase: null,
-    baseStats: {
-      hp: 0,
-      atk: 0,
-      def: 0,
-      spa: 0,
-      spd: 0,
-      spe: 0,
-    },
-    weight: 0,
-    height: 0,
-    baseSpecies: null,
-    baseForms: [],
-    forms: [],
-    evolvesFrom: null,
-    family: null,
-    refs: {
-      smogon: 'unknown',
-      showdown: 'unknown',
-      serebii: 'unknown',
-      bulbapedia: 'unknown',
-    },
-  }
-}
-
-export function isPlaceholderPokemon(pkm: Pokemon): boolean {
-  return pkm.id === 'unknown'
 }
 
 export function updateManyPokemon(batch: UpdatePokemon[]): void {

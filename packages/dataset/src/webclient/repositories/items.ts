@@ -1,8 +1,8 @@
 import { type Item, itemSchema } from '../../schemas'
-import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, createSearchIndex } from '../search'
 import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
+import { createReadOnlyRepository } from './core/createReadOnlyRepository'
+import type { Repository, RepositoryDataProvider } from './core/types'
 
 export function createItemRepository(dataProvider: RepositoryDataProvider): Repository<Item> {
   return createReadOnlyRepository<Item>({

@@ -1,6 +1,9 @@
 export interface AssetUrlResolver {
   baseUri: string
   resolveUri(relativePath: string): string
+}
+
+export interface ImageUrlResolver extends AssetUrlResolver {
   pokemonImg(nid: string, variant?: string, shiny?: boolean): string
   gameImg(id: string, variant?: string): string
   itemImg(id: string, variant?: string): string

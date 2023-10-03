@@ -1,3 +1,4 @@
+export * from './core'
 export * from './abilities'
 export * from './games'
 export * from './items'

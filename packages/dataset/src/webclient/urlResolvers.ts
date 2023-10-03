@@ -1,8 +1,19 @@
-import type { AssetUrlResolver } from './types'
+import type { AssetUrlResolver, ImageUrlResolver } from './types'
 
-export function createAssetUrlResolver(baseUrl: string): AssetUrlResolver {
+export function createDataUrlResolver(baseUrl: string): AssetUrlResolver {
   const client: AssetUrlResolver = {
-    baseUri: baseUrl, // e.g. 'https://itsjavi.com/supereffective-assets/assets',
+    baseUri: baseUrl,
+    resolveUri(relativePath) {
+      return `${this.baseUri}/${relativePath.replace(/^\//, '')}`
+    },
+  }
+
+  return client
+}
+
+export function createImageUrlResolver(baseUrl: string): ImageUrlResolver {
+  const client: ImageUrlResolver = {
+    baseUri: baseUrl,
     resolveUri(relativePath) {
       return `${this.baseUri}/${relativePath.replace(/^\//, '')}`
     },

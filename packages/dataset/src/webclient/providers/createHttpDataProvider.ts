@@ -1,4 +1,4 @@
-import type { RepositoryDataProvider } from '../core/types'
+import type { RepositoryDataProvider } from '../repositories/core/types'
 
 export function createHttpDataProvider(assetsUrl: string): RepositoryDataProvider {
   return {

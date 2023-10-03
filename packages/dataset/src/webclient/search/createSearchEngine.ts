@@ -1,4 +1,4 @@
-import type { Entity, Repository } from '../core'
+import type { Entity, Repository } from '../repositories/core'
 import type { SearchEngine, SearchEngineIndex, SearchEngineIndexHydrator, SearchFilter, SearchQuery } from './types'
 
 function applyFilter<R extends Entity>(entity: R, filter: SearchFilter<R>): boolean {
