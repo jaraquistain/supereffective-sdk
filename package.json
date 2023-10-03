@@ -1,5 +1,6 @@
 {
   "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "build": "turbo build",
@@ -28,7 +29,8 @@
     "typelint": "turbo typelint",
     "version:bump": "semver-release version:bump",
     "version:publish": "semver-release version:release --tags --npm --filter '@supeffective/*'",
-    "version:publish-notes": "semver-release version:release --github"
+    "version:publish-notes": "semver-release version:release --github",
+    "version:release": "pnpm version:publish"
   },
   "lint-staged": {
     "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": [
