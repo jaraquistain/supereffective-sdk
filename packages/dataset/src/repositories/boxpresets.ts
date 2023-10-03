@@ -5,7 +5,7 @@ import {
   type BoxPresetBoxPokemon,
   type BoxPresetMap,
   type BoxPresetRecord,
-  type GameSet,
+  type Game,
   type Pokemon,
   boxPresetSchema,
 } from '../schemas'
@@ -86,17 +86,13 @@ export function flattenBoxes(preset: BoxPreset): Array<string | null> {
   }, [] as Array<string | null>)
 }
 
-export function unflattenBoxesPokemon(
-  gameSet: GameSet,
-  preset: BoxPreset,
-  flattened: Array<Pokemon | null>,
-): BoxPreset {
+export function unflattenBoxesPokemon(gameSet: Game, preset: BoxPreset, flattened: Array<Pokemon | null>): BoxPreset {
   const asIds = flattened.map((pkm) => (pkm ? pkm.id : null))
 
   return unflattenBoxes(gameSet, preset, asIds)
 }
 
-export function unflattenBoxes(gameSet: GameSet, preset: BoxPreset, flattened: Array<string | null>): BoxPreset {
+export function unflattenBoxes(gameSet: Game, preset: BoxPreset, flattened: Array<string | null>): BoxPreset {
   const boxes: BoxPreset['boxes'] = []
   const trimmed = trimBoxNullsAtTheEnd(flattened)
 

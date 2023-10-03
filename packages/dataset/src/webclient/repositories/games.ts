@@ -1,18 +1,18 @@
-import { type GameV2, gameSchemaV2 } from '../../schemas'
+import { type Game, gameSchema } from '../../schemas'
 import { createReadOnlyRepository } from '../core/createReadOnlyRepository'
 import type { Repository, RepositoryDataProvider } from '../core/types'
 import { type SearchEngine, createSearchIndex } from '../search'
 import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
 
-export function createGameRepository(dataProvider: RepositoryDataProvider): Repository<GameV2> {
-  return createReadOnlyRepository<GameV2>({
+export function createGameRepository(dataProvider: RepositoryDataProvider): Repository<Game> {
+  return createReadOnlyRepository<Game>({
     id: 'games',
     resourcePath: 'data/games.min.json',
-    schema: gameSchemaV2,
+    schema: gameSchema,
     dataProvider: dataProvider,
   })
 }
 
-export function createGameSearchEngine(repository: Repository<GameV2>): SearchEngine<GameV2> {
-  return createSearchEngine<GameV2>(repository, createSearchIndex(), defaultSearchIndexHydrator)
+export function createGameSearchEngine(repository: Repository<Game>): SearchEngine<Game> {
+  return createSearchEngine<Game>(repository, createSearchIndex(), defaultSearchIndexHydrator)
 }

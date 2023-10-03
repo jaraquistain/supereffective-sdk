@@ -1,13 +1,13 @@
 import { type SafeParseReturnType, z } from 'zod'
-import { type GameV2, gameSchemaV2 } from '../schemas'
+import { type Game, gameSchema } from '../schemas'
 
 import recordList from '../../data/games.json'
 
-const listSchema = z.array(gameSchemaV2)
+const listSchema = z.array(gameSchema)
 
 const validateSchema = () => {
   const errors: string[] = []
-  const parsed: SafeParseReturnType<typeof recordList, GameV2[]> = listSchema.safeParse(recordList)
+  const parsed: SafeParseReturnType<typeof recordList, Game[]> = listSchema.safeParse(recordList)
   const errorMsg = parsed.success ? '' : String(parsed.error)
   if (!parsed.success) {
     errors.push(errorMsg)

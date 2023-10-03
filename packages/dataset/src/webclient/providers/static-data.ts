@@ -8,14 +8,14 @@ import _pokemonTypes from '../../../data/types.json'
 
 import {
   type Color,
-  type GameV2,
+  type Game,
   type Language,
   type Nature,
   type OriginMark,
   type PokeType,
   type Region,
   colorSchema,
-  gameSchemaV2,
+  gameSchema,
   languageSchema,
   natureSchema,
   originMarkSchema,
@@ -33,7 +33,7 @@ const pokemonNatures: Nature[] = natureSchema.array().parse(_pokemonNatures)
 const pokemonOriginMarks: OriginMark[] = originMarkSchema.array().parse(_pokemonOriginMarks)
 const pokemonRegions: Region[] = regionSchema.array().parse(_pokemonRegions)
 const pokemonTypes: PokeType[] = pokeTypeSchema.array().parse(_pokemonTypes)
-const pokemonGames: GameV2[] = gameSchemaV2.array().parse(_pokemonGames)
+const pokemonGames: Game[] = gameSchema.array().parse(_pokemonGames)
 
 // convert to maps
 
@@ -44,7 +44,7 @@ const pokemonOriginMarksMap = new Map<string, OriginMark>(pokemonOriginMarks.map
 const pokemonRegionsMap = new Map<string, Region>(pokemonRegions.map((region) => [region.id, region]))
 const pokemonTypesMap = new Map<string, PokeType>(pokemonTypes.map((type) => [type.id, type]))
 
-const pokemonGamesMap = new Map<string, GameV2>(pokemonGames.map((game) => [game.id, game]))
+const pokemonGamesMap = new Map<string, Game>(pokemonGames.map((game) => [game.id, game]))
 
 export {
   pokemonColors,
