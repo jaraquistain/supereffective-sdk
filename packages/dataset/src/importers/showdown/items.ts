@@ -51,11 +51,7 @@ export const importShowdownItems = function (): void {
       category: getItemCategory(row),
     }
 
-    itemSchema
-      .extend({
-        id: z.string(),
-      })
-      .parse(record)
+    itemSchema.parse(record)
 
     transformedRows.push(record)
   })

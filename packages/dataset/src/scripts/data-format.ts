@@ -3,14 +3,14 @@ import type { BaseEntity, BoxPreset, Pokedex } from '../schemas'
 import { getDataPath, readFileAsJson, writeFile } from '../utils/fs'
 
 function formatBoxPresets(): void {
-  const srcFile = getDataPath('box-presets-index.json')
+  const srcFile = getDataPath('boxpresets-index.json')
   const records = readFileAsJson<BaseEntity[]>(srcFile)
 
   for (const baseRecord of records) {
     const gameSet = (baseRecord as any).gameSet
     const srcRecordFile = gameSet
-      ? getDataPath(`box-presets/${gameSet}/${baseRecord.id}.json`)
-      : getDataPath(`box-presets/${baseRecord.id}.json`)
+      ? getDataPath(`boxpresets/${gameSet}/${baseRecord.id}.json`)
+      : getDataPath(`boxpresets/${baseRecord.id}.json`)
 
     if (!existsSync(srcRecordFile)) {
       throw new Error(`Record file does not exist: ${srcRecordFile}`)

@@ -16,7 +16,7 @@ let _dataInitialized = false
 
 export function getBoxPresets(): BoxPreset[] {
   if (!_dataInitialized) {
-    _data = mergeEntityIndex<BoxPreset>('box-presets-index.json', 'gameSet')
+    _data = mergeEntityIndex<BoxPreset>('boxpresets-index.json', 'gameSet')
     _dataInitialized = true
   }
 

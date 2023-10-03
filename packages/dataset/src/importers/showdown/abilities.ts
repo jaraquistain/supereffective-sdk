@@ -32,11 +32,7 @@ export const importShowdownAbilities = function (): void {
       shortDesc: row.shortDesc,
     }
 
-    abilitySchema
-      .extend({
-        id: z.string(),
-      })
-      .parse(record)
+    abilitySchema.parse(record)
 
     transformedRows.push(record)
   })

@@ -1,5 +1,5 @@
 export * from './abilities'
-export * from './box-presets'
+export * from './boxpresets'
 export * from './colors'
 export * from './common'
 export * from './games'

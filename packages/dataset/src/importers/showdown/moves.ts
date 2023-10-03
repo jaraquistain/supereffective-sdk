@@ -63,11 +63,7 @@ export const importShowdownMoves = function (): void {
       isGmax: !!row.isMax,
     }
 
-    moveSchema
-      .extend({
-        id: z.string(),
-      })
-      .parse(record)
+    moveSchema.parse(record)
 
     transformedRows.push(record)
   })

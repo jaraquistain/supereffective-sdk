@@ -40,6 +40,6 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
   writeFile(destFile, jsonlDoc)
 }
 
-joinIndexFile('box-presets-index.json', 'gameSet')
+joinIndexFile('boxpresets-index.json', 'gameSet')
 joinIndexFile('pokedexes-index.json', 'region')
 joinIndexFile('pokemon-index.json', 'region')
