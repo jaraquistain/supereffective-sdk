@@ -1,5 +1,4 @@
 import { Dex } from '@pkmn/dex'
-import { z } from 'zod'
 
 import { type Move, moveSchema } from '../../schemas'
 import { getDataPath, writeEntitiesFileAsJson } from '../../utils/fs'

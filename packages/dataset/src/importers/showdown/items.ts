@@ -1,5 +1,4 @@
 import { Dex, Item as DexItem } from '@pkmn/dex'
-import { z } from 'zod'
 
 import { type Item, type ItemCategory, itemSchema } from '../../schemas'
 import { type DataOverrideDefinition, getDataPath, readFileAsJson, writeEntitiesFileAsJson } from '../../utils/fs'
