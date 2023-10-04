@@ -32,6 +32,8 @@ module.exports = {
         'readme',
         'tools',
         'workflow',
+        'data',
+        'admin',
         // packages:
         ...folderNamesUnderPackages,
       ],
