@@ -1,3 +1,24 @@
+## v0.2.0
+
+[compare changes](https://github.com/itsjavi/supereffective-dataset/compare/v0.1.0...v0.2.0)
+
+### 🩹 Fixes
+
+- Npm publish ([790ecea](https://github.com/itsjavi/supereffective-dataset/commit/790ecea))
+- Build ([e94c767](https://github.com/itsjavi/supereffective-dataset/commit/e94c767))
+
+### 💅 Refactors
+
+- Admin tools and client ([f8f03dd](https://github.com/itsjavi/supereffective-dataset/commit/f8f03dd))
+
+### 🏡 Chore
+
+- Udpdate package.json ([9e101ad](https://github.com/itsjavi/supereffective-dataset/commit/9e101ad))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
 ## v0.1.0
 
 ### 🩹 Fixes
