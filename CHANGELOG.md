@@ -1,3 +1,19 @@
+## v0.3.0
+
+[compare changes](https://github.com/itsjavi/supereffective-dataset/compare/v0.2.0...v0.3.0)
+
+### 🚀 Enhancements
+
+- **admin:** Add initial next app ([1e47e9b](https://github.com/itsjavi/supereffective-dataset/commit/1e47e9b))
+
+### 🩹 Fixes
+
+- Package exports ([6bea500](https://github.com/itsjavi/supereffective-dataset/commit/6bea500))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
 ## v0.2.0
 
 [compare changes](https://github.com/itsjavi/supereffective-dataset/compare/v0.1.0...v0.2.0)
