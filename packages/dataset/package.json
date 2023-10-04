@@ -21,9 +21,9 @@
     "build": "rm -rf dist && sleep 1 && pnpm build:lib && pnpm build:data",
     "build:data": "pnpm data:update && pnpm data:transform && pnpm data:format && pnpm data:validate",
     "build:lib": "tsup",
-    "data:format": "bun ./src/scripts/data-format.ts && bun ./src/scripts/minify.ts ./data ./dist/data",
-    "data:transform": "bun ./src/scripts/data-join.ts && bun ./src/scripts/data-legacy-gen.ts",
-    "data:update": "bun ./src/scripts/import.ts",
+    "data:format": "bun ./src/admin/scripts/data-format.ts && bun ./src/admin/scripts/minify.ts ./data ./dist/data",
+    "data:transform": "bun ./src/admin/scripts/data-join.ts && bun ./src/admin/scripts/data-legacy-gen.ts",
+    "data:update": "bun ./src/admin/scripts/import.ts",
     "data:validate": "bun ./src/validate/validate.ts",
     "dev": "tsup --watch --clean=false",
     "typelint": "tsc --noEmit"

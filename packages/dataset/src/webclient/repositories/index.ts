@@ -1,6 +1,0 @@
-export * from './core'
-export * from './abilities'
-export * from './games'
-export * from './items'
-export * from './moves'
-export * from './pokemon'

@@ -1,0 +1,5 @@
+data/pokemon.json
+data/pokedexes.json
+data/boxpresets.json
+data/legacy-*.json
+data/compact-*.json

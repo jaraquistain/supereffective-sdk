@@ -1,3 +1,3 @@
 export * from './schemas'
-export * from './webclient'
+export * from './client'
 export * from './constants'
