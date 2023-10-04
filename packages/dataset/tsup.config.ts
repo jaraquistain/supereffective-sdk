@@ -17,13 +17,4 @@ const config: Options = {
   external: ['node_modules'],
 }
 
-export default defineConfig([
-  config,
-  {
-    ...config,
-    entry: {
-      'index.min': './src/index.ts',
-    },
-    minify: true,
-  },
-])
+export default defineConfig([config])
