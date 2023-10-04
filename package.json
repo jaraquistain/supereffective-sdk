@@ -9,20 +9,18 @@
     "deps:update": "pnpm -r update",
     "deps:upgrade": "pnpm --recursive update --latest",
     "dev": "pnpm --parallel --recursive dev",
-    "format": "pnpm lint-fix && pnpm prettier-fix && pnpm format-package-json",
+    "format": "pnpm lint-fix && pnpm format-package-json",
     "format-package-json": "sort-package-json && pnpm -r exec sort-package-json",
     "hooks:pre-commit": "pnpm lint-staged",
     "hooks:pre-push": "pnpm quality-checks",
     "postinstall": "pnpm format-package-json",
-    "lint": "biome lint .",
-    "lint-fix": "biome check --apply . && pnpm format-package-json",
+    "lint": "biome lint . && pnpm -r lint",
+    "lint-fix": "biome check --apply . && pnpm format-package-json && pnpm -r lint-fix",
     "prepare": "husky install",
-    "prettier-check": "prettier --check .",
-    "prettier-fix": "prettier --write .",
     "pretty": "pnpm format",
     "preview": "pnpm --parallel --recursive preview",
     "publint": "pnpm -r exec pnpm publint",
-    "quality-checks": "turbo build && turbo lint && pnpm prettier-check && turbo typelint && turbo publint && turbo test:ci",
+    "quality-checks": "turbo build && turbo lint && turbo typelint && turbo publint && turbo test:ci",
     "test": "jest",
     "test:ci": "jest --ci --coverage --bail=5",
     "test:coverage": "jest --coverage",
@@ -38,9 +36,6 @@
     ],
     "package.json": [
       "sort-package-json"
-    ],
-    "*.{json,yml,yaml,css,scss,sass,less,md,mdx}": [
-      "prettier --ignore-unknown --write"
     ]
   },
   "devDependencies": {
@@ -57,7 +52,6 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3",
     "publint": "^0.2.3",
     "sort-package-json": "^2.6.0",
     "turbo": "^1.10.14",

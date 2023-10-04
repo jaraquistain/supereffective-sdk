@@ -42,7 +42,7 @@ pnpm lint-fix
 # Type check
 pnpm type-check
 
-# Run all quality checks (prettier-check, type-check, lint, build, publint, test)
+# Run all quality checks (linter, formatter, build, test, type-check, etc.)
 pnpm quality-checks
 
 ```
