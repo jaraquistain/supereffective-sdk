@@ -60,7 +60,7 @@ export default defineConfig({
       ...mdx({
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       }),
-    },
+    } as any,
     storylite({
       stories: 'stories/**/*.stories.{tsx,md,mdx}', // relative to the CWD
     }),

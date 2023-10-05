@@ -85,7 +85,7 @@ importers:
         specifier: workspace:*
         version: link:../dataset
       '@supeffective/ui':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../ui
       class-variance-authority:
         specifier: ^0.7.0

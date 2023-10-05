@@ -3,8 +3,8 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 import { css } from '@/v1/css'
 
-import { Img } from '@/v1/components/atoms/Img'
-import { getUiAssetsUrl } from '../../../../baseUrls'
+import { ImgV1 } from '@/v1/components/atoms/Img'
+import { getUiAssetsUrl } from '../../../../lib/baseUrls'
 
 export type AssetImgProps<V = string> = {
   assetId: string | null
@@ -50,7 +50,7 @@ export function AssetImgFile({
     const imgSrc = `${baseUrl}/${assetId}.${extension}`
 
     return (
-      <Img
+      <ImgV1
         data-asset={String(assetId)}
         src={imgSrc}
         loading="lazy"

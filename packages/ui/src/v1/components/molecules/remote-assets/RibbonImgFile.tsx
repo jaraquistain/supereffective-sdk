@@ -1,4 +1,4 @@
-import { getUiAssetsUrl } from '../../../../baseUrls'
+import { getUiAssetsUrl } from '../../../../lib/baseUrls'
 import { AssetImgFile, type AssetImgProps } from './AssetImgFile'
 
 export type RibbonImgFileProps = {

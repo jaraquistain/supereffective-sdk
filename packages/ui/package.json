@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
+    "dev": "vite build --watch",
     "preview": "open $(pwd)/src/color-palette/index.html",
     "typelint": "tsc --noEmit"
   },
