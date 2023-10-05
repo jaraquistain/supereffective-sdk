@@ -1,6 +1,8 @@
+import '@/styles/globals.css'
+import '@supeffective/dextracker-ui/styles.css'
+
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'
-import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
