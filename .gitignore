@@ -36,6 +36,7 @@ _ignore/
 _tmp/
 _temp/
 .temp/
+_site/
 
 # Jest coverage
 coverage/

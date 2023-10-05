@@ -47,9 +47,9 @@ jobs:
           pnpm build
           ls -la ./packages/dataset/dist
           echo "Moving dist to _site"
-          rm -rf _site && mv ./packages/dataset/dist/* ./_site
+          rm -rf _site && mkdir -p _site
+          mv ./packages/dataset/dist/* ./_site
           mv ./packages/stories/dist/* ./_site
-          echo '<html><body>Example: /data/pokemon.min.json</body></html>' > ./_site/index.html
           ls -la ./_site
 
       - name: Upload artifact
