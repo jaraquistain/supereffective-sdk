@@ -16,7 +16,7 @@
     "lucide-react": "^0.284.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "zustand": "^4.4.2"
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",

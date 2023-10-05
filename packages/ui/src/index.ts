@@ -1,5 +1,5 @@
 import './styles/index.scss'
 
-export * from './components'
+export * from './v1/components'
 export * from './hooks'
-export * from './urls'
+export * from './baseUrls'
