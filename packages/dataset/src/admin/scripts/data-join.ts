@@ -71,8 +71,36 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
   writeFile(destFile, jsonlDoc)
 }
 
+function joinPokeGamesFile(): void {
+  const pokemon = localDataLoader.pokemon()
+  const records = pokemon.values()
+  const destFile = getDataPath('pokemon_games.json')
+
+  let jsonDoc = '[\n'
+
+  for (const record of records) {
+    const payload = {
+      id: record.id,
+      debutIn: record.debutIn,
+      obtainableIn: record.obtainableIn,
+      storableIn: record.storableIn,
+      eventOnlyIn: record.eventOnlyIn,
+      versionExclusiveIn: record.versionExclusiveIn,
+      shinyBase: record.shinyBase,
+    }
+    jsonDoc += `  ${JSON.stringify(payload)},\n`
+  }
+
+  jsonDoc = jsonDoc.replace(/,\n$/, '\n')
+  jsonDoc += ']\n'
+
+  writeFile(destFile, jsonDoc)
+}
+
 joinIndexFile('boxpresets-index.json', 'gameSet')
 joinIndexFile('pokedexes-index.json', 'region')
 joinIndexFile('pokemon-index.json', 'region')
+
+joinPokeGamesFile()
 
 updatePokemonIndex()
