@@ -1,4 +1,4 @@
-import { type CompactPokemon, type Pokemon, pokemonSchema } from '../../schemas'
+import { type CompactPokemon, type Pokemon, type PokemonIndex, pokemonIndexSchema, pokemonSchema } from '../../schemas'
 import { type SearchEngine, type SearchEngineIndex, createSearchIndex } from '../search'
 import createSearchEngine from '../search/createSearchEngine'
 import { createReadOnlyRepository } from './core/createReadOnlyRepository'
@@ -45,6 +45,15 @@ export function createPokemonRepository(dataProvider: RepositoryDataProvider): R
     id: 'pokemon',
     resourcePath: 'pokemon.min.json',
     schema: pokemonSchema,
+    dataProvider: dataProvider,
+  })
+}
+
+export function createPokemonIndexRepository(dataProvider: RepositoryDataProvider): Repository<PokemonIndex> {
+  return createReadOnlyRepository<PokemonIndex>({
+    id: 'pokemon-index',
+    resourcePath: 'pokemon-index.min.json',
+    schema: pokemonIndexSchema,
     dataProvider: dataProvider,
   })
 }

@@ -2,6 +2,17 @@ import z from 'zod'
 
 import { generationSchema, nameSchema, slugSchema } from './common'
 
+export const pokemonIndexSchema = z
+  .object({
+    id: slugSchema,
+    nid: slugSchema,
+    name: nameSchema,
+    region: slugSchema,
+  })
+  .strict()
+
+export type PokemonIndex = z.infer<typeof pokemonIndexSchema>
+
 export const pokemonSchema = z
   .object({
     id: slugSchema,

@@ -1,6 +1,36 @@
 import { existsSync } from 'node:fs'
 import type { BaseEntity } from '../../schemas'
+import { localDataLoader } from '../loader'
 import { getDataPath, readFileAsJson, writeFile } from '../utils/fs'
+
+function updatePokemonIndex(): void {
+  const pokemon = localDataLoader.pokemon()
+  const indexFile = getDataPath('pokemon-index.json')
+
+  const records = readFileAsJson<Array<BaseEntity>>(indexFile)
+
+  let indexDoc = '[\n'
+
+  for (const record of records) {
+    const fullRecord = pokemon.get(record.id)
+    if (!fullRecord) {
+      throw new Error(`Pokemon not found: ${record.id}`)
+    }
+
+    const indexPayload = {
+      id: record.id,
+      nid: fullRecord.nid,
+      region: fullRecord.region,
+      name: record.name,
+    }
+    indexDoc += `  ${JSON.stringify(indexPayload)},\n`
+  }
+
+  indexDoc = indexDoc.replace(/,\n$/, '\n')
+  indexDoc += ']\n'
+
+  writeFile(indexFile, indexDoc)
+}
 
 function joinIndexFile(filename: string, subdirProp?: string): void {
   const baseFileName = filename.replace('-index.json', '')
@@ -43,3 +73,5 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
 joinIndexFile('boxpresets-index.json', 'gameSet')
 joinIndexFile('pokedexes-index.json', 'region')
 joinIndexFile('pokemon-index.json', 'region')
+
+updatePokemonIndex()
