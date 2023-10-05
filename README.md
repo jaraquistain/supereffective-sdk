@@ -8,8 +8,7 @@ Pokémon main series data source, TS types, zod validators and HTTP client for s
 - Turbo: Monorepo manager
 - Biome: JS/TS linter and formatter
 - tsup or Vite: Bundler and dev server
-- Jest + SWC: Test runner
-- Bun: script/task runner
+- Bun: Test and script/task runner
 
 ### Admin
 
