@@ -3,6 +3,7 @@ name: Quality Checks
 env:
   NODE_VERSION: '>=20.5.0'
   PNPM_VERSION: 8.7
+  PKM_ASSETS_URL: 'https://itsjavi.com/supereffective-assets/assets'
 
 on:
   push:
