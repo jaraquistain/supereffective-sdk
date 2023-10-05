@@ -1,3 +1,38 @@
+
+
+## v0.4.0
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.3.0...v0.4.0)
+
+### 🚀 Enhancements
+
+- **data:** Add client helper ([4329c22](https://github.com/itsjavi/supereffective-sdk/commit/4329c22))
+- **admin:** Use dataset ([677e404](https://github.com/itsjavi/supereffective-sdk/commit/677e404))
+- **data:** Add isForm flag to index ([89cffc3](https://github.com/itsjavi/supereffective-sdk/commit/89cffc3))
+- **admin:** Display species images ([6f279e0](https://github.com/itsjavi/supereffective-sdk/commit/6f279e0))
+- **data:** Generate pokemon_games ([0870c83](https://github.com/itsjavi/supereffective-sdk/commit/0870c83))
+- **admin:** Use dataset ([71f6fc2](https://github.com/itsjavi/supereffective-sdk/commit/71f6fc2))
+
+### 🩹 Fixes
+
+- Linting and build errors ([78677f3](https://github.com/itsjavi/supereffective-sdk/commit/78677f3))
+
+### 💅 Refactors
+
+- Remove prettier ([ff9f594](https://github.com/itsjavi/supereffective-sdk/commit/ff9f594))
+- **admin:** Use tailwind + shadcn ui ([30b95ee](https://github.com/itsjavi/supereffective-sdk/commit/30b95ee))
+- Bring all tools together (sdk) ([a52e336](https://github.com/itsjavi/supereffective-sdk/commit/a52e336))
+
+### 🏡 Chore
+
+- Replace jest with bun ([f708f14](https://github.com/itsjavi/supereffective-sdk/commit/f708f14))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
 ## v0.3.0
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.2.0...v0.3.0)
