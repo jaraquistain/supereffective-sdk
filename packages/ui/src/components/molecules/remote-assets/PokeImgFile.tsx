@@ -1,6 +1,6 @@
 'use client'
 
-import { PKM_DEFAULT_ASSETS_URL } from '../../../constants'
+import { getUiAssetsUrl } from '../../../urls'
 import { AssetImgFile, type AssetImgProps } from './AssetImgFile'
 
 export type PokeImgFileProps = {
@@ -18,7 +18,7 @@ export type PokeImgFileProps = {
 export function PokeImgFile({
   assetId,
   shiny = false,
-  baseUrl = PKM_DEFAULT_ASSETS_URL,
+  baseUrl = getUiAssetsUrl(),
   variant = 'home3d-icon',
   baseWidth = 64,
   baseHeight = 64,

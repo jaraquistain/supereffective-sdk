@@ -1,6 +1,6 @@
 import { type Pokemon, createHttpDataProvider, createPokemonRepository } from '@supeffective/dataset'
 import type { ResolvedLivingDexBoxCell } from '@supeffective/dextracker'
-import { PKM_DEFAULT_ASSETS_URL } from '@supeffective/ui'
+import { getUiAssetsUrl } from '@supeffective/ui'
 
 export async function getPokemonSamples(
   pokeIds: string[] = [
@@ -12,7 +12,7 @@ export async function getPokemonSamples(
     'poltchageist',
   ],
 ): Promise<Pokemon[]> {
-  const repo = createPokemonRepository(createHttpDataProvider(PKM_DEFAULT_ASSETS_URL))
+  const repo = createPokemonRepository(createHttpDataProvider(getUiAssetsUrl()))
 
   return await repo.getManyByIds(pokeIds)
 }
@@ -27,7 +27,7 @@ export async function getPokemonCellSamples(
     'poltchageist',
   ],
 ): Promise<ResolvedLivingDexBoxCell[]> {
-  const repo = createPokemonRepository(createHttpDataProvider(PKM_DEFAULT_ASSETS_URL))
+  const repo = createPokemonRepository(createHttpDataProvider(getUiAssetsUrl()))
   const pokemonMap = new Map<string, Pokemon>(
     (await repo.getManyByIds(pokeIds.filter(Boolean) as string[])).map((p) => [p.id, p]),
   )

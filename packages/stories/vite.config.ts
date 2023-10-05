@@ -69,7 +69,6 @@ export default defineConfig({
   // assetsInclude: ['**/*.md', '**/*.mdx'],
   resolve: {
     alias: {
-      '@/stylesystem': path.resolve(__dirname, '../styled-system'),
       '@/packages': path.resolve(__dirname, '../..'),
       '@/': path.resolve(__dirname),
     },

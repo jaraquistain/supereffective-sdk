@@ -1,10 +1,10 @@
 import { cn } from '@r1stack/cn'
-import { Img } from '@r1stack/react'
 import type { ComponentPropsWithoutRef } from 'react'
 
-import { css } from '@/stylesystem/css'
+import { css } from '@/css'
 
-import { PKM_DEFAULT_ASSETS_URL } from '../../../constants'
+import { Img } from '@/components/atoms/Img'
+import { getUiAssetsUrl } from '../../../urls'
 
 export type AssetImgProps<V = string> = {
   assetId: string | null
@@ -24,7 +24,7 @@ export function AssetImgFile({
   fallback,
   variant,
   title,
-  baseUrl = PKM_DEFAULT_ASSETS_URL,
+  baseUrl = getUiAssetsUrl(),
   baseWidth = 64,
   baseHeight = 64,
   extension = 'png',

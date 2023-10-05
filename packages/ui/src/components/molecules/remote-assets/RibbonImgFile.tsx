@@ -1,4 +1,4 @@
-import { PKM_DEFAULT_ASSETS_URL } from '../../../constants'
+import { getUiAssetsUrl } from '../../../urls'
 import { AssetImgFile, type AssetImgProps } from './AssetImgFile'
 
 export type RibbonImgFileProps = {
@@ -6,7 +6,7 @@ export type RibbonImgFileProps = {
 } & AssetImgProps
 
 export function RibbonImgFile({
-  baseUrl = PKM_DEFAULT_ASSETS_URL,
+  baseUrl = getUiAssetsUrl(),
   variant = 'gen9-style',
   baseWidth = 64,
   baseHeight = 64,

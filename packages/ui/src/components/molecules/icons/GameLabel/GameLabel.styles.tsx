@@ -1,4 +1,4 @@
-import { cva } from '@/stylesystem/css'
+import { cva } from '@/css'
 
 export const gameLabelRecipe = cva({
   base: {

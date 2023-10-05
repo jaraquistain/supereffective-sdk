@@ -1,5 +1,3 @@
-import { defineSemanticTokens } from '@pandacss/dev'
-
 const blackColor = '#161616'
 const whiteColor = '#f9f9f9'
 const grayColor = '#929292'
@@ -8,7 +6,7 @@ const primaryLightestColor = '#F4FAF9'
 // const secondaryColor = '#FFD700'
 // const secondaryLightestColor = '#FFFDF5'
 
-export const semanticColors = defineSemanticTokens.colors({
+export const semanticColors = {
   cPrimarySoft: {
     // teal
     value: { _light: '#C6E5E1', _dark: '#C6E5E1' },
@@ -52,4 +50,4 @@ export const semanticColors = defineSemanticTokens.colors({
   // boxHeaderBg: {
   //   value: { _light: '#37AEA5', _dark: '#37AEA5' },
   // },
-})
+}

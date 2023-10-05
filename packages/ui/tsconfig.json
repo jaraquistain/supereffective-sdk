@@ -34,18 +34,15 @@
     /* Paths and files */
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@/stylesystem": ["./styled-system"],
-      "@/stylesystem/*": ["./styled-system/*"]
+      "@/*": ["./src/*"]
     },
     "types": [
       "react",
       "react-dom",
-      "@pandacss/types",
       "@types/node",
       "jest"
     ]
   },
-  "include": ["src", "styled-system", "*.ts", "*.tsx", "types/*.d.ts"],
+  "include": ["src", "*.ts", "*.tsx", "types/*.d.ts"],
   "exclude": ["node_modules", "dist", "build", "coverage"]
 }

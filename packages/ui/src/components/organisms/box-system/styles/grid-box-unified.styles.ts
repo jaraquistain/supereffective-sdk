@@ -1,4 +1,4 @@
-import { css } from '@/stylesystem/css'
+import { css } from '@/css'
 
 export default {
   box: css({

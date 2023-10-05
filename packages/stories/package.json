@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",
-    "@r1stack/react": "^0.5.0",
     "@storylite/storylite": "^0.13.0",
     "@storylite/vite-plugin": "^0.13.0",
     "@supeffective/dataset": "workspace:*",

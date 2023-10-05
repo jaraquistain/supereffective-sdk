@@ -1,19 +1,19 @@
 import { cn } from '@r1stack/cn'
-import { InfiniteScroll as R1InfiniteScroll, type InfiniteScrollProps } from '@r1stack/react'
 
-import { css } from '@/stylesystem/css'
+import { css } from '@/css'
+import { BaseInfiniteScroll, type BaseInfiniteScrollProps } from './BaseInfiniteScroll'
 
-export function InfiniteScroll<Item>(props: InfiniteScrollProps<Item>) {
+export function InfiniteScroll<Item>(props: BaseInfiniteScrollProps<Item>) {
   const {
     className,
     itemProps: { className: itemClassName, ...itemRest } = {},
     ...rest
   } = props
 
-  // TODO: use baseInfiniteScrollStyles.container as SystemStyleObject from @r1stack/react
+  // TODO: use baseInfiniteScrollStyles.container as SystemStyleObject from base/components/utils
 
   return (
-    <R1InfiniteScroll
+    <BaseInfiniteScroll
       {...rest}
       className={cn(
         css({

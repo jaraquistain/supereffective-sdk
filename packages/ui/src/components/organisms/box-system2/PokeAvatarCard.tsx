@@ -5,7 +5,7 @@ import type { CompactPokemon } from '@supeffective/dataset'
 
 import { PokeAvatar, type PokeImgFileProps, TypeIcon } from '@/components/molecules'
 import type { Font, PropsOf, ResponsiveSize } from '@/components/utility'
-import { css } from '@/stylesystem/css'
+import { css } from '@/css'
 
 export type PokeAvatarCardDisplayOptions = {
   dexNum?: boolean

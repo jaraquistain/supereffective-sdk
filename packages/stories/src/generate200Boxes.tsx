@@ -1,6 +1,6 @@
 import { type Pokemon, createHttpDataProvider, createPokemonRepository } from '@supeffective/dataset'
 import type { LivingDex, LivingDexBox, LivingDexBoxCell } from '@supeffective/dextracker'
-import { PKM_DEFAULT_ASSETS_URL } from '@supeffective/ui'
+import { getUiAssetsUrl } from '@supeffective/ui'
 
 function buildPokemonUid(id: string, boxNum: number, cellNum: number): string {
   return `${id}_${boxNum}-${cellNum}`
@@ -30,7 +30,7 @@ function getRandomPoke(boxNum: number, cellNum: number, pokes: Pokemon[]): Livin
 }
 
 export async function generateBoxes(quantity = 200, boxCapacity = 30): Promise<LivingDexBox[]> {
-  const allPokes = await createPokemonRepository(createHttpDataProvider(PKM_DEFAULT_ASSETS_URL)).getAll()
+  const allPokes = await createPokemonRepository(createHttpDataProvider(getUiAssetsUrl())).getAll()
 
   const boxes: LivingDexBox[] = []
 

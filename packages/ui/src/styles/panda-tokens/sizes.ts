@@ -1,6 +1,4 @@
-import { defineTokens } from '@pandacss/dev'
-
-export const sizeTokens = defineTokens.sizes({
+export const sizeTokens = {
   s1: {
     value: '0.25rem',
   },
@@ -70,4 +68,4 @@ export const sizeTokens = defineTokens.sizes({
   '4xl': {
     value: '6rem',
   },
-})
+}

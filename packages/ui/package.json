@@ -12,7 +12,9 @@
   },
   "license": "MIT",
   "author": "Javier Aguilar",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -20,7 +22,7 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/style.css"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -30,21 +32,13 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "pnpm codegen && tsup",
-    "codegen": "panda codegen && panda",
-    "dev": "concurrently 'pnpm watch-tsup' 'pnpm watch-styles'",
-    "open": "open $(pwd)/src/color-palette/index.html",
-    "postinstall:local": "pnpm codegen",
-    "prepublishOnly": "pnpm run build",
-    "tsup-styles-only": "panda && tsup --clean=false --config tsup.styles.config.ts",
-    "typelint": "tsc --noEmit",
-    "watch-panda": "panda --watch",
-    "watch-styles": "chokidar '*.config.{js,ts,cjs}' 'src/**/*.{ts,tsx,css}' --ignore '**/{dist,styled-system}/**' --debounce 1000 --throtle 1000 -c 'echo \"Detected code changes, running tsup...\" && pnpm tsup-styles-only'",
-    "watch-tsup": "tsup --watch --clean=false"
+    "build": "vite build",
+    "dev": "vite --dev",
+    "preview": "open $(pwd)/src/color-palette/index.html",
+    "typelint": "tsc --noEmit"
   },
   "dependencies": {
     "@r1stack/cn": "^0.5.0",
-    "@r1stack/react": "^0.5.0",
     "@supeffective/dataset": "workspace:*",
     "@supeffective/dextracker": "workspace:*",
     "@supeffective/icons": "workspace:*"
@@ -54,13 +48,13 @@
     "@pandacss/types": "^0.15.5",
     "@types/react": "^18.2.25",
     "@types/react-dom": "^18.2.10",
-    "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.2.1",
-    "postcss": "^8.4.31",
+    "@vitejs/plugin-react-swc": "^3.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "sass": "^1.68.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "vite-plugin-dts": "^3.6.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",

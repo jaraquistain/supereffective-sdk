@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import type { GenericBoxCell } from '@supeffective/dextracker'
 
 import type { PropsOf } from '@/components/utility'
-import { css } from '@/stylesystem/css'
+import { css } from '@/css'
 
 export type BoxProps<D extends GenericBoxCell = GenericBoxCell> = {
   data: Array<D>

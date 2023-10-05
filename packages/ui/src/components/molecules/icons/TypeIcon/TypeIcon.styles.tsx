@@ -1,6 +1,6 @@
 import { pokemonTypes } from '@supeffective/dataset'
 
-import { cva } from '@/stylesystem/css'
+import { cva } from '@/css'
 
 export const typeIconGlyphRecipe = cva({
   base: {

@@ -1,11 +1,59 @@
-import { Btn as R1Btn, type BtnProps as R1BtnProps } from '@r1stack/react'
+'use client'
+
 import type { HTMLAttributes } from 'react'
 
-import { css } from '@/stylesystem/css'
+import styles from './Btn.module.scss'
 
 import { type PressableEvent, usePressable } from '../../hooks/usePressable'
 
-export type BtnProps = Omit<R1BtnProps, 'onClick'> & {
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
+
+type ButtonPropsBase = ButtonHTMLAttributes<HTMLButtonElement> & {
+  type?: HTMLButtonElement['type']
+  value?: HTMLButtonElement['value']
+  // exclude anchor props:
+  href?: never
+  target?: never
+}
+
+type AnchorPropsBase = {
+  href: HTMLAnchorElement['href']
+  rel?: HTMLAnchorElement['rel']
+  target?: HTMLAnchorElement['target']
+  // exclude button props:
+  type?: never
+  value?: never
+} & AnchorHTMLAttributes<HTMLAnchorElement>
+
+export type BaseBtnProps = AnchorPropsBase | ButtonPropsBase
+
+/**
+ * A basic button component that can be used as either a link or a button,
+ * depending if the `href` prop is provided.
+ */
+export function BaseBtn(props: AnchorPropsBase): JSX.Element
+export function BaseBtn(props: ButtonPropsBase): JSX.Element
+export function BaseBtn({ children, href, target, rel, ...rest }: BaseBtnProps): JSX.Element {
+  if (href !== undefined) {
+    const anchorProps = { ...rest, href, target, rel } as AnchorPropsBase
+
+    return (
+      <a tabIndex={0} role="button" {...anchorProps}>
+        {children}
+      </a>
+    )
+  }
+
+  const buttonProps = rest as ButtonPropsBase
+
+  return (
+    <button tabIndex={0} type="button" {...buttonProps}>
+      {children}
+    </button>
+  )
+}
+
+export type BtnProps = Omit<BaseBtnProps, 'onClick'> & {
   disabled?: boolean
   /**
    * Alias of onPress
@@ -52,21 +100,13 @@ export const Btn = ({
   })
 
   return (
-    <R1Btn
-      className={css({
-        border: '1px solid black',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        fontSize: '16px',
-        background: 'gold',
-        color: 'black',
-        padding: '8px',
-      })}
+    <BaseBtn
+      className={styles.btn}
       disabled={disabled}
       {...pressable.props}
       {...(rest as HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>)}
     >
       {children}
-    </R1Btn>
+    </BaseBtn>
   )
 }

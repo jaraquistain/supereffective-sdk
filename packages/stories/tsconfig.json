@@ -35,9 +35,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@/": ["./"],
-      "@/*": ["./*"],
-      "@/stylesystem": ["./styled-system"],
-      "@/stylesystem/*": ["./styled-system/*"]
+      "@/*": ["./*"]
     },
     "types": [
       "react",

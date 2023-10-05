@@ -3,7 +3,7 @@ import React from 'react'
 
 import type { AssetImgProps } from '@/components/molecules'
 import type { ResponsiveSize } from '@/components/utility'
-import { css, cva } from '@/stylesystem/css'
+import { css, cva } from '@/css'
 
 export type AssetAvatarProps<V = string, P extends AssetImgProps<V> = AssetImgProps<V>> = AssetImgProps<V> & {
   hoverable?: boolean
