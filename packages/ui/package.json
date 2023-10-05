@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "vite --dev",
+    "dev": "vite",
     "preview": "open $(pwd)/src/color-palette/index.html",
     "typelint": "tsc --noEmit"
   },
@@ -44,11 +44,11 @@
     "@supeffective/icons": "workspace:*"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.15.5",
-    "@pandacss/types": "^0.15.5",
     "@types/react": "^18.2.25",
     "@types/react-dom": "^18.2.10",
     "@vitejs/plugin-react-swc": "^3.4.0",
+    "open-props": "^1.6.4",
+    "postcss-jit-props": "^1.0.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.68.0",

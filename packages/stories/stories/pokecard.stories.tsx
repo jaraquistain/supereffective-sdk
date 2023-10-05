@@ -1,8 +1,9 @@
 import type { Story } from '@storylite/storylite'
 import { createHttpDataProvider, createPokemonRepository } from '@supeffective/dataset'
-import { PokeAvatarCard, getUiAssetsUrl } from '@supeffective/ui'
+import { PokeAvatarCard } from '@supeffective/ui'
 
 import { DecoGrid, DecoWrapper } from '../src/decorators'
+import { DATA_URL } from '../src/utils'
 
 export default {
   title: 'Pokemon Card',
@@ -16,7 +17,7 @@ export default {
   ],
 } satisfies Story<any>
 
-const repo = createPokemonRepository(createHttpDataProvider(getUiAssetsUrl()))
+const repo = createPokemonRepository(createHttpDataProvider(DATA_URL))
 const keldeo = await repo.getById('keldeo-resolute')
 const alcremie = await repo.getById('alcremie-matcha-cream-strawberry')
 const eternatus = await repo.getById('eternatus-eternamax')
