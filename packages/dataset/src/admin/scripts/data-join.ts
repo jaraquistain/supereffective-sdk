@@ -74,7 +74,6 @@ function joinIndexFile(filename: string, subdirProp?: string): void {
 function joinPokeGamesFile(): void {
   const pokemon = localDataLoader.pokemon()
   const records = pokemon.values()
-  const destFile = getDataPath('pokemon_games.json')
 
   let jsonDoc = '[\n'
 
@@ -94,7 +93,8 @@ function joinPokeGamesFile(): void {
   jsonDoc = jsonDoc.replace(/,\n$/, '\n')
   jsonDoc += ']\n'
 
-  writeFile(destFile, jsonDoc)
+  // const destFile = getDataPath('pokemon_games.json')
+  // writeFile(destFile, jsonDoc)
 }
 
 joinIndexFile('boxpresets-index.json', 'gameSet')

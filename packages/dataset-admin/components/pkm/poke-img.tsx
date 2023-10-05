@@ -6,3 +6,7 @@ import { PokeImgFile } from '@supeffective/dextracker-ui'
 export const PokeImg = ({ assetId }: { assetId: string }) => {
   return <PokeImgFile assetId={assetId} baseUrl={BASE_IMAGE_URL} variant="home2d-icon" />
 }
+
+export const PokeImg3d = ({ assetId }: { assetId: string }) => {
+  return <PokeImgFile assetId={assetId} baseUrl={BASE_IMAGE_URL} variant="home3d-icon" />
+}
