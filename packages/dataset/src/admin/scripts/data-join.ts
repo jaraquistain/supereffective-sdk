@@ -19,9 +19,10 @@ function updatePokemonIndex(): void {
 
     const indexPayload = {
       id: record.id,
-      nid: fullRecord.nid,
       region: fullRecord.region,
       name: record.name,
+      nid: fullRecord.nid,
+      isForm: fullRecord.isForm,
     }
     indexDoc += `  ${JSON.stringify(indexPayload)},\n`
   }

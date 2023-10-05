@@ -8,6 +8,7 @@ export const pokemonIndexSchema = z
     nid: slugSchema,
     name: nameSchema,
     region: slugSchema,
+    isForm: z.coerce.boolean(),
   })
   .strict()
 
