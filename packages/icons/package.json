@@ -1,0 +1,58 @@
+{
+  "name": "@supeffective/icons",
+  "version": "0.3.1",
+  "description": "supereffective.gg 'dextracker-icons' package",
+  "homepage": "https://github.com/itsjavi/supereffective-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/itsjavi/supereffective-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsjavi/supereffective-sdk.git"
+  },
+  "license": "MIT",
+  "author": "Javier Aguilar",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "pnpm codegen && tsup",
+    "codegen": "pnpm codegen:svg-clean",
+    "codegen:svg": "pnpm svgr --no-prettier --out-dir='src/generated' --typescript --ext=tsx ./svg",
+    "codegen:svg-clean": "rm -rf src/generated && pnpm codegen:svg && pnpm format",
+    "postinstall:local": "pnpm codegen",
+    "prepublishOnly": "pnpm run build",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^8.1.0",
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "esbuild-plugin-svgj": "^1.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

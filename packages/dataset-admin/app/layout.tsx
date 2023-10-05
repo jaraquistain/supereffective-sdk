@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import '@supeffective/dextracker-ui/styles.css'
+import '@supeffective/ui/styles.css'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeToggle } from '@/components/theme-toggle'

@@ -1,4 +1,4 @@
-# supereffective-dataset
+# supereffective-sdk
 
 Pokémon main series data source, TS types, zod validators and HTTP client for supereffective.gg
 

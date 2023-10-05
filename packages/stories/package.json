@@ -1,0 +1,36 @@
+{
+  "name": "supereffective-sdk-stories",
+  "version": "0.3.1",
+  "private": true,
+  "license": "MIT",
+  "author": "Javier Aguilar",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --base=/supereffective-sdk/",
+    "dev": "vite --base=/supereffective-sdk/ --port=7707 --host=0.0.0.0 --open",
+    "preview": "vite --base=/supereffective-sdk/ preview --port=8808 --host=0.0.0.0 --open",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supeffective/ui": "workspace:*",
+    "lucide-react": "^0.284.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.2"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^2.3.0",
+    "@r1stack/react": "^0.5.0",
+    "@storylite/storylite": "^0.13.0",
+    "@storylite/vite-plugin": "^0.13.0",
+    "@supeffective/dataset": "workspace:*",
+    "@supeffective/dextracker": "workspace:*",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "@vitejs/plugin-react-swc": "^3.4.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^3.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
+  }
+}

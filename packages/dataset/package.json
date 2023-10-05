@@ -2,13 +2,13 @@
   "name": "@supeffective/dataset",
   "version": "0.3.0",
   "description": "Dataset for supereffective.gg",
-  "homepage": "https://github.com/itsjavi/supereffective-dataset#readme",
+  "homepage": "https://github.com/itsjavi/supereffective-sdk#readme",
   "bugs": {
-    "url": "https://github.com/itsjavi/supereffective-dataset/issues"
+    "url": "https://github.com/itsjavi/supereffective-sdk/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/itsjavi/supereffective-dataset.git"
+    "url": "https://github.com/itsjavi/supereffective-sdk.git"
   },
   "license": "MIT",
   "type": "module",

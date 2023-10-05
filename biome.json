@@ -4,7 +4,9 @@
     "enabled": true
   },
   "files": {
-    "ignore": ["*.json"]
+    "ignore": [
+      "*.json"
+    ]
   },
   "vcs": {
     "enabled": true,
@@ -18,7 +20,8 @@
       "suspicious": {
         "noExplicitAny": {
           "level": "warn"
-        }
+        },
+        "noArrayIndexKey": "warn"
       },
       "correctness": {
         "noUnusedVariables": "warn",
@@ -30,6 +33,13 @@
         "useHookAtTopLevel": "warn",
         "useExhaustiveDependencies": "warn",
         "noDuplicateJsonKeys": "error"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "warn"
+      },
+      "style": {
+        "noNonNullAssertion": "warn",
+        "useTemplate": "warn"
       }
     }
   },
@@ -37,7 +47,10 @@
     "enabled": true,
     "lineWidth": 120,
     "indentSize": 2,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "ignore": [
+      ".storylite/**/*"
+    ]
   },
   "javascript": {
     "formatter": {

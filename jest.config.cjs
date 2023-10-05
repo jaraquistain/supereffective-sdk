@@ -19,7 +19,7 @@ module.exports = {
       displayName: 'DOM',
       // 'types.ts', 'index.ts', 'index.tsx' are supposed to not have any logic, just type definitions and exports
       coveragePathIgnorePatterns,
-      testEnvironment: `${__dirname}/testing/jest.env-browser.js`,
+      testEnvironment: `${__dirname}/packages/testing/jest.env-browser.js`,
       testMatch: ['**/*.test.ts', '**/*.test.tsx'],
       testPathIgnorePatterns: ['/node_modules/', '/.local/', '/.ignore/', '/_ignore/', '/dist/'],
       // setupFilesAfterEnv: ['./testing/jest.setup.js'],

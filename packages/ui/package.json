@@ -1,0 +1,71 @@
+{
+  "name": "@supeffective/ui",
+  "version": "0.3.1",
+  "description": "supereffective.gg 'ui' package",
+  "homepage": "https://github.com/itsjavi/supereffective-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/itsjavi/supereffective-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsjavi/supereffective-sdk.git"
+  },
+  "license": "MIT",
+  "author": "Javier Aguilar",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "pnpm codegen && tsup",
+    "codegen": "panda codegen && panda",
+    "dev": "concurrently 'pnpm watch-tsup' 'pnpm watch-styles'",
+    "open": "open $(pwd)/src/color-palette/index.html",
+    "postinstall:local": "pnpm codegen",
+    "prepublishOnly": "pnpm run build",
+    "tsup-styles-only": "panda && tsup --clean=false --config tsup.styles.config.ts",
+    "type-check": "tsc --noEmit",
+    "watch-panda": "panda --watch",
+    "watch-styles": "chokidar '*.config.{js,ts,cjs}' 'src/**/*.{ts,tsx,css}' --ignore '**/{dist,styled-system}/**' --debounce 1000 --throtle 1000 -c 'echo \"Detected code changes, running tsup...\" && pnpm tsup-styles-only'",
+    "watch-tsup": "tsup --watch --clean=false"
+  },
+  "dependencies": {
+    "@r1stack/cn": "^0.5.0",
+    "@r1stack/react": "^0.5.0",
+    "@supeffective/dextracker": "workspace:*",
+    "@supeffective/icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.15.5",
+    "@pandacss/types": "^0.15.5",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.2.1",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
