@@ -32,9 +32,10 @@
     "build": "tsup",
     "dev": "tsup --watch --clean=false",
     "prepublishOnly": "pnpm run build",
-    "type-check": "tsc --noEmit"
+    "typelint": "tsc --noEmit"
   },
   "dependencies": {
+    "@supeffective/dataset": "workspace:*",
     "zod": "^3.22.4"
   },
   "devDependencies": {

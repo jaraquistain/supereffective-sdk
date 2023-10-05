@@ -1,13 +1,13 @@
 import { cn } from '@r1stack/cn'
 import { useEffect, useRef, useState } from 'react'
 
-import { Pokemon } from '@supeffective/dataset'
-import { ResolvedLivingDexBoxCell, UpdateLivingDexBoxCell, combineObjects } from '@supeffective/dextracker'
+import type { Pokemon } from '@supeffective/dataset'
+import { type ResolvedLivingDexBoxCell, type UpdateLivingDexBoxCell, combineObjects } from '@supeffective/dextracker'
 
-import { PressableEvent, usePressable } from '../../../hooks/usePressable'
+import { type PressableEvent, usePressable } from '../../../hooks/usePressable'
 import Cell from './grid-cell'
 import classes from './styles/grid-box.styles'
-import { LivingDexGridBoxProps, LivingDexGridCellPressFn } from './types/grid-box.types'
+import type { LivingDexGridBoxProps, LivingDexGridCellPressFn } from './types/grid-box.types'
 
 export default function Box({
   pokedex: pokemon,
@@ -65,6 +65,10 @@ export default function Box({
       }
       const next = [...prev]
       const existingCell = next[index]
+
+      if (!existingCell) {
+        throw new Error(`Could not find cell to update: ${cell.uid}`)
+      }
 
       const newCell: ResolvedLivingDexBoxCell = {
         ...existingCell,

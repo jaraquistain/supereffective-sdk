@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } from 'react'
+import type { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } from 'react'
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type ResponsiveSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto' | 'full'

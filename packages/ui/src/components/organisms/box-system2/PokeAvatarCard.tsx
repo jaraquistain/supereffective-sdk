@@ -1,10 +1,10 @@
 import { cn } from '@r1stack/cn'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { CompactPokemon } from '@supeffective/dataset'
+import type { CompactPokemon } from '@supeffective/dataset'
 
-import { PokeAvatar, PokeImgFileProps, TypeIcon } from '@/components/molecules'
-import { Font, PropsOf, ResponsiveSize } from '@/components/utility'
+import { PokeAvatar, type PokeImgFileProps, TypeIcon } from '@/components/molecules'
+import type { Font, PropsOf, ResponsiveSize } from '@/components/utility'
 import { css } from '@/stylesystem/css'
 
 export type PokeAvatarCardDisplayOptions = {

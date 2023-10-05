@@ -12,11 +12,13 @@ function _mw_FixMausholdIds({ dex }: MiddlewareContext<DeserializedLivingDexDoc>
   }
 
   for (const [boxIndex, pokemonIndex] of mausholdFourHits) {
-    dex.boxes[boxIndex]?.pokemon[pokemonIndex]!.id = 'maushold'
+    // @ts-ignore
+    dex.boxes[boxIndex].pokemon[pokemonIndex].id = 'maushold'
   }
 
   for (const [boxIndex, pokemonIndex] of mausholdThreeHits) {
-    dex.boxes[boxIndex]?.pokemon[pokemonIndex]!.id = 'maushold-three' as any
+    // @ts-ignore
+    dex.boxes[boxIndex].pokemon[pokemonIndex].id = 'maushold-three'
   }
 
   return dex

@@ -1,9 +1,9 @@
 import { cn } from '@r1stack/cn'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { GenericBoxCell } from '@supeffective/dextracker'
+import type { GenericBoxCell } from '@supeffective/dextracker'
 
-import { PropsOf } from '@/components/utility'
+import type { PropsOf } from '@/components/utility'
 import { css } from '@/stylesystem/css'
 
 export type BoxProps<D extends GenericBoxCell = GenericBoxCell> = {

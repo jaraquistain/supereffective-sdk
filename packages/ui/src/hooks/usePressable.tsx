@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from 'react'
+import { type HTMLAttributes, useState } from 'react'
 
 type HTMLElementAttrs = HTMLAttributes<HTMLElement>
 type ReactMouseEvent = React.MouseEvent<HTMLElement, MouseEvent>

@@ -1,8 +1,8 @@
-import { HTMLProps } from 'react'
+import type { HTMLProps } from 'react'
 
-import { ResolvedLivingDexBoxCell } from '@supeffective/dextracker'
+import type { ResolvedLivingDexBoxCell } from '@supeffective/dextracker'
 
-import { LivingDexGridBoxDisplayOptions } from './grid-box.types'
+import type { LivingDexGridBoxDisplayOptions } from './grid-box.types'
 
 export type LivingDexGridCellProps = {
   displayOptions: LivingDexGridBoxDisplayOptions

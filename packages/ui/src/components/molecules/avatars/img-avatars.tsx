@@ -1,17 +1,17 @@
 import {
   GameIconImgFile,
-  GameIconImgFileProps,
+  type GameIconImgFileProps,
   ItemImgFile,
-  ItemImgFileProps,
+  type ItemImgFileProps,
   MarkImgFile,
-  MarkImgFileProps,
+  type MarkImgFileProps,
   PokeImgFile,
-  PokeImgFileProps,
+  type PokeImgFileProps,
   RibbonImgFile,
-  RibbonImgFileProps,
+  type RibbonImgFileProps,
 } from '@/components/molecules'
 
-import { AssetAvatar, AssetAvatarPropsOf } from './AssetAvatar'
+import { AssetAvatar, type AssetAvatarPropsOf } from './AssetAvatar'
 
 export function PokeAvatar(props: AssetAvatarPropsOf<PokeImgFileProps>): JSX.Element {
   return <AssetAvatar component={PokeImgFile} {...props} />

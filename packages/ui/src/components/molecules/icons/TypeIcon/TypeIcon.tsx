@@ -1,6 +1,6 @@
 import { cn } from '@r1stack/cn'
 
-import { PokeTypeId, pokemonTypesMap } from '@supeffective/dataset'
+import { type PokeTypeId, pokemonTypesMap } from '@supeffective/dataset'
 import { Teratype } from '@supeffective/icons'
 
 import type { PropsOf, Size } from '@/components/utility/types'
@@ -9,7 +9,7 @@ import { pokemonTypeComponents } from './TypeIcon.icons'
 import { typeIconGlyphRecipe, typeIconRecipe, typeTeraIconBgRecipe } from './TypeIcon.styles'
 
 export type TypeIconProps = {
-  typeId: PokeTypeId
+  typeId: PokeTypeId | string
   terastal?: boolean
   filled?: boolean
   colored?: boolean

@@ -1,4 +1,4 @@
-import { Options } from 'tsup'
+import type { Options } from 'tsup'
 
 // const ignoreWatch = ['**/dist/**', '**/node_modules/**', '*.test.ts', '**/styled-system/**']
 const ignoreWatch = ['**/dist/**', '*.test.ts']

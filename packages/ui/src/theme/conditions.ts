@@ -1,6 +1,6 @@
 import type { Conditions } from '@pandacss/types'
 
-export const conditionTokens: Partial<Conditions> = {
+export const conditionTokens: Conditions = {
   placeholder: '&:is([data-placeholder])',
   intersecting: ':where([data-intersecting="true"]) &',
   intersecting_self: '&:is([data-intersecting="true"])',

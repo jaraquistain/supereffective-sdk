@@ -1,9 +1,9 @@
-import { Btn as R1Btn, BtnProps as R1BtnProps } from '@r1stack/react'
-import { HTMLAttributes } from 'react'
+import { Btn as R1Btn, type BtnProps as R1BtnProps } from '@r1stack/react'
+import type { HTMLAttributes } from 'react'
 
 import { css } from '@/stylesystem/css'
 
-import { PressableEvent, usePressable } from '../../hooks/usePressable'
+import { type PressableEvent, usePressable } from '../../hooks/usePressable'
 
 export type BtnProps = Omit<R1BtnProps, 'onClick'> & {
   disabled?: boolean

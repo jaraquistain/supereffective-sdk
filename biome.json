@@ -5,7 +5,8 @@
   },
   "files": {
     "ignore": [
-      "*.json"
+      "*.json",
+      "generated/**/*"
     ]
   },
   "vcs": {

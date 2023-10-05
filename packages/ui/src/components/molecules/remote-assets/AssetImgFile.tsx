@@ -1,6 +1,6 @@
 import { cn } from '@r1stack/cn'
 import { Img } from '@r1stack/react'
-import { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { css } from '@/stylesystem/css'
 

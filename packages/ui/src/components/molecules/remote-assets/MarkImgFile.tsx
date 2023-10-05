@@ -1,5 +1,5 @@
 import { PKM_DEFAULT_ASSETS_URL } from '../../../constants'
-import { AssetImgFile, AssetImgProps } from './AssetImgFile'
+import { AssetImgFile, type AssetImgProps } from './AssetImgFile'
 
 export type MarkImgFileProps = {
   variant?: 'gen9-style'

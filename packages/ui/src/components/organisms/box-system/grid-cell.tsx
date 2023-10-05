@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { PokeImgFile, TypeIcon } from '@/components/molecules'
 
 import classes from './styles/grid-cell.styles'
-import { LivingDexGridCellProps } from './types/grid-cell.types'
+import type { LivingDexGridCellProps } from './types/grid-cell.types'
 
 export default function Cell({
   uid,

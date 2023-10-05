@@ -1,8 +1,8 @@
 import { cn } from '@r1stack/cn'
 import React from 'react'
 
-import { AssetImgProps } from '@/components/molecules'
-import { ResponsiveSize } from '@/components/utility'
+import type { AssetImgProps } from '@/components/molecules'
+import type { ResponsiveSize } from '@/components/utility'
 import { css, cva } from '@/stylesystem/css'
 
 export type AssetAvatarProps<V = string, P extends AssetImgProps<V> = AssetImgProps<V>> = AssetImgProps<V> & {

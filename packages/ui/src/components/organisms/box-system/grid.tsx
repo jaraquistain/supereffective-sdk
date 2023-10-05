@@ -1,13 +1,13 @@
 import { cn } from '@r1stack/cn'
-import { HTMLProps } from 'react'
+import type { HTMLProps } from 'react'
 
-import { Pokemon } from '@supeffective/dataset'
-import { LivingDex, LivingDexBox } from '@supeffective/dextracker'
+import type { Pokemon } from '@supeffective/dataset'
+import type { LivingDex, LivingDexBox } from '@supeffective/dextracker'
 
 import Box from './grid-box'
 import UnifiedBox from './grid-box-unified'
 import classes from './styles/grid.styles'
-import { LivingDexGridBoxDisplayOptions, LivingDexGridCellPressFn } from './types/grid-box.types'
+import type { LivingDexGridBoxDisplayOptions, LivingDexGridCellPressFn } from './types/grid-box.types'
 
 export type LivingDexGridProps = {
   livingdex: LivingDex

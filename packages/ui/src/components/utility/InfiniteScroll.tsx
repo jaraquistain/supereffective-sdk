@@ -1,5 +1,5 @@
 import { cn } from '@r1stack/cn'
-import { InfiniteScroll as R1InfiniteScroll, InfiniteScrollProps } from '@r1stack/react'
+import { InfiniteScroll as R1InfiniteScroll, type InfiniteScrollProps } from '@r1stack/react'
 
 import { css } from '@/stylesystem/css'
 

@@ -1,5 +1,5 @@
 import { cn } from '@r1stack/cn'
-import React, { HTMLProps } from 'react'
+import React, { type HTMLProps } from 'react'
 
 // TODO: port to panda-css
 export type GridProps = {

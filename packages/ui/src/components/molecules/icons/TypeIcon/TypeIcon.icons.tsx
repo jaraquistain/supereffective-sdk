@@ -1,6 +1,6 @@
-import { SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
-import { PokeType } from '@supeffective/dataset'
+import type { PokeType } from '@supeffective/dataset'
 import {
   BugType,
   DarkType,

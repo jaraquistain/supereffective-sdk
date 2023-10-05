@@ -1,7 +1,7 @@
-import { HTMLProps } from 'react'
+import type { HTMLProps } from 'react'
 
-import { Pokemon } from '@supeffective/dataset'
-import {
+import type { Pokemon } from '@supeffective/dataset'
+import type {
   LivingDexBox,
   LivingDexBoxCell,
   ResolvedLivingDexBoxCell,

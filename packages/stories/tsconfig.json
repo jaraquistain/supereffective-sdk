@@ -42,7 +42,6 @@
     "types": [
       "react",
       "react-dom",
-      "@testing-library/react",
       "@types/node",
       "jest",
       "@storylite/vite-plugin/virtual"

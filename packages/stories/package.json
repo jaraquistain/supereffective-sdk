@@ -9,7 +9,7 @@
     "build": "vite build --base=/supereffective-sdk/",
     "dev": "vite --base=/supereffective-sdk/ --port=7707 --host=0.0.0.0 --open",
     "preview": "vite --base=/supereffective-sdk/ preview --port=8808 --host=0.0.0.0 --open",
-    "type-check": "tsc --noEmit"
+    "typelint": "tsc --noEmit"
   },
   "dependencies": {
     "@supeffective/ui": "workspace:*",

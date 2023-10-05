@@ -1,9 +1,9 @@
-import { ResolvedLivingDexBoxCell } from '@supeffective/dextracker'
+import type { ResolvedLivingDexBoxCell } from '@supeffective/dextracker'
 
-import { PokeImgFileProps } from '@/components/molecules'
+import type { PokeImgFileProps } from '@/components/molecules'
 
-import { Box, BoxProps } from './Box'
-import { PokeAvatarCard, PokeAvatarCardDisplayOptions } from './PokeAvatarCard'
+import { Box, type BoxProps } from './Box'
+import { PokeAvatarCard, type PokeAvatarCardDisplayOptions } from './PokeAvatarCard'
 
 export type PokeBoxProps = Omit<BoxProps<ResolvedLivingDexBoxCell>, 'cellRenderer'> & {
   displayOptions?: PokeAvatarCardDisplayOptions

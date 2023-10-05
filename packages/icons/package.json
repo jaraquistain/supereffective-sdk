@@ -32,10 +32,10 @@
     "build": "pnpm codegen && tsup",
     "codegen": "pnpm codegen:svg-clean",
     "codegen:svg": "pnpm svgr --no-prettier --out-dir='src/generated' --typescript --ext=tsx ./svg",
-    "codegen:svg-clean": "rm -rf src/generated && pnpm codegen:svg && pnpm format",
+    "codegen:svg-clean": "rm -rf src/generated && pnpm codegen:svg",
     "postinstall:local": "pnpm codegen",
     "prepublishOnly": "pnpm run build",
-    "type-check": "tsc --noEmit"
+    "typelint": "tsc --noEmit"
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
