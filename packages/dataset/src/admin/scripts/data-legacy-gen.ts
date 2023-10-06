@@ -1,6 +1,5 @@
 import type { BoxPreset, LegacyPokemon, Pokemon } from '../../schemas'
-import { getAllPokemon } from '../pokemon'
-import { getBoxPresets } from '../queries'
+import { getBoxPresets, getPokemonList } from '../queries'
 import { getDataPath, writeFile, writeFileAsJson } from '../utils/fs'
 
 function updateLegacyBoxPresets(data: BoxPreset[]): void {
@@ -71,4 +70,4 @@ function updateLegacyPokemonFile(data: Pokemon[]): void {
 }
 
 updateLegacyBoxPresets(getBoxPresets())
-updateLegacyPokemonFile(getAllPokemon())
+updateLegacyPokemonFile(getPokemonList())

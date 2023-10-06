@@ -36,7 +36,7 @@ export function getItemByShowdownNameOrFail(name: string): Item {
 }
 
 export function getPokemonByShowdownNameOrFail(name: string): Pokemon {
-  const pkm = localDataLoader.pokemon().get(name)
+  const pkm = Array.from(localDataLoader.pokemon().values()).find((pkm) => pkm.psName === name)
   if (!pkm) {
     throw Error(`Pokémon with psName '${name}' not found`)
   }

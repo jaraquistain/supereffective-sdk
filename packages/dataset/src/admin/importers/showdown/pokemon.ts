@@ -1,8 +1,14 @@
 import { Dex } from '@pkmn/dex'
 
 import type { Pokemon } from '../../../schemas'
-import { getAllPokemon, getPokemonByShowdownNameOrFail, updateManyPokemon } from '../../pokemon'
-import { getAbilityByShowdownNameOrFail, getItemByShowdownNameOrFail, getMoveByShowdownNameOrFail } from '../../queries'
+import { updateManyPokemon } from '../../commands'
+import {
+  getAbilityByShowdownNameOrFail,
+  getItemByShowdownNameOrFail,
+  getMoveByShowdownNameOrFail,
+  getPokemonByShowdownNameOrFail,
+  getPokemonList,
+} from '../../queries'
 
 const ignoredShowdownIds = [
   'pikachucosplay',
@@ -23,7 +29,7 @@ const ignoredShowdownIds = [
 ]
 
 export const importShowdownPokemon = function (): void {
-  const allPokemon = getAllPokemon()
+  const allPokemon = getPokemonList()
   const allPokemonByShowdownId: Map<string, Pokemon[]> = new Map()
   for (const pokemon of allPokemon) {
     if (!pokemon.refs?.showdown) {
