@@ -1,5 +1,3 @@
-'use client'
-
 import React, { type HTMLAttributes, useEffect, useRef, useState } from 'react'
 
 type NoChildren<T extends HTMLElement> = Omit<HTMLAttributes<T>, 'children'>

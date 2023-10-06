@@ -50,7 +50,7 @@ jobs:
           echo "Moving dist to _site"
           rm -rf _site && mkdir -p _site
           mv ./packages/dataset/dist/* ./_site
-          mv ./packages/stories/dist/* ./_site
+          # mv ./packages/stories/dist/* ./_site
           ls -la ./_site
 
       - name: Upload artifact

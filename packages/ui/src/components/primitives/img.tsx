@@ -1,7 +1,4 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import type { ImgProps, ImgState } from './types'
+import type { ImgProps } from './types'
 
 const resolveImageSrc = (src: string | URL | undefined, defaultSrc: string | URL): string => {
   return src ? (typeof src === 'string' ? src : src.toString()) : resolveImageSrc(defaultSrc, defaultSrc)
@@ -14,28 +11,17 @@ const resolveImageSrc = (src: string | URL | undefined, defaultSrc: string | URL
  * Uses data-state attribute to indicate the state of the image: loading, loaded or error.
  */
 export const Img = (props: ImgProps) => {
-  const { alt, src, fallback, ...rest } = props
-  const [originalSrc, setOriginalSrc] = useState<string>(String(src))
+  const { alt, src, fallback, loading, ...rest } = props
+  const originalSrc = String(src)
   const fallbackSrc = resolveImageSrc(fallback, originalSrc)
-  const [currentSrc, setCurrentSrc] = useState<string>(originalSrc)
-  const [state, setState] = useState<ImgState>('loading')
-
-  useEffect(() => {
-    const newSrc = String(src)
-    if (newSrc !== originalSrc) {
-      setOriginalSrc(newSrc)
-      setCurrentSrc(newSrc)
-      setState('loading')
-    }
-  }, [src, originalSrc])
 
   return (
     <img
-      src={currentSrc}
-      loading={currentSrc === originalSrc ? rest.loading : undefined}
-      data-state={state}
-      onLoad={() => {
-        setState('loaded')
+      src={originalSrc}
+      loading={loading}
+      data-state={'loading'}
+      onLoad={(e) => {
+        e.currentTarget.setAttribute('data-state', 'loaded')
       }}
       onError={(e) => {
         if (!fallbackSrc) {
@@ -48,8 +34,8 @@ export const Img = (props: ImgProps) => {
           return
         }
 
-        setCurrentSrc(fallbackSrc)
-        setState('error')
+        e.currentTarget.src = fallbackSrc
+        e.currentTarget.setAttribute('data-state', 'error')
       }}
       {...rest}
       alt={alt || ''}

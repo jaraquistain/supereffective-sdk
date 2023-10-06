@@ -1,8 +1,7 @@
-'use client'
-
-import { PokeImg } from '@/components/pkm/poke-img'
 import { datasetClient } from '@/lib/dataset-client'
-import { FullGrid } from '@supeffective/ui'
+import { gridRecipe } from '@supeffective/ui'
+import { Button } from '../ui/button'
+import { PokeImg } from './images'
 
 export default async function PokeList() {
   const pokemon = await datasetClient.pokemon.getAll()
@@ -10,7 +9,11 @@ export default async function PokeList() {
   return (
     <>
       Num of pokemon: {pokemon.length}
-      <FullGrid className="gap-2 sm:gap-4">
+      <form>
+        <input type="text" />
+        <Button>Search</Button>
+      </form>
+      <div className={gridRecipe({ className: 'gap-2 sm:gap-3', size: 'lg', autoFill: true })}>
         {pokemon
           .filter((p) => !p.isForm)
           .map((p) => (
@@ -19,7 +22,7 @@ export default async function PokeList() {
               <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
             </div>
           ))}
-      </FullGrid>
+      </div>
     </>
   )
 }

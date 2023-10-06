@@ -1,5 +1,3 @@
-'use client'
-
 import { getUiAssetsUrl } from '../../../../lib/baseUrls'
 import { AssetImgFile, type AssetImgProps } from './AssetImgFile'
 

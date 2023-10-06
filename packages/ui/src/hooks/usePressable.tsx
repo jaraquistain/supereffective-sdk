@@ -1,3 +1,5 @@
+'use client'
+
 import { type HTMLAttributes, useState } from 'react'
 
 type HTMLElementAttrs = HTMLAttributes<HTMLElement>

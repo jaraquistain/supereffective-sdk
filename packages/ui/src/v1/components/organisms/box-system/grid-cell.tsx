@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@r1stack/cn'
 import { useEffect, useState } from 'react'
 

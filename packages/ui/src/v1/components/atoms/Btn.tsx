@@ -1,5 +1,3 @@
-'use client'
-
 import type { HTMLAttributes } from 'react'
 
 import styles from './Btn.module.scss'

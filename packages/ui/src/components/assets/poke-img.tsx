@@ -1,5 +1,3 @@
-'use client'
-
 import { getUiAssetsUrl } from '@/lib/baseUrls'
 import { BaseAssetImg } from './base-img'
 import type { PokeImgProps } from './types'

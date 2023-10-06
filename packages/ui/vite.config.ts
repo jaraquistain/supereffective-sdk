@@ -21,7 +21,7 @@ export default defineConfig({
       formats: ['es'],
     },
     cssCodeSplit: false,
-    sourcemap: false,
+    sourcemap: 'inline',
     ssr: false,
     rollupOptions: {
       treeshake: true,
