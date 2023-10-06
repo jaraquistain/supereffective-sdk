@@ -73,7 +73,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/dataset-admin:
+  packages/dataset-viewer:
     dependencies:
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.0.6
