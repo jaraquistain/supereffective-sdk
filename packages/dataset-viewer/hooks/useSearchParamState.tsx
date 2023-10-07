@@ -1,15 +1,19 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
-export function useSearchParamState(name: string, defaultValue?: string): [string, (value: string) => void] {
+export function useSearchParamState(name: string, defaultValue?: string): [string, (value?: string) => void] {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   const changeParam = useCallback(
-    (value: string) => {
+    (value?: string) => {
       const params = new URLSearchParams(searchParams)
-      params.set(name, value)
+      if (value === undefined) {
+        params.delete(name)
+      } else {
+        params.set(name, value)
+      }
       const queryString = params.toString()
 
       // Update the URL with the new searchParams

@@ -6,8 +6,8 @@ env:
 
 on:
   ## Uncomment the following lines to run this in a schedule:
-  # schedule:
-  #   - cron: 0 16 * * * # every day at 16pm
+  # schedule: # every monday at 16pm
+  #   - cron: '0 16 * * 1'
   workflow_dispatch:
 
 concurrency:

@@ -5,16 +5,19 @@ import { gridRecipe } from '@supeffective/ui'
 import { ArrowLeftRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { FormsToggler } from './forms-toggler'
 import { GenerationSelector } from './gen-selector'
 import { PokeImg } from './images'
 
 export default function PokeList({ pokemon }: { pokemon: Pokemon[] }) {
   const search = useSearchParams()
   const gen = Number(search.get('gen')) || 1
+  const showForms = search.get('forms') === '1'
   const genPkm = pokemon.filter((p) => p.generation === gen)
   const pkmUntilThisGen = pokemon.filter((p) => p.generation <= gen)
   const species = genPkm.filter((p) => !p.isForm)
   const forms = genPkm.filter((p) => p.isForm)
+  const searchStr = search.size > 0 ? `?${search.toString()}` : ''
 
   function _renderGrid() {
     if (genPkm.length === 0) {
@@ -29,15 +32,17 @@ export default function PokeList({ pokemon }: { pokemon: Pokemon[] }) {
       <div
         className={gridRecipe({ className: 'gap-3 sm:gap-4 rounded-md border my-6 p-4', size: 'lg', autoFill: true })}
       >
-        {genPkm.map((p) => (
-          <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
-            <Link href={`/pokemon/${p.id}?gen=${gen}`}>
-              <PokeImg assetId={p.nid} />
-            </Link>
-            <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
-            <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
-          </div>
-        ))}
+        {genPkm
+          .filter((p) => (showForms ? true : !p.isForm))
+          .map((p) => (
+            <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
+              <Link href={`/pokemon/${p.id}${searchStr}`}>
+                <PokeImg assetId={p.nid} />
+              </Link>
+              <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
+              <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
+            </div>
+          ))}
       </div>
     )
   }
@@ -66,13 +71,16 @@ export default function PokeList({ pokemon }: { pokemon: Pokemon[] }) {
   return (
     <div className="container p-5">
       <h1 className="text-4xl font-extrabold tracking-tighter">Pokémon</h1>
-      <div className="text-2xl font-semibold mb-2">
+      <div className="text-2xl font-semibold mb-2 flex gap-3">
         Generation {gen}{' '}
-        <GenerationSelector className="ml-2 align-middle">
+        <GenerationSelector className="align-middle">
           <ArrowLeftRightIcon size={16} />
         </GenerationSelector>
       </div>
       {_renderDesc()}
+      <div className="py-6">
+        <FormsToggler className="align-middle" />
+      </div>
       {_renderGrid()}
     </div>
   )
