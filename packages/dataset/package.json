@@ -43,7 +43,7 @@
   "devDependencies": {
     "@pkmn/dex": "^0.7.53",
     "@pkmn/dex-types": "^0.7.53",
-    "@types/node": "^20.8.2",
+    "@types/node": "^20.8.3",
     "glob": "^10.3.10",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
