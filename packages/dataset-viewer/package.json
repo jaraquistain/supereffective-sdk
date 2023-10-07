@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "private": true,
   "scripts": {
-    "build:dev": "next build",
+    "build:vercel": "next build",
     "dev": "open http://localhost:3000 && next dev",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
