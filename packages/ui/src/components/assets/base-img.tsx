@@ -1,5 +1,5 @@
 import { getUiAssetsUrl } from '@/lib/baseUrls'
-import { cn } from '@r1stack/cn'
+import { cn } from '@/lib/utils'
 import { Img } from '../primitives/img'
 import styles from './base-img.module.scss'
 import type { BaseAssetImgProps } from './types'

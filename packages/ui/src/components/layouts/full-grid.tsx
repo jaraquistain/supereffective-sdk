@@ -1,4 +1,4 @@
-import { cn } from '@r1stack/cn'
+import { cn } from '@/lib/utils'
 import type { ComponentPropsWithoutRef } from 'react'
 import styles from './full-grid.module.scss'
 

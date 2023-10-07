@@ -38,7 +38,6 @@
     "typelint": "tsc --noEmit"
   },
   "dependencies": {
-    "@r1stack/cn": "^0.5.0",
     "@supeffective/dataset": "workspace:*",
     "@supeffective/dextracker": "workspace:*",
     "@supeffective/icons": "workspace:*",

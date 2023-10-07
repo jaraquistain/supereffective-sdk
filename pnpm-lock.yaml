@@ -18,8 +18,8 @@ importers:
         specifier: ^17.7.0
         version: 17.7.0
       '@itsjavi/semver-release':
-        specifier: ^0.4.3
-        version: 0.4.3
+        specifier: ^0.7.2
+        version: 0.7.2
       '@types/jest':
         specifier: ^29.5.5
         version: 29.5.5
@@ -208,9 +208,6 @@ importers:
 
   packages/ui:
     dependencies:
-      '@r1stack/cn':
-        specifier: ^0.5.0
-        version: 0.5.0
       '@supeffective/dataset':
         specifier: workspace:*
         version: link:../dataset
@@ -1014,8 +1011,8 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@itsjavi/semver-release@0.4.3:
-    resolution: {integrity: sha512-bTcP/YSbK2SBAjk5vcZ6nEdlmuPfCd/noY1FmU64I6FB5z8DkXGddFj+d4sFoCNIx0py1xggTjVrgG2f1I56dA==}
+  /@itsjavi/semver-release@0.7.2:
+    resolution: {integrity: sha512-QNOieeIFoZT96yKhrQtnV80O7RsCclP6lFwHMI0Sf8BrFEK2D4TuIAaj+nIYGRQpal2CQjAXOLkB+pMIDNO18Q==}
     hasBin: true
     dependencies:
       changelogen: 0.5.5
@@ -1304,10 +1301,6 @@ packages:
   /@pkmn/types@3.0.0:
     resolution: {integrity: sha512-Vq3vlIaKi8EGFUx5AFcEch74i8wfFWPWb5OaNsJCgP31VADJVruKmLoSzs26xUW0vkiJENICH+YGFmJYwatJ8w==}
     dev: true
-
-  /@r1stack/cn@0.5.0:
-    resolution: {integrity: sha512-pwy8+Jh0+m3yJEx7/HoDID87E+7/ryPp2C9g9H1r5bV00dq5vGiyjIYmbErnIMe5Kszlzpl9jzWw6VHlhh7mTQ==}
-    dev: false
 
   /@radix-ui/primitive@1.0.1:
     resolution: {integrity: sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==}
@@ -3997,7 +3990,7 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       flatted: 3.2.9
-      keyv: 4.5.3
+      keyv: 4.5.4
       rimraf: 3.0.2
     dev: true
 
@@ -4878,8 +4871,8 @@ packages:
       object.values: 1.1.7
     dev: true
 
-  /keyv@4.5.3:
-    resolution: {integrity: sha512-QCiSav9WaX1PgETJ+SpNnx2PRRapJ/oRSXM4VO5OGYGSjrxbKPVFVhB3l2OCbLCk329N8qyAtsJjSjvVBWzEug==}
+  /keyv@4.5.4:
+    resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
       json-buffer: 3.0.1
     dev: true
