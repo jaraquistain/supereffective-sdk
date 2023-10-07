@@ -34,6 +34,8 @@ module.exports = {
         'workflow',
         'data',
         'admin',
+        'ui',
+        'viewer',
         // packages:
         ...folderNamesUnderPackages,
       ],
