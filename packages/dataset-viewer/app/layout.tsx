@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
 import '@supeffective/ui/styles.css'
 
+import { Header } from '@/components/layout/main-header'
 import { ThemeProvider } from '@/components/theme-provider'
-import { ThemeToggle } from '@/components/theme-toggle'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -15,15 +15,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode
+  modal?: React.ReactNode
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <ThemeToggle />
-          {children}
+          <Header />
+          {modal}
+          <main className="flex min-h-screen flex-col items-center justify-between p-2">{children}</main>
         </ThemeProvider>
       </body>
     </html>
