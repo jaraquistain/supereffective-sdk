@@ -12,7 +12,7 @@ export function HomeHero() {
             </span>
             <span className="block text-3xl font-bold sm:text-4xl sm:tracking-tight lg:text-5xl">Dataset Viewer</span>
           </h1>
-          <p className="mt-6 max-w-lg mx-auto text-xl text-white sm:max-w-3xl">
+          <p className="mt-6 max-w-lg mx-auto text-xl sm:max-w-3xl">
             Preview the JSON dataset for the SuperEffective.gg project in a beautiful and interactive way.
           </p>
         </div>

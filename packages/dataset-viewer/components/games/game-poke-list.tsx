@@ -22,7 +22,7 @@ export default async function GamePokeList({
   const pokemon = await datasetClient.pokemon.getAll()
 
   return (
-    <>
+    <div className="">
       <PokeGrid
         pokemon={pokemon}
         query={query}
@@ -36,6 +36,6 @@ export default async function GamePokeList({
           transferOnlyIn: isTransferOnly ? game.id : undefined,
         }}
       />
-    </>
+    </div>
   )
 }

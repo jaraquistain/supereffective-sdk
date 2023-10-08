@@ -89,7 +89,11 @@ export default function PokeGrid({
     <>
       {_renderCounters()}
       <div
-        className={gridRecipe({ className: 'gap-3 sm:gap-4 rounded-md border my-6 p-4', size: 'lg', autoFill: true })}
+        className={gridRecipe({
+          className: 'gap-3 sm:gap-4 rounded-md border my-6 p-4 max-h-[440px] overflow-auto',
+          size: 'lg',
+          autoFill: true,
+        })}
       >
         {filtered.map((p) => (
           <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
