@@ -4,12 +4,19 @@ import { getDataPath, writeFile, writeFileAsJson } from '../utils/fs'
 
 function updateLegacyBoxPresets(data: BoxPreset[]): void {
   const dataFile = getDataPath('legacy-boxpresets.json')
-  const result: Record<string, Record<string, BoxPreset>> = {}
+  const result: Record<string, Record<string, any>> = {}
 
   for (const preset of data) {
-    result[preset.gameSet] = {
-      ...result[preset.gameSet],
-      [preset.id]: preset,
+    const newPreset = {
+      ...preset,
+      id: preset.legacyId,
+      legacyId: undefined,
+      fullId: preset.id,
+    }
+
+    result[newPreset.gameSet] = {
+      ...result[newPreset.gameSet],
+      [newPreset.id]: newPreset,
     }
   }
 
