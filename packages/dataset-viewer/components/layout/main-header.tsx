@@ -3,7 +3,7 @@ import { ThemeToggle } from '../theme-toggle'
 
 export function Header() {
   return (
-    <div className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/89 backdrop-blur-md">
+    <div className="supports-backdrop-blur:bg-background/60 sm:sticky top-0 z-50 w-full border-b bg-background/89 backdrop-blur-md">
       <div className="container flex py-6 sm:py-2 items-center">
         <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
           <Link href="/" className="mr-4 flex items-center font-extrabold tracking-tighter">

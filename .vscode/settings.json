@@ -55,6 +55,7 @@
     "editor.defaultFormatter": "vscode.css-language-features"
   },
   "editor.formatOnSave": true,
+  "json.format.enable": false,
   "typescript.format.enable": false,
   "javascript.format.enable": false
 }

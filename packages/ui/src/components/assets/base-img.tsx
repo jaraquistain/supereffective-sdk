@@ -19,7 +19,7 @@ export function BaseAssetImg({
   ...rest
 }: BaseAssetImgProps): JSX.Element {
   function _renderImg() {
-    const imgClasses = cn(styles.base, imgClassName)
+    const imgClasses = cn(styles.img, imgClassName)
 
     if (!assetId) {
       return <span className={cn(imgClasses, 'empty-asset-img')}>&nbsp;</span>

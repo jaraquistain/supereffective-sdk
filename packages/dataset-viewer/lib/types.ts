@@ -1,8 +1,14 @@
 import { ReactNode } from 'react'
 
-export type PageProps<K extends Array<string> = []> = {
+export const searchParamKeys = ['gen', 'forms'] as const
+export type AppSearchParamKeys = typeof searchParamKeys
+
+export type PageProps<P extends Array<string> = [], S extends AppSearchParamKeys = AppSearchParamKeys> = {
   params: {
-    [key in K[number]]: string
+    [key in P[number]]: string
+  }
+  searchParams: {
+    [key in S[number]]: string | undefined
   }
 }
 
