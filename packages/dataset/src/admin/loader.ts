@@ -1,4 +1,4 @@
-import type { Ability, BoxPreset, Game, Item, Move, Pokemon, Ribbon } from '../schemas'
+import type { Ability, BoxPreset, Game, Item, Move, Pokedex, Pokemon, Ribbon } from '../schemas'
 import { getDataPath, readFileAsJson } from './utils/fs'
 import { mergeEntityIndex } from './utils/merge'
 
@@ -10,6 +10,7 @@ type LocalDataCache = {
   games?: Game[]
   ribbons?: Ribbon[]
   pokemon?: Map<string, Pokemon>
+  pokedexes?: Map<string, Pokedex>
 }
 
 type RequiredLocalDataCache = Required<LocalDataCache>
@@ -72,5 +73,11 @@ export const localDataLoader: LocalDataLoader = {
       _dataCache.pokemon = mergeEntityIndex<Pokemon>('pokemon-index.json', 'region')
     }
     return _dataCache.pokemon
+  },
+  pokedexes: () => {
+    if (!_dataCache.pokedexes) {
+      _dataCache.pokedexes = mergeEntityIndex<Pokedex>('pokedexes-index.json', 'region')
+    }
+    return _dataCache.pokedexes
   },
 }
