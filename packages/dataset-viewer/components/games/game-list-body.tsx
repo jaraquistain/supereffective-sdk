@@ -11,11 +11,11 @@ export default function GameListBody({ query }: GameListProps) {
 
   return (
     <>
-      <div className="text-2xl font-semibold mb-2 flex gap-3">Sets</div>
+      <div className="text-2xl font-semibold mb-2 text-muted-foreground flex gap-3">Game Sets</div>
       <GameGrid games={gameSets} query={query} />
-      <div className="text-2xl font-semibold mb-2 flex gap-3">Versions</div>
+      <div className="text-2xl font-semibold mb-2 text-muted-foreground flex gap-3">Game Versions</div>
       <GameGrid games={individualGames} query={query} />
-      <div className="text-2xl font-semibold mb-2 flex gap-3">DLCs</div>
+      <div className="text-2xl font-semibold mb-2 text-muted-foreground flex gap-3">DLCs</div>
       <GameGrid games={dlcs} query={query} />
     </>
   )

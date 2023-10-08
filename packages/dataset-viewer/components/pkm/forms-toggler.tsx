@@ -13,7 +13,7 @@ export const FormsToggler = ({ className, ...rest }: ComponentPropsWithoutRef<'d
 
   return (
     <div className={cn('flex items-center space-x-2', className)} {...rest}>
-      <Label htmlFor={fieldId}>Forms</Label>
+      <Label htmlFor={fieldId}>Show Forms</Label>
       <Switch
         id={fieldId}
         checked={value === '1'}

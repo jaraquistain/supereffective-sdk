@@ -8,6 +8,16 @@
   cursor: not-allowed;
 }
 
+.prose a {
+  @apply text-purple-500;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  @apply text-purple-400;
+  text-decoration: underline;
+}
+
 /* https://ui.shadcn.com/themes */
 @layer base {
   :root {

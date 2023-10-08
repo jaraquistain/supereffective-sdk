@@ -1,5 +1,7 @@
 import { datasetClient } from '@/lib/dataset-client'
+import { ChevronsUpDownIcon } from 'lucide-react'
 import { FormsToggler } from './forms-toggler'
+import { GenerationSelector } from './gen-selector'
 import PokeGrid from './poke-grid'
 import { PokeListProps } from './types'
 
@@ -35,8 +37,11 @@ export default async function PokeListBody({ gen: genStr, showForms, query }: Po
   return (
     <>
       {_renderDesc()}
-      <div className="py-6">
-        <FormsToggler className="align-middle" />
+      <div className="py-6 flex gap-4">
+        <GenerationSelector className="align-middle inline-flex">
+          Generation {gen} <ChevronsUpDownIcon className="ml-2 h-4 w-4" />
+        </GenerationSelector>
+        <FormsToggler className="align-middle inline-flex" />
       </div>
       <PokeGrid
         pokemon={genPkm}

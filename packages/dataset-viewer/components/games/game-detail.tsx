@@ -4,6 +4,7 @@ import { Grid3x3Icon, LibraryIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { GameAvatarImg, GameImg } from '../pkm/images'
+import EditSourceLink from '../ui/edit-on-github'
 import GamePokeList from './game-poke-list'
 
 const games = pokemonGames
@@ -204,7 +205,7 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
               <li key={row.id} className="">
                 <Link
                   className="text-xl text-purple-400 hover:text-purple-300 font-semibold mb-2 flex gap-3"
-                  href={`/pokedexes/${row.id}${query}?forms=`}
+                  href={`/pokedexes/${row.id}${query}?forms=1`}
                   scroll={false}
                 >
                   {row.name}
@@ -248,10 +249,14 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
   }
 
   return (
-    <div className="container p-5 ">
+    <div className="container p-5">
       <div className="flex flex-col gap-4">
         <h1 className="text-4xl font-extrabold tracking-tighter">Games</h1>
-        <div className="text-2xl font-semibold mb-2 flex gap-3 text-muted-foreground">{game.name}</div>
+        <div className="text-2xl font-semibold flex gap-3 text-muted-foreground">
+          {game.name}
+          <EditSourceLink file="packages/dataset/data/games.json" />
+        </div>
+
         <div className="flex gap-12">
           {_renderGameVersions()}
           {_renderGameSets()}

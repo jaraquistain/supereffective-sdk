@@ -17,17 +17,27 @@ export function HomeHero() {
           </p>
         </div>
       </div>
-      <div className="flex flex-row gap-4 items-center justify-center">
-        <Button size="xl" variant="default" asChild className="text-md">
-          <a href="https://supereffective.gg?ref=dataset-viewer" target="_blank" rel="noreferrer">
-            Website
-          </a>
-        </Button>
+      <div className="flex flex-row gap-4 items-center justify-center mb-16">
         <Button size="xl" variant="outline" asChild className="text-md">
           <a href="https://github.com/itsjavi/supereffective-sdk" target="_blank" rel="noreferrer">
-            Source <GithubIcon className="ml-2 h-8 w-8" />
+            Source Code <GithubIcon className="ml-2 h-8 w-8" />
           </a>
         </Button>
+        <Button size="xl" variant="default" asChild className="text-md">
+          <a href="https://supereffective.gg?ref=dataset-viewer" target="_blank" rel="noreferrer">
+            Dex Tracker Site
+          </a>
+        </Button>
+      </div>
+      <div className="flex flex-row gap-4 items-center justify-center text-center">
+        <p className="text-muted-foreground text-sm flex flex-col gap-3">
+          <span>
+            Built with <span className="text-purple-500">♥</span> by{' '}
+            <a className="underline" href="https://twitter.com/itsjavidotcom" target="_blank" rel="noreferrer">
+              @itsjavi
+            </a>
+          </span>
+        </p>
       </div>
     </div>
   )

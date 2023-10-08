@@ -1,6 +1,8 @@
 import { datasetClient } from '@/lib/dataset-client'
 import { Pokedex, Pokemon } from '@supeffective/dataset'
 import PokeGrid from '../pkm/poke-grid'
+import { Button } from '../ui/button'
+import EditSourceLink from '../ui/edit-on-github'
 
 export default async function PokedexEntries({
   dex,
@@ -35,6 +37,11 @@ export default async function PokedexEntries({
           isForm: true,
         }}
       />
+      <Button asChild>
+        <EditSourceLink className="my-3" file={`packages/dataset/data/pokedexes/${dex.region}/${dex.id}.json`}>
+          Edit on Github
+        </EditSourceLink>
+      </Button>
     </div>
   )
 }
