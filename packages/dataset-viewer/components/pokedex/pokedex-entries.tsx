@@ -6,11 +6,9 @@ import EditSourceLink from '../ui/edit-on-github'
 
 export default async function PokedexEntries({
   dex,
-  query,
   withForms = true,
 }: {
   dex: Pokedex
-  query: string
   withForms?: boolean
 }) {
   const pokemon = await datasetClient.pokemon.getAll()
@@ -27,18 +25,21 @@ export default async function PokedexEntries({
     })
     .filter((row): row is Pokemon => row !== undefined)
 
+  const srcFile = dex.region
+    ? `packages/dataset/data/pokedexes/${dex.region}/${dex.id}.json`
+    : `packages/dataset/data/pokedexes/${dex.id}.json`
+
   return (
     <div className="w-full">
       <PokeGrid
         pokemon={entries}
-        query={query}
         withCounters
         filters={{
           isForm: true,
         }}
       />
       <Button asChild>
-        <EditSourceLink className="my-3" file={`packages/dataset/data/pokedexes/${dex.region}/${dex.id}.json`}>
+        <EditSourceLink className="my-3" file={srcFile}>
           Edit on Github
         </EditSourceLink>
       </Button>

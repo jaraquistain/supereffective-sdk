@@ -1,35 +1,25 @@
 import { datasetClient } from '@/lib/dataset-client'
-import { ChevronsUpDownIcon } from 'lucide-react'
 import { FormsToggler } from './forms-toggler'
-import { GenerationSelector } from './gen-selector'
 import PokeGrid from './poke-grid'
+import { RegionSelector } from './region-selector'
 import { PokeListProps } from './types'
 
-export default async function PokeListBody({ gen: genStr, showForms, query }: PokeListProps) {
-  const gen = Number(genStr)
-  const pokemon = await datasetClient.pokemon.getAll()
-  const genPkm = pokemon.filter((p) => p.generation === gen)
-  const pkmUntilThisGen = pokemon.filter((p) => p.generation <= gen)
-  const species = genPkm.filter((p) => !p.isForm)
-  const forms = genPkm.filter((p) => p.isForm)
+export default async function PokeListBody({ region, showForms }: PokeListProps) {
+  const allPokemon = await datasetClient.pokemon.getAll()
+  const scopedPokemon = allPokemon.filter((p) => p.region === region)
+  const species = scopedPokemon.filter((p) => !p.isForm)
+  const forms = scopedPokemon.filter((p) => p.isForm)
 
   function _renderDesc() {
-    if (genPkm.length === 0) {
+    if (scopedPokemon.length === 0) {
       return null
     }
 
     return (
       <p className="text-lg text-muted-foreground">
-        This generation introduced <span className="font-bold">{species.length}</span> species and{' '}
+        In this region have been discovered <span className="font-bold">{species.length}</span> species and{' '}
         <span className="font-bold">{forms.length ? forms.length : 'no'}</span> forms, for a total of{' '}
-        <span className="font-extrabold underline">{genPkm.length}</span> new Pokémon.
-        <br />
-        {gen > 1 && (
-          <>
-            Together with previous generations, there is a total of{' '}
-            <span className="font-bold">{pkmUntilThisGen.length}</span> Pokémon.
-          </>
-        )}
+        <span className="font-extrabold underline">{scopedPokemon.length}</span> new Pokémon.
       </p>
     )
   }
@@ -38,18 +28,19 @@ export default async function PokeListBody({ gen: genStr, showForms, query }: Po
     <>
       {_renderDesc()}
       <div className="py-6 flex gap-4">
-        <GenerationSelector className="align-middle inline-flex">
-          Generation {gen} <ChevronsUpDownIcon className="ml-2 h-4 w-4" />
-        </GenerationSelector>
+        <RegionSelector className="align-middle inline-flex" />
         <FormsToggler className="align-middle inline-flex" />
       </div>
       <PokeGrid
-        pokemon={genPkm}
-        query={query}
+        pokemon={scopedPokemon}
         filters={{
           isForm: showForms,
         }}
       />
+      <p className="text-sm text-muted-foreground">
+        Showing <span className="font-bold">{showForms ? scopedPokemon.length : species.length}</span> of{' '}
+        <span className="font-bold">{allPokemon.length}</span> Pokémon
+      </p>
     </>
   )
 }

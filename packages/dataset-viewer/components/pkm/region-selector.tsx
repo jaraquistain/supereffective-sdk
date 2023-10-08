@@ -9,22 +9,23 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useSearchParamState } from '@/hooks/useSearchParamState'
-import { PKM_LATEST_GENERATION } from '@supeffective/dataset'
+import { pokemonRegions, pokemonRegionsMap } from '@supeffective/dataset'
 import { ChevronsUpDownIcon } from 'lucide-react'
 import { ReactNode } from 'react'
 
-export const GenerationSelector = ({
+export const RegionSelector = ({
   children,
   className,
   variant = 'secondary',
 }: { children?: ReactNode; className?: string; variant?: ButtonProps['variant'] }) => {
-  const [gen, setGen] = useSearchParamState('gen', '1')
+  const [param, setParam] = useSearchParamState('region', 'kanto')
+  const record = pokemonRegionsMap.get(param)
+  if (!record) {
+    console.warn(`Invalid region: ${param}`)
+    return null
+  }
 
-  const gens = Array(PKM_LATEST_GENERATION)
-    .fill(0)
-    .map((_, i) => String(i + 1))
-
-  const buttonText = children ?? `Generation ${gen}`
+  const buttonText = children ?? `${record.name} Region`
 
   return (
     <DropdownMenu>
@@ -36,10 +37,10 @@ export const GenerationSelector = ({
       <DropdownMenuContent>
         {/* <DropdownMenuLabel>Change Generation:</DropdownMenuLabel>
         <DropdownMenuSeparator /> */}
-        <DropdownMenuRadioGroup value={gen} onValueChange={setGen}>
-          {gens.map((gen) => (
-            <DropdownMenuRadioItem className="pr-2" key={`gen-${gen}`} value={gen}>
-              Generation {gen}
+        <DropdownMenuRadioGroup value={param} onValueChange={setParam}>
+          {pokemonRegions.map((row) => (
+            <DropdownMenuRadioItem className="pr-2" key={`reg-${row.id}`} value={row.id}>
+              {row.name}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>

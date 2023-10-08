@@ -1,15 +1,15 @@
 import { getBoxPresetsByGameSet, getPokedexesByGameSet } from '@/lib/queries'
 import { Game, pokemonGames } from '@supeffective/dataset'
 import { Grid3x3Icon, LibraryIcon } from 'lucide-react'
-import Link from 'next/link'
 import { Suspense } from 'react'
 import { GameAvatarImg, GameImg } from '../pkm/images'
 import EditSourceLink from '../ui/edit-on-github'
+import { StatefulLink } from '../ui/stateful-link'
 import GamePokeList from './game-poke-list'
 
 const games = pokemonGames
 
-export default async function GameDetail({ game, query }: { game: Game; query: string }) {
+export default async function GameDetail({ game }: { game: Game }) {
   const gameSetId = game.type === 'set' ? game.id : game.gameSet ? game.gameSet : game.type === 'game' ? game.id : null
   const gameSet = games.find((row) => row.id === gameSetId)
 
@@ -38,9 +38,9 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
           <ul className="flex gap-2">
             {versions.map((game) => (
               <li key={game.id} className="">
-                <Link href={`/games/${game.id}${query}`}>
+                <StatefulLink href={`/games/${game.id}`}>
                   <GameImg assetId={game.id} className="w-32" title={game.name} />
-                </Link>
+                </StatefulLink>
               </li>
             ))}
           </ul>
@@ -51,9 +51,9 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
             <ul className="flex gap-2">
               {dlcs.map((game) => (
                 <li key={game.id} className="">
-                  <Link href={`/games/${game.id}${query}`}>
+                  <StatefulLink href={`/games/${game.id}`}>
                     <GameImg assetId={game.id} className="w-32" title={game.name} />
-                  </Link>
+                  </StatefulLink>
                 </li>
               ))}
             </ul>
@@ -95,9 +95,9 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
         <ul className="flex gap-2">
           {results.map((game) => (
             <li key={game.id} className="">
-              <Link href={`/games/${game.id}${query}`}>
+              <StatefulLink href={`/games/${game.id}`}>
                 <GameAvatarImg assetId={game.id} className="w-32" title={game.name} />
-              </Link>
+              </StatefulLink>
             </li>
           ))}
         </ul>
@@ -133,9 +133,9 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
         <ul className="flex gap-2">
           {results.map((game) => (
             <li key={game.id} className="">
-              <Link href={`/games/${game.id}${query}`}>
+              <StatefulLink href={`/games/${game.id}`}>
                 <GameAvatarImg assetId={game.id} className="w-32" title={game.name} />
-              </Link>
+              </StatefulLink>
             </li>
           ))}
         </ul>
@@ -155,7 +155,7 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
             Pokémon that can only be obtained through events or distributions
           </p>
           <Suspense fallback={<div>Loading...</div>}>
-            <GamePokeList game={gameSet} query={query} isEventOnly />
+            <GamePokeList game={gameSet} isEventOnly />
           </Suspense>
         </div>
         <div className="w-full">
@@ -164,7 +164,7 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
             Pokémon that can only be obtained by transferring them from other games (unless they are event-only)
           </p>
           <Suspense fallback={<div>Loading...</div>}>
-            <GamePokeList game={gameSet} query={query} isTransferOnly />
+            <GamePokeList game={gameSet} isTransferOnly />
           </Suspense>
         </div>
         <div className="w-full">
@@ -173,7 +173,7 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
             Obtainable Pokémon that cannot be stored in the game&apos;s storage system
           </p>
           <Suspense fallback={<div>Loading...</div>}>
-            <GamePokeList game={gameSet} query={query} isNotStorable />
+            <GamePokeList game={gameSet} isNotStorable />
           </Suspense>
         </div>
         <div className="w-full">
@@ -182,7 +182,7 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
             Pokémon that can be obtained in-game through normal gameplay or as a gift under certain conditions
           </p>
           <Suspense fallback={<div>Loading...</div>}>
-            <GamePokeList game={gameSet} query={query} isObtainable />
+            <GamePokeList game={gameSet} isObtainable />
           </Suspense>
         </div>
       </div>
@@ -203,13 +203,14 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
           <ul className="list-disc ml-4 md:ml-0 md:flex md:list-none gap-4">
             {dexes.map((row) => (
               <li key={row.id} className="">
-                <Link
+                <StatefulLink
                   className="text-xl text-purple-400 hover:text-purple-300 font-semibold mb-2 flex gap-3"
-                  href={`/pokedexes/${row.id}${query}?forms=1`}
+                  href={`/pokedexes/${row.id}`}
                   scroll={false}
+                  params={{ forms: '1' }}
                 >
                   {row.name}
-                </Link>
+                </StatefulLink>
                 <span className="block text-md text-muted-foreground mb-2">{row.entries.length} entries.</span>
               </li>
             ))}
@@ -233,12 +234,12 @@ export default async function GameDetail({ game, query }: { game: Game; query: s
           <ul className="flex flex-row flex-wrap gap-4">
             {boxPresets.map((row) => (
               <li key={row.id} className="flex-1">
-                <Link
+                <StatefulLink
                   className="text-xl text-purple-400 hover:text-purple-300 font-semibold mb-2 flex gap-3"
-                  href={`/boxpresets/${row.id}${query}`}
+                  href={`/boxpresets/${row.id}`}
                 >
                   {row.name}
-                </Link>
+                </StatefulLink>
                 <span className="block text-md text-muted-foreground mb-2">{row.description}</span>
               </li>
             ))}

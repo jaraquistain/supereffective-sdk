@@ -4,7 +4,6 @@ import PokeGrid from '../pkm/poke-grid'
 
 export default async function GamePokeList({
   game,
-  query,
   isObtainable,
   isStorable,
   isNotStorable,
@@ -12,7 +11,6 @@ export default async function GamePokeList({
   isTransferOnly,
 }: {
   game: Game
-  query: string
   isObtainable?: boolean
   isStorable?: boolean
   isNotStorable?: boolean
@@ -25,7 +23,6 @@ export default async function GamePokeList({
     <div className="">
       <PokeGrid
         pokemon={pokemon}
-        query={query}
         withCounters
         filters={{
           isForm: true,

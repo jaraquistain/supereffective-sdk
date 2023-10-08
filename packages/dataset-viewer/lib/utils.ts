@@ -6,5 +6,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function createQueryString(obj: Record<string, any>): string {
-  return Object.keys(obj).length > 0 ? `?${new URLSearchParams(obj as Record<string, string>)}` : ''
+  const searchParams = new URLSearchParams()
+  for (const [key, value] of Object.entries(obj)) {
+    if (value !== undefined && value !== null) {
+      searchParams.set(key, String(value))
+    }
+  }
+  return searchParams.size > 0 ? `?${searchParams.toString()}` : ''
 }

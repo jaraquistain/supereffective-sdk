@@ -33,7 +33,7 @@ export function HomeHero() {
       <div className="flex flex-row gap-4 items-center justify-center text-center">
         <p className="text-muted-foreground text-sm flex flex-col gap-3">
           <span>
-            Built with <span className="text-purple-500">♥</span> by{' '}
+            Built with <span className="text-pink-400">♥</span> by{' '}
             <a className="underline" href="https://twitter.com/itsjavidotcom" target="_blank" rel="noreferrer">
               @itsjavi
             </a>

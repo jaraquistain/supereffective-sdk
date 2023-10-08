@@ -1,16 +1,14 @@
 import { Pokemon } from '@supeffective/dataset'
 import { gridRecipe } from '@supeffective/ui'
-import Link from 'next/link'
+import { StatefulLink } from '../ui/stateful-link'
 import { PokeImg } from './images'
 
 export default function PokeGrid({
   pokemon,
   filters: _filters,
   withCounters,
-  query,
 }: {
   pokemon: Pokemon[]
-  query: string
   withCounters?: boolean
   filters?: {
     isForm?: boolean
@@ -97,9 +95,9 @@ export default function PokeGrid({
       >
         {filtered.map((p) => (
           <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
-            <Link href={`/pokemon/${p.id}${query}`}>
+            <StatefulLink href={`/pokemon/${p.id}`}>
               <PokeImg assetId={p.nid} />
-            </Link>
+            </StatefulLink>
             <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
             <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
           </div>

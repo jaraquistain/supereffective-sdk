@@ -1,5 +1,4 @@
 export type PokeListProps = {
-  gen: number
+  region: string
   showForms: boolean
-  query: string
 }

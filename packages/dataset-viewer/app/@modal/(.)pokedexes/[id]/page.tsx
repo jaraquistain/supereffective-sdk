@@ -22,11 +22,10 @@ export default async function Page({ params, searchParams }: PageProps<['id']>) 
 
   const header = <div>{record.name}</div>
   const footer = null
-  const qs = createQueryString(searchParams)
 
   return (
     <ModalRoute header={header} footer={footer} className="max-w-auto md:max-w-[60vw]">
-      <PokedexEntries dex={record} query={qs} withForms={searchParams.forms === '1'} />
+      <PokedexEntries dex={record} withForms={searchParams.forms === '1'} />
     </ModalRoute>
   )
 }
