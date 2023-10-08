@@ -1,4 +1,6 @@
+import { getBoxPresetsByGameSet, getPokedexesByGameSet } from '@/lib/queries'
 import { Game, pokemonGames } from '@supeffective/dataset'
+import { Grid3x3Icon, LibraryIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { GameAvatarImg, GameImg } from '../pkm/images'
@@ -6,10 +8,12 @@ import GamePokeList from './game-poke-list'
 
 const games = pokemonGames
 
-export default function GameDetail({ game, query }: { game: Game; query: string }) {
+export default async function GameDetail({ game, query }: { game: Game; query: string }) {
   const gameSetId = game.type === 'set' ? game.id : game.gameSet ? game.gameSet : game.type === 'game' ? game.id : null
-
   const gameSet = games.find((row) => row.id === gameSetId)
+
+  const dexes = gameSetId ? await getPokedexesByGameSet(gameSetId) : []
+  const boxPresets = gameSetId ? await getBoxPresetsByGameSet(gameSetId) : []
 
   function _renderGameVersions() {
     const results = games.filter(
@@ -143,7 +147,7 @@ export default function GameDetail({ game, query }: { game: Game; query: string 
       return <>No gameSet</>
     }
     return (
-      <div className="flex flex-col mt-5 flex-row gap-4">
+      <div className="flex mt-5 flex-col gap-4">
         <div className="w-full">
           <div className="text-2xl font-semibold mb-2 flex gap-3">Event Pokémon</div>
           <p className="text-lg text-muted-foreground mb-2">
@@ -184,6 +188,65 @@ export default function GameDetail({ game, query }: { game: Game; query: string 
     )
   }
 
+  function _renderDexList() {
+    if (dexes.length === 0) {
+      return null
+    }
+
+    return (
+      <div className="flex mt-5 flex-row gap-4">
+        <div className="w-full">
+          <div className="text-2xl font-semibold mb-2 flex gap-4">
+            <LibraryIcon /> Pokedexes
+          </div>
+          <ul className="list-disc ml-4 md:ml-0 md:flex md:list-none gap-4">
+            {dexes.map((row) => (
+              <li key={row.id} className="">
+                <Link
+                  className="text-xl text-purple-400 hover:text-purple-300 font-semibold mb-2 flex gap-3"
+                  href={`/pokedexes/${row.id}${query}?forms=`}
+                  scroll={false}
+                >
+                  {row.name}
+                </Link>
+                <span className="block text-md text-muted-foreground mb-2">{row.entries.length} entries.</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  function _renderBoxPresetList() {
+    if (dexes.length === 0) {
+      return null
+    }
+
+    return (
+      <div className="flex mt-5 flex-row gap-4">
+        <div className="w-full">
+          <div className="text-2xl font-semibold mb-2 flex gap-3">
+            <Grid3x3Icon /> Box Presets
+          </div>
+          <ul className="flex flex-row flex-wrap gap-4">
+            {boxPresets.map((row) => (
+              <li key={row.id} className="flex-1">
+                <Link
+                  className="text-xl text-purple-400 hover:text-purple-300 font-semibold mb-2 flex gap-3"
+                  href={`/boxpresets/${row.id}${query}`}
+                >
+                  {row.name}
+                </Link>
+                <span className="block text-md text-muted-foreground mb-2">{row.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="container p-5 ">
       <div className="flex flex-col gap-4">
@@ -195,6 +258,8 @@ export default function GameDetail({ game, query }: { game: Game; query: string 
           {_renderGameSuperSets()}
         </div>
       </div>
+      {_renderDexList()}
+      {_renderBoxPresetList()}
       {_renderPokemon()}
     </div>
   )

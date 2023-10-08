@@ -15,6 +15,7 @@ export default function ModalRoute({
   header,
   children,
   footer,
+  className,
 }: ComponentPropsWithoutRef<'div'> & {
   header?: ReactNode
   children: ReactNode
@@ -30,7 +31,7 @@ export default function ModalRoute({
         }
       }}
     >
-      <DialogContent>
+      <DialogContent className={className}>
         <DialogHeader>
           {header && <DialogTitle>{header}</DialogTitle>}
           <DialogDescription>{children}</DialogDescription>
