@@ -46,7 +46,8 @@
   "storableIn": [
     "sm",
     "usum",
-    "home"
+    "home",
+    "sv"
   ],
   "shinyReleased": false,
   "shinyBase": null,

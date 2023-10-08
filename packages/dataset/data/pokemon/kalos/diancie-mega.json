@@ -48,7 +48,9 @@
     "sm",
     "usum"
   ],
-  "storableIn": [],
+  "storableIn": [
+    "go"
+  ],
   "shinyReleased": true,
   "shinyBase": null,
   "baseStats": {

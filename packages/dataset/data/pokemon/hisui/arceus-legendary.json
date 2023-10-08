@@ -44,7 +44,6 @@
   "versionExclusiveIn": [],
   "eventOnlyIn": [],
   "storableIn": [
-    "home",
     "la"
   ],
   "shinyReleased": true,

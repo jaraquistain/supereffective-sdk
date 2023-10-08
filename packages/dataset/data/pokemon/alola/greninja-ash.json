@@ -45,8 +45,7 @@
   "eventOnlyIn": [],
   "storableIn": [
     "sm",
-    "usum",
-    "home"
+    "usum"
   ],
   "shinyReleased": false,
   "shinyBase": null,

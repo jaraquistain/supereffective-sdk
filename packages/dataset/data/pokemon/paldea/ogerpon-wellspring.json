@@ -18,7 +18,7 @@
   },
   "isDefault": false,
   "isForm": true,
-  "isLegendary": false,
+  "isLegendary": true,
   "isMythical": false,
   "isUltraBeast": false,
   "ultraBeastCode": null,
@@ -44,7 +44,6 @@
   "versionExclusiveIn": [],
   "eventOnlyIn": [],
   "storableIn": [
-    "home",
     "sv"
   ],
   "shinyReleased": false,
