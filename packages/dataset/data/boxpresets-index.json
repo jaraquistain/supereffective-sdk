@@ -14,7 +14,7 @@
   {"id":"sm-fully-sorted","gameSet":"sm","legacyId":"fully-sorted","name":"National: Sorted by Forms"},
   {"id":"sm-fully-sorted-minimal","gameSet":"sm","legacyId":"fully-sorted-minimal","name":"National: Sorted by Forms (Minimal)"},
   {"id":"sv-fully-sorted-paldea","gameSet":"sv","legacyId":"fully-sorted-paldea","isHidden":true,"name":"Regional: Sorted by Forms"},
-  {"id":"sv-minimal-paldea","gameSet":"sv","legacyId":"minimal-paldea","name":"Regional: Sorted by Forms (Minimal)"},
+  {"id":"sv-fully-sorted-paldea-minimal","gameSet":"sv","legacyId":"minimal-paldea","name":"Regional: Sorted by Forms (Minimal)"},
   {"id":"sv-fully-grouped-paldea","gameSet":"sv","legacyId":"fully-grouped-paldea","name":"Regional: Grouped by Species, then Forms"},
   {"id":"sv-sorted-species","gameSet":"sv","legacyId":"sorted-species","isHidden":true,"name":"National: Sorted by Species"},
   {"id":"sv-fully-sorted","gameSet":"sv","legacyId":"fully-sorted","isHidden":true,"name":"National: Sorted by Forms"},

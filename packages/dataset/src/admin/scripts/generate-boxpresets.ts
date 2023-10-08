@@ -39,7 +39,8 @@ function distributePokemonInBoxes(
   }
 
   for (const p of storableInGame) {
-    if (currentBox.pokemon.length === maxBoxSize || (startNewBoxForNewGenStarters && startsNewBox.includes(p.id))) {
+    const starterNewBox = startNewBoxForNewGenStarters && startsNewBox.includes(p.id) && currentBoxIndex > 0
+    if (currentBox.pokemon.length === maxBoxSize || starterNewBox) {
       addNewBox()
     }
 
