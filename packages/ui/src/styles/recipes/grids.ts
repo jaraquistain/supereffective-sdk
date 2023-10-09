@@ -6,6 +6,7 @@ export function gridRecipe(options: FullGridRecipeProps): string {
   return cn(
     styles.grid,
     options.autoFill && styles.auto,
+    options.boxGroup && styles['box-group'],
     options.cols && styles[`box-${options.cols}x`],
     options.cols && options.rows && styles[`box-${options.cols}x${options.rows}`],
     options.size && styles[options.size],

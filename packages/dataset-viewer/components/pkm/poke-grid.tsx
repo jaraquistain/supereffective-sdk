@@ -1,5 +1,6 @@
+import { cn } from '@/lib/utils'
 import { Pokemon } from '@supeffective/dataset'
-import { gridRecipe } from '@supeffective/ui'
+import { FullGridRecipeProps, gridRecipe } from '@supeffective/ui'
 import { StatefulLink } from '../ui/stateful-link'
 import { PokeImg } from './images'
 
@@ -7,8 +8,11 @@ export default function PokeGrid({
   pokemon,
   filters: _filters,
   withCounters,
+  gridOptions,
+  className,
 }: {
-  pokemon: Pokemon[]
+  className?: string
+  pokemon: Array<Pokemon | null>
   withCounters?: boolean
   filters?: {
     isForm?: boolean
@@ -18,6 +22,7 @@ export default function PokeGrid({
     eventOnlyIn?: string
     transferOnlyIn?: string
   }
+  gridOptions?: FullGridRecipeProps
 }) {
   const filters = Object.assign(
     {
@@ -27,9 +32,20 @@ export default function PokeGrid({
   )
 
   const filtered = pokemon
-    .filter((p) => (filters.isForm ? true : !p.isForm))
+    .filter((p) => {
+      if (!p) {
+        return true
+      }
+      if (filters.isForm) {
+        return true
+      }
+      return !p.isForm
+    })
     .filter((p) => {
       let included = true
+      if (!p) {
+        return true
+      }
 
       if (filters.obtainableIn) {
         included = included && p.obtainableIn.includes(filters.obtainableIn)
@@ -71,8 +87,8 @@ export default function PokeGrid({
       return null
     }
 
-    const species = filtered.filter((p) => !p.isForm)
-    const forms = filtered.filter((p) => p.isForm)
+    const species = filtered.filter((p) => p && !p.isForm)
+    const forms = filtered.filter((p) => p?.isForm)
 
     return (
       <div className="text-sm text-muted-foreground">
@@ -88,20 +104,30 @@ export default function PokeGrid({
       {_renderCounters()}
       <div
         className={gridRecipe({
-          className: 'gap-3 sm:gap-4 rounded-md border my-6 p-4 max-h-[440px] overflow-auto',
+          className: cn('gap-3 sm:gap-4 rounded-md border my-6 p-4 overflow-auto', className),
           size: 'lg',
           autoFill: true,
+          ...gridOptions,
         })}
       >
-        {filtered.map((p) => (
-          <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
-            <StatefulLink href={`/pokemon/${p.id}`}>
-              <PokeImg assetId={p.nid} />
-            </StatefulLink>
-            <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
-            <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
-          </div>
-        ))}
+        {filtered.map((p, idx) => {
+          if (!p) {
+            return (
+              <div key={`placeholder-${idx}`} className="text-center pointer-events-none flex flex-col gap-2">
+                <PokeImg assetId={'0000-unknown'} />
+              </div>
+            )
+          }
+          return (
+            <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
+              <StatefulLink href={`/pokemon/${p.id}`}>
+                <PokeImg assetId={p.nid} />
+              </StatefulLink>
+              <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
+              <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
+            </div>
+          )
+        })}
       </div>
     </>
   )
