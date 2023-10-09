@@ -2,7 +2,6 @@ import PokedexEntries from '@/components/pokedex/pokedex-entries'
 import ModalRoute from '@/components/ui/modal-route'
 import { datasetClient } from '@/lib/dataset-client'
 import { PageProps } from '@/lib/types'
-import { createQueryString } from '@/lib/utils'
 import { notFound } from 'next/navigation'
 
 // Return a list of `params` to populate the [id] dynamic segment

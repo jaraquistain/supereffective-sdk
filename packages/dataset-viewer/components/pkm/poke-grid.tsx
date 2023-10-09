@@ -119,7 +119,7 @@ export default function PokeGrid({
             )
           }
           return (
-            <div key={p.id} title={p.name} className="text-center flex flex-col gap-2">
+            <div key={p.id} title={p.name} className="text-center flex flex-col gap-2 hyphens-auto">
               <StatefulLink href={`/pokemon/${p.id}`}>
                 <PokeImg assetId={p.nid} />
               </StatefulLink>
