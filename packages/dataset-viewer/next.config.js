@@ -3,6 +3,10 @@ const isDev = process.env.NODE_ENV === 'development'
 const APP_DATA_URL = isDev ? 'http://localhost:4455/dist/data' : 'https://itsjavi.com/supereffective-sdk/data'
 const APP_ASSETS_URL = isDev ? 'http://localhost:4455/assets' : 'https://itsjavi.com/supereffective-assets/assets'
 
+console.log('NODE_ENV is: ', process.env.NODE_ENV)
+console.log('APP_DATA_URL is: ', APP_DATA_URL)
+console.log('APP_ASSETS_URL is: ', APP_ASSETS_URL)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {

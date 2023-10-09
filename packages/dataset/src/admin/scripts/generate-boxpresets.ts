@@ -7,8 +7,6 @@ const allPokemonMap = new Map(allPokemon.map((p) => [p.id, p]))
 const boxPresetsMap = new Map(getBoxPresets().map((p) => [p.id, p]))
 const pokedexesMap = getPokedexes()
 
-const startsNewBox = ['chikorita', 'treecko', 'turtwig', 'snivy', 'chespin', 'rowlet', 'grookey', 'sprigatito']
-
 type BoxPresetMode = 'fully-sorted' | 'sorted-species'
 
 function distributePokemonInBoxes(
@@ -17,6 +15,7 @@ function distributePokemonInBoxes(
   mode: BoxPresetMode,
   maxBoxSize = 30,
   minimal = false,
+  startsNewBox: string[] = [],
   startNewBoxForNewGenStarters = true,
   startNewBoxForForms = true,
 ): BoxPresetBox[] {
@@ -190,10 +189,10 @@ function generateGoBoxPresets(): void {
       throw new Error(`Preset ${presetIdMinimal} not found`)
     }
 
-    preset.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 9999, false, false, false)
+    preset.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 9999, false, [], false, false)
     savePreset(preset)
 
-    presetMinimal.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 9999, true, false, false)
+    presetMinimal.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 9999, true, [], false, false)
     savePreset(presetMinimal)
   }
 }
@@ -202,6 +201,7 @@ function generateHomeBoxPresets(): void {
   const gameSet = 'home'
   const autoPresets: BoxPresetMode[] = ['fully-sorted', 'sorted-species']
   const manualPresets = ['grouped-region', 'species-first']
+  const startsNewBox = ['chikorita', 'treecko', 'turtwig', 'victini', 'chespin', 'rowlet', 'grookey', 'sprigatito']
 
   // generate presets
   for (const presetIdSuffix of autoPresets) {
@@ -218,10 +218,19 @@ function generateHomeBoxPresets(): void {
       throw new Error(`Preset ${presetIdMinimal} not found`)
     }
 
-    preset.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 30, false)
+    preset.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 30, false, startsNewBox, true, true)
     savePreset(preset)
 
-    presetMinimal.boxes = distributePokemonInBoxes(allPokemon, gameSet, presetIdSuffix, 30, true)
+    presetMinimal.boxes = distributePokemonInBoxes(
+      allPokemon,
+      gameSet,
+      presetIdSuffix,
+      30,
+      true,
+      startsNewBox,
+      true,
+      true,
+    )
     savePreset(presetMinimal)
   }
 
