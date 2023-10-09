@@ -37,9 +37,9 @@
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
-    "@types/node": "^20.8.3",
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.11",
+    "@types/node": "^20.8.4",
+    "@types/react": "^18.2.27",
+    "@types/react-dom": "^18.2.12",
     "esbuild-plugin-svgj": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

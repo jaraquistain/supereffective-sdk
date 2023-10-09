@@ -45,8 +45,8 @@
     "clsx": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.11",
+    "@types/react": "^18.2.27",
+    "@types/react-dom": "^18.2.12",
     "@vitejs/plugin-react-swc": "^3.4.0",
     "open-props": "^1.6.5",
     "postcss-jit-props": "^1.0.13",

@@ -10,7 +10,7 @@
     "deps:upgrade": "pnpm --recursive update --latest",
     "dev": "pnpm --parallel --recursive dev",
     "format": "pnpm lint-fix && pnpm format-package-json",
-    "format-package-json": "pnpm sort-package-json && pnpm -r exec pnpm sort-package-json",
+    "format-package-json": "sort-package-json && pnpm -r exec sort-package-json",
     "hooks:pre-commit": "pnpm lint-staged",
     "hooks:pre-push": "pnpm quality-checks",
     "postinstall": "pnpm format-package-json",
@@ -35,7 +35,7 @@
       "biome check --no-errors-on-unmatched --apply"
     ],
     "package.json": [
-      "pnpm sort-package-json"
+      "sort-package-json"
     ]
   },
   "devDependencies": {
@@ -44,12 +44,12 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@itsjavi/semver-release": "^0.7.2",
     "@types/jest": "^29.5.5",
-    "@types/node": "^20.8.3",
+    "@types/node": "^20.8.4",
     "bun": "^1.0.4",
     "changelogen": "^0.5.5",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "publint": "^0.2.3",
+    "publint": "^0.2.4",
     "sort-package-json": "^2.6.0",
     "turbo": "^1.10.15",
     "typescript": "^5.2.2"
