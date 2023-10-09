@@ -32,6 +32,7 @@ export default async function PokedexEntries({
   return (
     <div className="w-full">
       <PokeGrid
+        className="max-h-[65vh]"
         pokemon={entries}
         withCounters
         filters={{
