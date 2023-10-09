@@ -55,7 +55,9 @@ export default async function PresetBoxes({
           const boxTitle = preset.boxes[i].title ?? `Box ${i + 1}`
           return (
             <div key={`${preset.id}-box-${i}`} className="flex flex-col gap-3 items-stretch">
-              <div className="text-center text-lg font-bold rounded-xl border p-2 bg-slate-800">{boxTitle}</div>
+              <div className="text-center text-lg font-bold rounded-xl border p-2 bg-slate-200 dark:bg-slate-800">
+                {boxTitle}
+              </div>
               <PokeGrid
                 className="my-0 flex-1"
                 pokemon={box}
