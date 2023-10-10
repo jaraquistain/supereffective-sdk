@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export const searchParamKeys = ['gen', 'forms', 'region', 'lang', 'labels'] as const
+export const searchParamKeys = ['gen', 'forms', 'region', 'lang', 'labels', 'table'] as const
 export type AppSearchParamKeys = typeof searchParamKeys
 
 export type PageProps<P extends Array<string> = [], S extends AppSearchParamKeys = AppSearchParamKeys> = {
