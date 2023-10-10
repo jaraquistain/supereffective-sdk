@@ -59,7 +59,10 @@ export function validateLivingDex(metadata: object, boxes: object[]): void {
 }
 
 export function serializeLivingDexMeta(meta: LivingDexDocMeta | Partial<LivingDexDocMeta>): string {
-  return '```json\n' + JSON.stringify(meta) + '\n```\n'
+  const startStr = '```json\n'
+  const endStr = '\n```\n'
+
+  return startStr + JSON.stringify(meta) + endStr
 }
 
 export function serializeLivingDex(
@@ -107,10 +110,10 @@ export function serializeLivingDex(
     metaLines.push('## Format')
     metaLines.push('')
     metaLines.push('> **Box format**:')
-    metaLines.push(`> \`${boxPrefix} ` + boxPropsInfos.join(propertySeparator) + '`')
+    metaLines.push(`> \`${boxPrefix} ${boxPropsInfos.join(propertySeparator)}\``)
     metaLines.push('>')
     metaLines.push('> **Pokémon format**:')
-    metaLines.push(`> \`${pokemonPrefix} ` + pokePropsInfos.join(propertySeparator + ' ') + '`\n')
+    metaLines.push(`> \`${pokemonPrefix} ${pokePropsInfos.join(`${propertySeparator} `)}\`\n`)
   }
 
   metaLines.push('## Boxes')
@@ -119,23 +122,23 @@ export function serializeLivingDex(
   // add boxes and pokemon
   for (const box of dex.boxes) {
     metaLines.push(
-      boxPrefix + ' ' + collectPropValues(box, boxProperties, arrayDelimiters, arraySeparator).join(propertySeparator),
+      `${boxPrefix} ${collectPropValues(box, boxProperties, arrayDelimiters, arraySeparator).join(propertySeparator)}`,
     )
 
     for (const pokemon of box.pokemon) {
       if (!pokemon) {
-        metaLines.push(pokemonPrefix + ' ' + propertySeparator)
+        metaLines.push(`${pokemonPrefix} ${propertySeparator}`)
         continue
       }
       metaLines.push(
-        pokemonPrefix +
-          ' ' +
-          collectPropValues(pokemon, pokemonProperties, arrayDelimiters, arraySeparator).join(propertySeparator),
+        `${pokemonPrefix} ${collectPropValues(pokemon, pokemonProperties, arrayDelimiters, arraySeparator).join(
+          propertySeparator,
+        )}`,
       )
     }
   }
 
-  return metaLines.join('\n') + '\n'
+  return `${metaLines.join('\n')}\n`
 }
 
 function convertLivingDexValue(
@@ -193,7 +196,7 @@ function convertLivingDexValue(
 function parseBoxProps(line: string, format: LivingDexDocSpecConfig): LivingDexDocBox {
   const data = new Map<string, unknown>()
   const lineData = line
-    .replace(new RegExp('^' + format.boxPrefix), '')
+    .replace(new RegExp(`^${format.boxPrefix}`), '')
     .trim()
     .split(format.propertySeparator)
 
@@ -211,7 +214,7 @@ function parseBoxProps(line: string, format: LivingDexDocSpecConfig): LivingDexD
 function parsePokemonProps(line: string, format: LivingDexDocSpecConfig): LivingDexDocPokemon | null {
   const data = new Map<string, unknown>()
   const lineData = line
-    .replace(new RegExp('^' + format.pokemonPrefix), '')
+    .replace(new RegExp(`^${format.pokemonPrefix}`), '')
     .trim()
     .split(format.propertySeparator)
 

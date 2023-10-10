@@ -1,13 +1,13 @@
 import { existsSync } from 'node:fs'
-import type { BaseEntity, BoxPreset, Pokedex } from '../../schemas'
+import type { BoxPreset, Pokedex } from '../../schemas'
 import { getDataPath, readFileAsJson, writeFile } from '../utils/fs'
 
 function formatBoxPresets(): void {
   const srcFile = getDataPath('boxpresets-index.json')
-  const records = readFileAsJson<BaseEntity[]>(srcFile)
+  const records = readFileAsJson<Pick<BoxPreset, 'id' | 'name' | 'gameSet'>[]>(srcFile)
 
   for (const baseRecord of records) {
-    const gameSet = (baseRecord as any).gameSet
+    const gameSet = baseRecord.gameSet
     const srcRecordFile = gameSet
       ? getDataPath(`boxpresets/${gameSet}/${baseRecord.id}.json`)
       : getDataPath(`boxpresets/${baseRecord.id}.json`)
@@ -41,10 +41,10 @@ function formatBoxPresets(): void {
 
 function formatPokedexes(): void {
   const srcFile = getDataPath('pokedexes-index.json')
-  const records = readFileAsJson<BaseEntity[]>(srcFile)
+  const records = readFileAsJson<Pick<Pokedex, 'id' | 'name' | 'region'>[]>(srcFile)
 
   for (const baseRecord of records) {
-    const region = (baseRecord as any).region
+    const region = baseRecord.region
     const srcRecordFile = region
       ? getDataPath(`pokedexes/${region}/${baseRecord.id}.json`)
       : getDataPath(`pokedexes/${baseRecord.id}.json`)
