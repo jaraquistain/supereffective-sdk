@@ -1,7 +1,7 @@
 name: Update Dependencies
 
 env:
-  NODE_VERSION: '>=20.8.4'
+  NODE_VERSION: '>=20.8.0'
   PNPM_VERSION: 8.9
 
 on:

@@ -1,7 +1,7 @@
 name: Deploy to Github Pages
 
 env:
-  NODE_VERSION: '>=20.8.4'
+  NODE_VERSION: '>=20.8.0'
   PNPM_VERSION: 8.9
   PKM_ASSETS_URL: 'https://itsjavi.com/supereffective-assets/assets'
 

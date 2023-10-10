@@ -4,4 +4,7 @@ runs:
   using: 'composite'
   steps:
     - shell: bash
-      run: pnpm quality-checks
+      run: |
+        pnpm quality-checks
+        cd packages/dataset-viewer
+        pnpm build:vercel
