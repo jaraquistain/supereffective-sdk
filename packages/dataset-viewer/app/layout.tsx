@@ -26,7 +26,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
           {modal}
-          <main className="flex min-h-screen flex-col items-center justify-between p-2">{children}</main>
+          <main className="flex min-h-screen flex-col items-center justify-between py-2 px-0 sm:px-2">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -2,22 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-[inert] {
-  pointer-events: none;
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.prose a {
-  @apply text-purple-500;
-  text-decoration: none;
-}
-
-.prose a:hover {
-  @apply text-purple-400;
-  text-decoration: underline;
-}
-
 /* https://ui.shadcn.com/themes */
 @layer base {
   :root {
@@ -71,10 +55,25 @@
   border-color: hsl(var(--border));
 }
 
+[inert] {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prose a {
+  @apply text-purple-500;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  @apply text-purple-400;
+  text-decoration: underline;
+}
+
 .container {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  @apply px-2 sm:px-8;
 }

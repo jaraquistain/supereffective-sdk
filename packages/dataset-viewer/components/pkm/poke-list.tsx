@@ -5,7 +5,7 @@ import { PokeListProps } from './types'
 
 export default function PokeList(props: PokeListProps) {
   return (
-    <div className="container p-5">
+    <div className="container p-1 sm:p-5">
       <PokeListHeader {...props} />
       <Suspense fallback={<div>Loading...</div>}>
         <PokeListBody {...props} />

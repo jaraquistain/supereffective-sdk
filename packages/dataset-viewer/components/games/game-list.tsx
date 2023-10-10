@@ -4,7 +4,7 @@ import { GameListProps } from './types'
 
 export default function GameList(props: GameListProps) {
   return (
-    <div className="container p-5">
+    <div className="container p-1 sm:p-5">
       <GameListHeader {...props} />
       <GameListBody {...props} />
     </div>

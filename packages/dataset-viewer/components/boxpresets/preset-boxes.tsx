@@ -1,14 +1,17 @@
 import { datasetClient } from '@/lib/dataset-client'
 import { BoxPreset, Pokemon } from '@supeffective/dataset'
-import { gridRecipe } from '@supeffective/ui'
+import { GridBoxGroup } from '../layout/grids'
 import PokeGrid from '../pkm/poke-grid'
 import { Button } from '../ui/button'
 import EditSourceLink from '../ui/edit-on-github'
+import { LabelsToggler } from './labels-toggler'
 
 export default async function PresetBoxes({
   preset,
+  withLabels,
 }: {
   preset: BoxPreset
+  withLabels?: boolean
 }) {
   const allPokemon = await datasetClient.pokemon.getAll()
   const pokemonMap = new Map(allPokemon.map((row) => [row.id, row]))
@@ -42,15 +45,11 @@ export default async function PresetBoxes({
             Edit on Github
           </EditSourceLink>
         </Button>
+        <br />
+        <LabelsToggler className="inline-flex" />
       </div>
 
-      <div
-        className={gridRecipe({
-          className: 'w-full items-stretch gap-3 sm:gap-4 rounded-md border my-6 p-4',
-          size: 'xl',
-          boxGroup: true,
-        })}
-      >
+      <GridBoxGroup size="xl">
         {boxes.map((box, i) => {
           const boxTitle = preset.boxes[i].title ?? `Box ${i + 1}`
           return (
@@ -61,8 +60,10 @@ export default async function PresetBoxes({
               <PokeGrid
                 className="my-0 flex-1"
                 pokemon={box}
+                withDexNums={withLabels}
+                withNames={withLabels}
                 gridOptions={{
-                  size: 'md',
+                  size: 'xs',
                   cols: 6,
                   rows: 5,
                 }}
@@ -73,7 +74,7 @@ export default async function PresetBoxes({
             </div>
           )
         })}
-      </div>
+      </GridBoxGroup>
     </>
   )
 }

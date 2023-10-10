@@ -24,6 +24,8 @@ export default async function GamePokeList({
       <PokeGrid
         pokemon={pokemon}
         withCounters
+        withDexNums
+        withNames
         filters={{
           isForm: true,
           obtainableIn: isObtainable ? game.id : undefined,

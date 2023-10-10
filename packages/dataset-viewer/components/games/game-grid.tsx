@@ -1,5 +1,5 @@
 import { Game } from '@supeffective/dataset'
-import { gridRecipe } from '@supeffective/ui'
+import { GridFull } from '../layout/grids'
 import { GameAvatarImg } from '../pkm/images'
 import { StatefulLink } from '../ui/stateful-link'
 
@@ -13,7 +13,7 @@ export default function GameGrid({ games }: { games: Game[] }) {
   }
 
   return (
-    <div className={gridRecipe({ className: 'gap-3 sm:gap-4 rounded-md border my-6 p-4', size: 'lg', autoFill: true })}>
+    <GridFull size="lg">
       {games.map((row) => (
         <div key={row.id} title={row.name} className="text-center flex flex-col gap-2">
           <StatefulLink href={`/games/${row.id}`}>
@@ -22,6 +22,6 @@ export default function GameGrid({ games }: { games: Game[] }) {
           <div className="font-mono text-xs text-muted-foreground hyphens-auto">Pokémon {row.name}</div>
         </div>
       ))}
-    </div>
+    </GridFull>
   )
 }

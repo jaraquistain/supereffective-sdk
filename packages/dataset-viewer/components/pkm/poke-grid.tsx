@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils'
 import { Pokemon } from '@supeffective/dataset'
-import { FullGridRecipeProps, gridRecipe } from '@supeffective/ui'
+import { FullGridRecipeProps } from '@supeffective/ui'
+import { GridFull } from '../layout/grids'
 import { StatefulLink } from '../ui/stateful-link'
 import { PokeImg } from './images'
 
@@ -8,12 +8,18 @@ export default function PokeGrid({
   pokemon,
   filters: _filters,
   withCounters,
+  withNames,
+  withFormNames,
+  withDexNums,
   gridOptions,
   className,
 }: {
   className?: string
   pokemon: Array<Pokemon | null>
   withCounters?: boolean
+  withNames?: boolean
+  withFormNames?: boolean
+  withDexNums?: boolean
   filters?: {
     isForm?: boolean
     obtainableIn?: string
@@ -102,14 +108,7 @@ export default function PokeGrid({
   return (
     <>
       {_renderCounters()}
-      <div
-        className={gridRecipe({
-          className: cn('gap-3 sm:gap-4 rounded-md border my-6 p-4 overflow-auto', className),
-          size: 'lg',
-          autoFill: true,
-          ...gridOptions,
-        })}
-      >
+      <GridFull size="lg" {...gridOptions} className={className}>
         {filtered.map((p, idx) => {
           if (!p) {
             return (
@@ -121,14 +120,21 @@ export default function PokeGrid({
           return (
             <div key={p.id} title={p.name} className="text-center flex flex-col gap-2 hyphens-auto">
               <StatefulLink href={`/pokemon/${p.id}`}>
-                <PokeImg assetId={p.nid} />
+                <PokeImg assetId={p.nid} title={p.name} />
               </StatefulLink>
-              <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
-              <div className="font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
+              {withDexNums && (
+                <div className="font-mono text-xs text-muted-foreground">#{String(p.dexNum).padStart(4, '0')}</div>
+              )}
+              {withNames && (
+                <div className="hidden sm:block font-mono text-xs text-muted-foreground hyphens-auto">{p.name}</div>
+              )}
+              {withFormNames && p.formName && (
+                <div className="hidden sm:block font-mono text-xs text-muted-foreground hyphens-auto">{p.formName}</div>
+              )}
             </div>
           )
         })}
-      </div>
+      </GridFull>
     </>
   )
 }

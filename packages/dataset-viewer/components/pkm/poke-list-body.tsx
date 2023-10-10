@@ -33,6 +33,8 @@ export default async function PokeListBody({ region, showForms }: PokeListProps)
       </div>
       <PokeGrid
         pokemon={scopedPokemon}
+        withDexNums
+        withNames
         filters={{
           isForm: showForms,
         }}
