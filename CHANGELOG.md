@@ -1,5 +1,74 @@
 
 
+## v0.4.1
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.4.0...v0.4.1)
+
+### 🚀 Enhancements
+
+- **viewer:** Implement pokemon parallel+intercepted routes with modals ([da92b7e](https://github.com/itsjavi/supereffective-sdk/commit/da92b7e))
+- **dataset:** Simplify female names and add region gens ([3cbb7ff](https://github.com/itsjavi/supereffective-sdk/commit/3cbb7ff))
+- **viewer:** Add forms toggler ([40c4ff2](https://github.com/itsjavi/supereffective-sdk/commit/40c4ff2))
+- **viewer:** Add games ([68ee04d](https://github.com/itsjavi/supereffective-sdk/commit/68ee04d))
+- **dataset:** Add script to generate and validate presets ([d547fc9](https://github.com/itsjavi/supereffective-sdk/commit/d547fc9))
+- Add local dev server for the data and assets ([288ed6a](https://github.com/itsjavi/supereffective-sdk/commit/288ed6a))
+- **viewer:** Add pokedex viewer ([be90b9d](https://github.com/itsjavi/supereffective-sdk/commit/be90b9d))
+- **data:** Add script to regenerate national dex and validate rest ([9d81020](https://github.com/itsjavi/supereffective-sdk/commit/9d81020))
+- Add Edit on Github buttons ([5312eac](https://github.com/itsjavi/supereffective-sdk/commit/5312eac))
+- Add preset viewer ([b7174f5](https://github.com/itsjavi/supereffective-sdk/commit/b7174f5))
+- Add ui-legacy package ([8f395a4](https://github.com/itsjavi/supereffective-sdk/commit/8f395a4))
+- **viewer:** Improve mobile ux ([ba57aec](https://github.com/itsjavi/supereffective-sdk/commit/ba57aec))
+
+### 🩹 Fixes
+
+- Pages ([06a9481](https://github.com/itsjavi/supereffective-sdk/commit/06a9481))
+- Pages ([314a38d](https://github.com/itsjavi/supereffective-sdk/commit/314a38d))
+- Data errors for storable pokemon ([fb790c3](https://github.com/itsjavi/supereffective-sdk/commit/fb790c3))
+- **viewer:** Better color a11y ([0157dfe](https://github.com/itsjavi/supereffective-sdk/commit/0157dfe))
+- Box preset legacy ids ([2f1456c](https://github.com/itsjavi/supereffective-sdk/commit/2f1456c))
+- Build issues ([3cee8fd](https://github.com/itsjavi/supereffective-sdk/commit/3cee8fd))
+- Sort-package-json not found ([7980d74](https://github.com/itsjavi/supereffective-sdk/commit/7980d74))
+- Build issues ([b5b5c07](https://github.com/itsjavi/supereffective-sdk/commit/b5b5c07))
+- Build issues ([47a0024](https://github.com/itsjavi/supereffective-sdk/commit/47a0024))
+- Dex height on modals ([f50be26](https://github.com/itsjavi/supereffective-sdk/commit/f50be26))
+- Light mode ([ba8262b](https://github.com/itsjavi/supereffective-sdk/commit/ba8262b))
+- More linting issues ([499d901](https://github.com/itsjavi/supereffective-sdk/commit/499d901))
+
+### 💅 Refactors
+
+- **ui:** Stop using r1stack/react, tsup and panda-css in favor of vite + scss ([3cec191](https://github.com/itsjavi/supereffective-sdk/commit/3cec191))
+- **ui:** Add open-props support ([7d684a0](https://github.com/itsjavi/supereffective-sdk/commit/7d684a0))
+- **ui:** Move old components to v1 ([de7de97](https://github.com/itsjavi/supereffective-sdk/commit/de7de97))
+- **ui:** Implement initial set of components using scss ([65788b1](https://github.com/itsjavi/supereffective-sdk/commit/65788b1))
+- **ui:** Better SSR/RSC support ([752935a](https://github.com/itsjavi/supereffective-sdk/commit/752935a))
+- Remove old code ([b3aeb79](https://github.com/itsjavi/supereffective-sdk/commit/b3aeb79))
+- **dataset:** Unify admin mutation scripts ([50988fd](https://github.com/itsjavi/supereffective-sdk/commit/50988fd))
+- Regenerate box presets with new distribution ([4dc0de4](https://github.com/itsjavi/supereffective-sdk/commit/4dc0de4))
+- Show pokemon by region ([0893928](https://github.com/itsjavi/supereffective-sdk/commit/0893928))
+
+### 📖 Documentation
+
+- Add stories to gh-pages ([70b7cd6](https://github.com/itsjavi/supereffective-sdk/commit/70b7cd6))
+- Fic gh-pages ([703408f](https://github.com/itsjavi/supereffective-sdk/commit/703408f))
+- Edit home page ([f94e595](https://github.com/itsjavi/supereffective-sdk/commit/f94e595))
+
+### 🏡 Chore
+
+- Rename admin pkg ([0cfa812](https://github.com/itsjavi/supereffective-sdk/commit/0cfa812))
+- Edit commitlint rules ([57b0b8f](https://github.com/itsjavi/supereffective-sdk/commit/57b0b8f))
+- Install bun as devDependency ([572529f](https://github.com/itsjavi/supereffective-sdk/commit/572529f))
+- Rename next build command ([83a124d](https://github.com/itsjavi/supereffective-sdk/commit/83a124d))
+- Replace cn lib ([072c9f2](https://github.com/itsjavi/supereffective-sdk/commit/072c9f2))
+- Rebuild presets and minor config changes ([bee004e](https://github.com/itsjavi/supereffective-sdk/commit/bee004e))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.4.0
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.3.0...v0.4.0)

@@ -1,6 +1,6 @@
 {
   "name": "supeffective-sdk-dataset-viewer",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "scripts": {
     "build:vercel": "VERCEL=1 && next build",
