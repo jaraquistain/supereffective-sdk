@@ -1,8 +1,9 @@
-const isDev = process.env.VERCEL !== '1'
+const isDev = process.env.CI !== '1'
 
 const APP_DATA_URL = isDev ? 'http://localhost:4455/dist/data' : 'https://itsjavi.com/supereffective-sdk/data'
 const APP_ASSETS_URL = isDev ? 'http://localhost:4455/assets' : 'https://itsjavi.com/supereffective-assets/assets'
 
+console.log('CI is: ', process.env.CI)
 console.log('VERCEL is: ', process.env.VERCEL)
 console.log('VERCEL_ENV is: ', process.env.VERCEL_ENV)
 console.log('NODE_ENV is: ', process.env.NODE_ENV)
