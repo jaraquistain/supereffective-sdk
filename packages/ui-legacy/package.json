@@ -1,0 +1,67 @@
+{
+  "name": "@supeffective/ui-legacy",
+  "version": "0.3.2",
+  "description": "supereffective.gg 'dex-tracker-ui' package",
+  "homepage": "https://github.com/itsjavi/supereffective-dextracker#readme",
+  "bugs": {
+    "url": "https://github.com/itsjavi/supereffective-dextracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsjavi/supereffective-dextracker.git"
+  },
+  "license": "MIT",
+  "author": "Javier Aguilar",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "pnpm codegen && tsup",
+    "codegen": "panda codegen && panda",
+    "prepublishOnly": "pnpm run build",
+    "publint-check": "pnpm publint",
+    "typelint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@r1stack/cn": "^0.5.0",
+    "@r1stack/react": "^0.5.0",
+    "@r1stack/search": "^0.5.0",
+    "@r1stack/storage": "^0.5.0",
+    "@supeffective/dataset": "workspace:*",
+    "@supeffective/dextracker": "workspace:*",
+    "@supeffective/icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.15.1",
+    "@pandacss/types": "^0.15.1",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "postcss": "^8.4.30",
+    "publint": "^0.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
