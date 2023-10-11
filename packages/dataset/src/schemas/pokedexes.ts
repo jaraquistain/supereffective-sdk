@@ -2,6 +2,16 @@ import z from 'zod'
 
 import { nameSchema, slugSchema } from './common'
 
+export const pokedexItemIndexSchema = z
+  .object({
+    id: slugSchema,
+    name: nameSchema,
+    region: slugSchema.nullable(),
+  })
+  .strict()
+
+export type PokedexIndexItem = z.infer<typeof pokedexItemIndexSchema>
+
 export const pokedexEntrySchema = z.object({
   id: slugSchema,
   dexNum: z.coerce.number().optional(),

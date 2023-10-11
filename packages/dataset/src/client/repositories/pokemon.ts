@@ -1,12 +1,145 @@
-import { type CompactPokemon, type Pokemon, type PokemonIndex, pokemonIndexSchema, pokemonSchema } from '../../schemas'
-import { type SearchEngine, type SearchEngineIndex, createSearchIndex } from '../search'
-import createSearchEngine from '../search/createSearchEngine'
-import { createReadOnlyRepository } from './core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from './core/types'
+import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../../constants'
+import {
+  type CompactPokemon,
+  type Pokemon,
+  type PokemonIndexItem,
+  pokemonIndexItemSchema,
+  pokemonSchema,
+} from '../../schemas'
+import { fetchCollection, fetchCollectionWithCache } from '../providers'
+import type { SearchEngineIndex } from '../search'
+import { createRepositoryClient, findResourceById, findResourcesByIds, getResource, getResourceById } from './_base'
+import type { Repository, RepositoryDataProvider } from './_types'
 
-// ----  Search hydrator ----
+export function createPokemonRepository(dataProvider: RepositoryDataProvider): Repository<Pokemon> {
+  return createRepositoryClient<Pokemon>({
+    id: 'pokemon',
+    resourcePath: 'pokemon.min.json',
+    schema: pokemonSchema,
+    dataProvider: dataProvider,
+  })
+}
 
-async function pokemonSearchIndexHydrator<K extends CompactPokemon | Pokemon>(
+export function createPokemonIndexRepository(dataProvider: RepositoryDataProvider): Repository<PokemonIndexItem> {
+  return createRepositoryClient<PokemonIndexItem>({
+    id: 'pokemon-index',
+    resourcePath: 'pokemon-index.min.json',
+    schema: pokemonIndexItemSchema,
+    dataProvider: dataProvider,
+  })
+}
+
+// -------------------------------- Functional API -----------------------------------------------
+const _memCache: {
+  collection: Map<string, Pokemon[]>
+} = {
+  collection: new Map(),
+}
+
+export async function getAllPokemon(baseUrl?: string): Promise<Pokemon[]> {
+  return fetchCollectionWithCache<Pokemon>(_memCache, 'pokemon.min.json', baseUrl)
+}
+
+export async function getPokemonById(id: string, baseUrl?: string): Promise<Pokemon> {
+  return getAllPokemon(baseUrl).then((records) => getResourceById(records, id, 'Pokemon'))
+}
+
+export async function findPokemonById(id: string, baseUrl?: string): Promise<Pokemon | undefined> {
+  return getAllPokemon(baseUrl).then((records) => findResourceById(records, id))
+}
+
+export async function findPokemonByIds(ids: Array<string>, baseUrl?: string): Promise<Pokemon[]> {
+  return getAllPokemon(baseUrl).then((records) => findResourcesByIds(records, ids))
+}
+
+// Memory-optimized functions (avoids fetching the whole collection):
+export async function fetchPokemonIndex(baseUrl?: string): Promise<PokemonIndexItem[]> {
+  return fetchCollection<PokemonIndexItem>('pokemon-index.min.json', baseUrl)
+}
+
+export async function fetchPokemon(id: string, regionId: string, baseUrl?: string): Promise<Pokemon> {
+  return getResource<Pokemon>('pokemon', regionId, id, baseUrl, 'Pokemon')
+}
+
+// --------------------------------  Placeholder Pokemon --------------------------------
+
+export function createPlaceholderPokemon(): Pokemon {
+  return {
+    id: 'unknown',
+    nid: '0000-unknown',
+    dexNum: 0,
+    formId: null,
+    name: 'Untitled',
+    psName: 'unknown',
+    formName: null,
+    region: PKM_LATEST_REGION,
+    generation: PKM_LATEST_GENERATION,
+    type1: 'normal',
+    type2: null,
+    color: 'white',
+    abilities: {
+      primary: 'pressure',
+      secondary: null,
+      hidden: null,
+    },
+    isDefault: true,
+    isForm: false,
+    isLegendary: false,
+    isMythical: false,
+    isUltraBeast: false,
+    ultraBeastCode: null,
+    isSpecialAbilityForm: false,
+    isCosmeticForm: false,
+    isFemaleForm: false,
+    hasGenderDifferences: false,
+    isBattleOnlyForm: false,
+    isSwitchableForm: false,
+    isFusion: false,
+    fusedWith: null,
+    isMega: false,
+    isPrimal: false,
+    isGmax: false,
+    isRegional: false,
+    canGmax: false,
+    canDynamax: false,
+    canBeAlpha: false,
+    debutIn: PKM_LATEST_GAMESET,
+    obtainableIn: [],
+    versionExclusiveIn: [],
+    eventOnlyIn: [],
+    storableIn: [],
+    shinyReleased: false,
+    shinyBase: null,
+    baseStats: {
+      hp: 0,
+      atk: 0,
+      def: 0,
+      spa: 0,
+      spd: 0,
+      spe: 0,
+    },
+    weight: 0,
+    height: 0,
+    baseSpecies: null,
+    baseForms: [],
+    forms: [],
+    evolvesFrom: null,
+    family: null,
+    refs: {
+      smogon: 'unknown',
+      showdown: 'unknown',
+      serebii: 'unknown',
+      bulbapedia: 'unknown',
+    },
+  }
+}
+
+export function isPlaceholderPokemon(pkm: Pokemon | CompactPokemon): boolean {
+  return pkm.id === 'unknown'
+}
+
+// --------------------------------  Search --------------------------------
+export async function hydratePokemonSearchIndex<K extends CompactPokemon | Pokemon>(
   entities: K[],
   searchIndex: SearchEngineIndex<K>,
 ): Promise<void> {
@@ -36,28 +169,4 @@ async function pokemonSearchIndexHydrator<K extends CompactPokemon | Pokemon>(
       },
     ],
   ])
-}
-
-// ----  Pokemon ----
-
-export function createPokemonRepository(dataProvider: RepositoryDataProvider): Repository<Pokemon> {
-  return createReadOnlyRepository<Pokemon>({
-    id: 'pokemon',
-    resourcePath: 'pokemon.min.json',
-    schema: pokemonSchema,
-    dataProvider: dataProvider,
-  })
-}
-
-export function createPokemonIndexRepository(dataProvider: RepositoryDataProvider): Repository<PokemonIndex> {
-  return createReadOnlyRepository<PokemonIndex>({
-    id: 'pokemon-index',
-    resourcePath: 'pokemon-index.min.json',
-    schema: pokemonIndexSchema,
-    dataProvider: dataProvider,
-  })
-}
-
-export function createPokemonSearchEngine(repository: Repository<Pokemon>): SearchEngine<Pokemon> {
-  return createSearchEngine<Pokemon>(repository, createSearchIndex(), pokemonSearchIndexHydrator)
 }

@@ -1,3 +1,26 @@
+import type { Entity } from '../repositories'
+
+/**
+ * Native RequestInit, compatible with Next.js revalidate tags.
+ *
+ * @see https://nextjs.org/docs/api-reference/next.config.js/headers
+ */
+export type NextCompatibleRequestInit = RequestInit & {
+  next?: {
+    tags?: Array<string>
+  }
+}
+
+export type DatasetClientConfig = {
+  baseDataUrl: string
+  baseImageUrl: string
+  dataHeaders?: Record<string, string>
+}
+
+export type InMemoryCache<R extends Entity> = {
+  collection: Map<string, R[]>
+}
+
 export interface AssetUrlResolver {
   baseUri: string
   resolveUri(relativePath: string): string

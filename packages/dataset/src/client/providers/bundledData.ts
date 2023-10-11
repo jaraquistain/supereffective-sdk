@@ -36,7 +36,6 @@ const pokemonTypes: PokeType[] = pokeTypeSchema.array().parse(_pokemonTypes)
 const pokemonGames: Game[] = gameSchema.array().parse(_pokemonGames)
 
 // convert to maps
-
 const pokemonColorsMap = new Map<string, Color>(pokemonColors.map((color) => [color.id, color]))
 const pokemonLanguagesMap = new Map<string, Language>(pokemonLanguages.map((language) => [language.id, language]))
 const pokemonNaturesMap = new Map<string, Nature>(pokemonNatures.map((nature) => [nature.id, nature]))

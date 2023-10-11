@@ -1,4 +1,4 @@
-import type { Entity } from '../repositories/core'
+import type { Entity } from '../repositories/_types'
 import type { SearchEngineIndex } from './types'
 
 export function createSearchIndex<R extends Entity>(tokenSeparator = ':'): SearchEngineIndex<R> {

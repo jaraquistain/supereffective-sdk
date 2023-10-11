@@ -2,6 +2,17 @@ import z from 'zod'
 
 import { nameSchema, slugSchema } from './common'
 
+export const boxPresetIndexItemSchema = z
+  .object({
+    id: slugSchema,
+    gameSet: slugSchema,
+    legacyId: slugSchema.nullable(),
+    name: nameSchema,
+  })
+  .strict()
+
+export type BoxPresetIndexItem = z.infer<typeof boxPresetIndexItemSchema>
+
 export const boxPresetBoxPokemonSchema = slugSchema.nullable().or(
   z.object({
     pid: slugSchema,

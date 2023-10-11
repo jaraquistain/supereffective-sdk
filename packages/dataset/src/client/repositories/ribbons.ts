@@ -1,11 +1,10 @@
 import { type Ribbon, ribbonSchema } from '../../schemas'
-import { type SearchEngine, createSearchIndex } from '../search'
-import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
-import { createReadOnlyRepository } from './core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from './core/types'
+import { fetchCollectionWithCache } from '../providers'
+import { createRepositoryClient, findResourceById, findResourcesByIds, getResourceById } from './_base'
+import type { Repository, RepositoryDataProvider } from './_types'
 
 export function createRibbonRepository(dataProvider: RepositoryDataProvider): Repository<Ribbon> {
-  return createReadOnlyRepository<Ribbon>({
+  return createRepositoryClient<Ribbon>({
     id: 'ribbons',
     resourcePath: 'ribbons.min.json',
     schema: ribbonSchema,
@@ -13,6 +12,25 @@ export function createRibbonRepository(dataProvider: RepositoryDataProvider): Re
   })
 }
 
-export function createRibbonSearchEngine(repository: Repository<Ribbon>): SearchEngine<Ribbon> {
-  return createSearchEngine<Ribbon>(repository, createSearchIndex(), defaultSearchIndexHydrator)
+// -------------------------------- Functional API -----------------------------------------------
+const _memCache: {
+  collection: Map<string, Ribbon[]>
+} = {
+  collection: new Map(),
+}
+
+export async function getAllRibbons(baseUrl?: string): Promise<Ribbon[]> {
+  return fetchCollectionWithCache<Ribbon>(_memCache, 'ribbons.min.json', baseUrl)
+}
+
+export async function getRibbonById(id: string, baseUrl?: string): Promise<Ribbon> {
+  return getAllRibbons(baseUrl).then((records) => getResourceById(records, id, 'Ribbon'))
+}
+
+export async function findRibbonById(id: string, baseUrl?: string): Promise<Ribbon | undefined> {
+  return getAllRibbons(baseUrl).then((records) => findResourceById(records, id))
+}
+
+export async function findRibbonsByIds(ids: Array<string>, baseUrl?: string): Promise<Ribbon[]> {
+  return getAllRibbons(baseUrl).then((records) => findResourcesByIds(records, ids))
 }

@@ -1,4 +1,4 @@
-import type { Entity, Repository } from '../repositories/core'
+import type { Entity, Repository } from '../repositories/_types'
 
 export interface SearchFilter<R extends Entity> {
   field: keyof R

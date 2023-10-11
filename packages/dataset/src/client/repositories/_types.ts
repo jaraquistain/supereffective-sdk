@@ -13,10 +13,6 @@ export interface Repository<R extends Entity> {
   getById(id: string): Promise<R>
   findById(id: string): Promise<R | undefined>
   getManyByIds(ids: Array<string>): Promise<Array<R>>
-  exists(id: string): Promise<boolean>
-  assureExists(id: string): Promise<void>
-  validate(data: R): EntityValidationResult
-  validateMany(data: Array<R>): EntityValidationResult
 }
 
 export interface RepositoryDataProvider {

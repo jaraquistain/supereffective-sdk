@@ -2,7 +2,7 @@ import z from 'zod'
 
 import { generationSchema, nameSchema, slugSchema } from './common'
 
-export const pokemonIndexSchema = z
+export const pokemonIndexItemSchema = z
   .object({
     id: slugSchema,
     nid: slugSchema,
@@ -12,7 +12,7 @@ export const pokemonIndexSchema = z
   })
   .strict()
 
-export type PokemonIndex = z.infer<typeof pokemonIndexSchema>
+export type PokemonIndexItem = z.infer<typeof pokemonIndexItemSchema>
 
 export const pokemonSchema = z
   .object({

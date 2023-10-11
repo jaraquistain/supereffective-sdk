@@ -1,11 +1,10 @@
 import { type Item, itemSchema } from '../../schemas'
-import { type SearchEngine, createSearchIndex } from '../search'
-import createSearchEngine, { defaultSearchIndexHydrator } from '../search/createSearchEngine'
-import { createReadOnlyRepository } from './core/createReadOnlyRepository'
-import type { Repository, RepositoryDataProvider } from './core/types'
+import { fetchCollectionWithCache } from '../providers'
+import { createRepositoryClient, findResourceById, findResourcesByIds, getResourceById } from './_base'
+import type { Repository, RepositoryDataProvider } from './_types'
 
 export function createItemRepository(dataProvider: RepositoryDataProvider): Repository<Item> {
-  return createReadOnlyRepository<Item>({
+  return createRepositoryClient<Item>({
     id: 'items',
     resourcePath: 'items.min.json',
     schema: itemSchema,
@@ -13,6 +12,25 @@ export function createItemRepository(dataProvider: RepositoryDataProvider): Repo
   })
 }
 
-export function createItemSearchEngine(repository: Repository<Item>): SearchEngine<Item> {
-  return createSearchEngine<Item>(repository, createSearchIndex(), defaultSearchIndexHydrator)
+// -------------------------------- Functional API -----------------------------------------------
+const _memCache: {
+  collection: Map<string, Item[]>
+} = {
+  collection: new Map(),
+}
+
+export async function getAllItems(baseUrl?: string): Promise<Item[]> {
+  return fetchCollectionWithCache<Item>(_memCache, 'items.min.json', baseUrl)
+}
+
+export async function getItemById(id: string, baseUrl?: string): Promise<Item> {
+  return getAllItems(baseUrl).then((records) => getResourceById(records, id, 'Item'))
+}
+
+export async function findItemById(id: string, baseUrl?: string): Promise<Item | undefined> {
+  return getAllItems(baseUrl).then((records) => findResourceById(records, id))
+}
+
+export async function findItemsByIds(ids: Array<string>, baseUrl?: string): Promise<Item[]> {
+  return getAllItems(baseUrl).then((records) => findResourcesByIds(records, ids))
 }
