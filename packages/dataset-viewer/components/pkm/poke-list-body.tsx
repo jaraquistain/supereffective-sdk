@@ -1,4 +1,4 @@
-import { datasetClient } from '@/lib/dataset-client'
+import { getPokemonCollection } from '@/lib/queries'
 import { FormsToggler } from './forms-toggler'
 import PokeGrid from './poke-grid'
 import PokeTable from './poke-table'
@@ -7,7 +7,7 @@ import { TableToggler } from './table-toggler'
 import { PokeListProps } from './types'
 
 export default async function PokeListBody({ region, showForms, asTable = false }: PokeListProps) {
-  const allPokemon = await datasetClient.pokemon.getAll()
+  const allPokemon = await getPokemonCollection()
   const scopedPokemon = allPokemon.filter((p) => p.region === region)
   const species = scopedPokemon.filter((p) => !p.isForm)
   const forms = scopedPokemon.filter((p) => p.isForm)

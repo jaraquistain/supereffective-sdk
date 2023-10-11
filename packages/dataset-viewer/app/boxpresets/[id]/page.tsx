@@ -1,25 +1,28 @@
 import PresetBoxes from '@/components/boxpresets/preset-boxes'
-import { datasetClient } from '@/lib/dataset-client'
+import { BASE_DATA_URL } from '@/lib/constants'
 import { PageProps } from '@/lib/types'
-import { pokemonGamesMap } from '@supeffective/dataset'
+import { fetchBoxPreset, fetchBoxPresetIndex, findGameById } from '@supeffective/dataset'
 import { notFound } from 'next/navigation'
+
+const records = await fetchBoxPresetIndex(BASE_DATA_URL)
 
 // Return a list of `params` to populate the [id] dynamic segment
 export async function generateStaticParams() {
-  const records = await datasetClient.boxPresets.getAll()
-
   return records.map((record) => ({
     id: record.id,
+    gameSetId: record.gameSet,
   }))
 }
 
 export default async function Page({ params, searchParams }: PageProps<['id']>) {
-  const record = await datasetClient.boxPresets.findById(params.id)
-  if (!record) {
+  const found = records.find((record) => record.id === params.id)
+  if (!found) {
     notFound()
   }
 
-  const gameSet = pokemonGamesMap.get(record.gameSet)
+  const record = await fetchBoxPreset(found.id, found.gameSet, BASE_DATA_URL)
+
+  const gameSet = await findGameById(record.gameSet, BASE_DATA_URL)
   if (!gameSet) {
     notFound()
   }

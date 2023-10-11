@@ -1,4 +1,4 @@
-import { datasetClient } from '@/lib/dataset-client'
+import { getPokemonCollection } from '@/lib/queries'
 import { BoxPreset, Pokemon } from '@supeffective/dataset'
 import { GridBoxGroup } from '../layout/grids'
 import PokeGrid from '../pkm/poke-grid'
@@ -13,7 +13,7 @@ export default async function PresetBoxes({
   preset: BoxPreset
   withLabels?: boolean
 }) {
-  const allPokemon = await datasetClient.pokemon.getAll()
+  const allPokemon = await getPokemonCollection()
   const pokemonMap = new Map(allPokemon.map((row) => [row.id, row]))
   const boxes: Array<Array<Pokemon | null>> = []
 

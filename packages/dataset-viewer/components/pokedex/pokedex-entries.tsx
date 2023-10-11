@@ -1,4 +1,4 @@
-import { datasetClient } from '@/lib/dataset-client'
+import { getPokemonCollection } from '@/lib/queries'
 import { Pokedex, Pokemon } from '@supeffective/dataset'
 import PokeGrid from '../pkm/poke-grid'
 import { Button } from '../ui/button'
@@ -11,7 +11,7 @@ export default async function PokedexEntries({
   dex: Pokedex
   withForms?: boolean
 }) {
-  const pokemon = await datasetClient.pokemon.getAll()
+  const pokemon = await getPokemonCollection()
   const pokemonMap = new Map(pokemon.map((row) => [row.id, row]))
   const entries: Pokemon[] = dex.entries
     .filter((row) => (withForms ? true : !row.isForm))

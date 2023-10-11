@@ -1,14 +1,14 @@
 'use client'
 
-import { BASE_IMAGE_URL } from '@/lib/dataset-client'
+import { BASE_ASSETS_URL } from '@/lib/constants'
 import { BaseAssetImg, PokeImg as BasePokeImg, PokeImgProps } from '@supeffective/ui'
 
 export const PokeImg = ({ assetId, ...rest }: PokeImgProps) => {
-  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_IMAGE_URL} variant="home2d-icon" />
+  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_ASSETS_URL} variant="home2d-icon" />
 }
 
 export const PokeImg3d = ({ assetId, ...rest }: PokeImgProps) => {
-  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_IMAGE_URL} variant="home3d-icon" />
+  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_ASSETS_URL} variant="home3d-icon" />
 }
 export const GameImg = ({ assetId, ...rest }: PokeImgProps) => {
   return (
@@ -18,7 +18,7 @@ export const GameImg = ({ assetId, ...rest }: PokeImgProps) => {
       extension="jpg"
       baseWidth={64}
       baseHeight={64}
-      baseUrl={BASE_IMAGE_URL}
+      baseUrl={BASE_ASSETS_URL}
     />
   )
 }
@@ -30,7 +30,7 @@ export const GameAvatarImg = ({ assetId, ...rest }: PokeImgProps) => {
       extension="png"
       baseWidth={64}
       baseHeight={64}
-      baseUrl={BASE_IMAGE_URL}
+      baseUrl={BASE_ASSETS_URL}
     />
   )
 }
@@ -43,7 +43,7 @@ export const ItemImg = ({ assetId, ...rest }: PokeImgProps) => {
       extension="png"
       baseWidth={64}
       baseHeight={64}
-      baseUrl={BASE_IMAGE_URL}
+      baseUrl={BASE_ASSETS_URL}
     />
   )
 }
@@ -56,7 +56,7 @@ export const RibbonImg = ({ assetId, ...rest }: PokeImgProps) => {
       extension="png"
       baseWidth={64}
       baseHeight={64}
-      baseUrl={BASE_IMAGE_URL}
+      baseUrl={BASE_ASSETS_URL}
     />
   )
 }
@@ -68,7 +68,7 @@ export const MarkImg = ({ assetId, ...rest }: PokeImgProps) => {
       extension="png"
       baseWidth={64}
       baseHeight={64}
-      baseUrl={BASE_IMAGE_URL}
+      baseUrl={BASE_ASSETS_URL}
     />
   )
 }

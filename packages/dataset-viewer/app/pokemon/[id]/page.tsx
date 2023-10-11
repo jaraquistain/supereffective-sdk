@@ -1,15 +1,23 @@
-import { datasetClient } from '@/lib/dataset-client'
+import { BASE_DATA_URL } from '@/lib/constants'
 import { PageProps } from '@/lib/types'
+import { fetchPokemon, fetchPokemonIndex } from '@supeffective/dataset'
+import { notFound } from 'next/navigation'
+
+const records = await fetchPokemonIndex(BASE_DATA_URL)
 
 // Return a list of `params` to populate the [id] dynamic segment
 export async function generateStaticParams() {
-  const records = await datasetClient.pokemon.getAll()
-
   return records.map((record) => ({
     id: record.id,
   }))
 }
 
-export default function Page({ params }: PageProps<['id']>) {
-  return <div className="p2 py-8">Pokemon: {params.id}</div>
+export default async function Page({ params }: PageProps<['id']>) {
+  const found = records.find((record) => record.id === params.id)
+  if (!found) {
+    notFound()
+  }
+
+  const pkm = await fetchPokemon(found.id, found.region, BASE_DATA_URL)
+  return <div className="p2 py-8">Pokemon: {pkm.id}</div>
 }

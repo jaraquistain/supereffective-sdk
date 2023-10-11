@@ -1,4 +1,4 @@
-import { datasetClient } from '@/lib/dataset-client'
+import { getPokemonCollection } from '@/lib/queries'
 import { Game } from '@supeffective/dataset'
 import PokeGrid from '../pkm/poke-grid'
 
@@ -17,7 +17,7 @@ export default async function GamePokeList({
   isEventOnly?: boolean
   isTransferOnly?: boolean
 }) {
-  const pokemon = await datasetClient.pokemon.getAll()
+  const pokemon = await getPokemonCollection()
 
   return (
     <div className="">
