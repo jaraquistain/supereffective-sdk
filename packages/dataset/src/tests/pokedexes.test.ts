@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { localDataLoader } from '../admin/loader'
-import { validate } from '../admin/validation'
+import { localDataLoader } from '../maintenance/loader'
+import { validate } from '../maintenance/validation'
 import { pokedexSchema } from '../schemas'
 
 describe('Validate pokedexes.json data', () => {

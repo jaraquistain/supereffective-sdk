@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { getPokemonList } from '../admin/queries'
-import { validate } from '../admin/validation'
+import { getPokemonList } from '../maintenance/queries'
+import { validate } from '../maintenance/validation'
 import { pokemonSchema } from '../schemas'
 
 describe('Validate pokemon/*.json data', () => {

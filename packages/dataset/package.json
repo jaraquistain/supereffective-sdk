@@ -31,12 +31,12 @@
     "build": "rm -rf dist && sleep 1 && pnpm build:lib && pnpm build:data",
     "build:data": "pnpm data:update && pnpm data:generate && pnpm data:format",
     "build:lib": "tsup",
-    "data:format": "bun ./src/admin/scripts/data-format.ts && bun ./src/admin/scripts/minify.ts ./data ./dist/data",
-    "data:generate": "bun ./src/admin/scripts/generate-all.ts",
-    "data:update": "bun ./src/admin/scripts/import.ts",
+    "data:format": "bun ./src/maintenance/scripts/data-format.ts && bun ./src/maintenance/scripts/minify.ts ./data ./dist/data",
+    "data:generate": "bun ./src/maintenance/scripts/generate-all.ts",
+    "data:update": "bun ./src/maintenance/scripts/import.ts",
     "dev": "concurrently \"pnpm dev:code\" \"pnpm dev:server\"",
     "dev:code": "tsup --watch --clean=false",
-    "dev:server": "bun src/server/dev-server.ts",
+    "dev:server": "bun src/maintenance/dev-server.ts",
     "typelint": "tsc --noEmit"
   },
   "dependencies": {
