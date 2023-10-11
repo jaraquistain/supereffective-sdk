@@ -1,4 +1,15 @@
-import type { Entity, Repository } from '../repositories/_types'
+import type { Entity } from '../repositories/_types'
+
+/**
+ * @deprecated
+ */
+export interface LegacyRepository<R extends Entity> {
+  id: string
+  getAll(): Promise<Array<R>>
+  getById(id: string): Promise<R>
+  findById(id: string): Promise<R | undefined>
+  getManyByIds(ids: Array<string>): Promise<Array<R>>
+}
 
 export interface SearchFilter<R extends Entity> {
   field: keyof R
@@ -45,7 +56,7 @@ export interface SearchEngine<R extends Entity> {
 export type SearchEngineIndexHydrator<R extends Entity> = (
   entities: R[],
   searchEngine: SearchEngineIndex<R>,
-  repository: Repository<R>,
+  repository: LegacyRepository<R>,
 ) => Promise<void>
 
 export type SearchEngineIndex<R extends Entity> = {

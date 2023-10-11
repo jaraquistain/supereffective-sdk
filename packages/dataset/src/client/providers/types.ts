@@ -14,7 +14,6 @@ export type NextCompatibleRequestInit = RequestInit & {
 export type DatasetClientConfig = {
   baseDataUrl: string
   baseImageUrl: string
-  dataHeaders?: Record<string, string>
 }
 
 export type InMemoryCache<R extends Entity> = {

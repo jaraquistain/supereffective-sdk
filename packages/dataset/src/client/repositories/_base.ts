@@ -1,39 +1,5 @@
 import { fetchResource } from '../providers'
-import type { Entity, Repository, RepositoryConfig } from './_types'
-
-/**
- * @deprecated Use functional API instead (individual functions)
- */
-export function createRepositoryClient<R extends Entity>(config: RepositoryConfig<R>): Repository<R> {
-  const getAll = async () => {
-    return await config.dataProvider.readFile<R>(config.resourcePath)
-  }
-
-  const repo: Repository<R> = {
-    id: config.id,
-    async getAll() {
-      return await getAll()
-    },
-    async getById(id) {
-      const data = await getAll()
-      const found = data.find((item) => item.id === id)
-
-      if (!found) {
-        throw new Error(`${config.id} with id ${id} not found`)
-      }
-
-      return found
-    },
-    async findById(id) {
-      return getAll().then((data) => data.find((item) => item.id === id))
-    },
-    async getManyByIds(ids) {
-      return getAll().then((data) => data.filter((item) => ids.includes(item.id)))
-    },
-  }
-
-  return repo
-}
+import type { Entity } from './_types'
 
 export function getSiblingEntities<R extends Entity = Entity>(
   collection: R[],
@@ -95,11 +61,13 @@ export function getResourceById<R extends Entity = Entity>(collection: Array<R>,
 
 export async function findResource<R extends Entity = Entity>(
   dirName: string,
-  groupId: string,
+  groupId: string | null | undefined,
   id: string,
-  baseUrl?: string,
+  baseUrl: string,
 ): Promise<R | undefined> {
-  return fetchResource<R>(`${dirName}/${groupId}/${id}.min.json`, baseUrl).catch((e) => {
+  const groupSegment = groupId ? `/${groupId}` : ''
+
+  return fetchResource<R>(`${dirName}${groupSegment}/${id}.min.json`, baseUrl).catch((e) => {
     if (String(e).includes('HTTP error 404')) {
       return undefined
     }
@@ -110,15 +78,16 @@ export async function findResource<R extends Entity = Entity>(
 
 export async function getResource<R extends Entity = Entity>(
   dirName: string,
-  groupId: string,
+  groupId: string | null | undefined,
   id: string,
-  baseUrl?: string,
+  baseUrl: string,
   title = 'Resource',
 ): Promise<R> {
   const found = await findResource<R>(dirName, groupId, id, baseUrl)
 
   if (!found) {
-    throw new Error(`${title} ${dirName}/${groupId}/${id}.min.json not found`)
+    const groupSegment = groupId ? `/${groupId}` : ''
+    throw new Error(`${title} ${dirName}${groupSegment}/${id}.min.json not found`)
   }
 
   return found

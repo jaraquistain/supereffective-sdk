@@ -1,5 +1,12 @@
-import type { Entity, Repository } from '../repositories/_types'
-import type { SearchEngine, SearchEngineIndex, SearchEngineIndexHydrator, SearchFilter, SearchQuery } from './types'
+import type { Entity } from '../repositories/_types'
+import type {
+  LegacyRepository,
+  SearchEngine,
+  SearchEngineIndex,
+  SearchEngineIndexHydrator,
+  SearchFilter,
+  SearchQuery,
+} from './types'
 
 function applyFilter<R extends Entity>(entity: R, filter: SearchFilter<R>): boolean {
   const { field, value, operator } = filter
@@ -82,7 +89,7 @@ export const defaultSearchIndexHydrator: SearchEngineIndexHydrator<any> = async 
 }
 
 export default function createSearchEngine<R extends Entity>(
-  repository: Repository<R>,
+  repository: LegacyRepository<R>,
   searchIndex: SearchEngineIndex<R>,
   searchIndexHydrator?: SearchEngineIndexHydrator<R>,
 ): SearchEngine<R> {
