@@ -12,7 +12,6 @@
   },
   "license": "MIT",
   "author": "Javier Aguilar",
-  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
