@@ -1,5 +1,21 @@
 
 
+## v0.5.2
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.1...v0.5.2)
+
+### 🩹 Fixes
+
+- Catch fetch errors better ([abeb0af](https://github.com/itsjavi/supereffective-sdk/commit/abeb0af))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.5.1
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.0...v0.5.1)
