@@ -8,9 +8,9 @@ function _resolveUri(relativePath: string, baseUrl: string): string {
 function _buildRequestInit(relativePath: string): NextCompatibleRequestInit {
   return {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
     next: {
       tags: [`dataset:${relativePath}`],
     },
@@ -21,17 +21,21 @@ async function _fetch<T>(relativePath: string, baseUrl: string): Promise<T> {
   const url = _resolveUri(relativePath, baseUrl)
   const requestInit = _buildRequestInit(relativePath)
 
-  const data = await fetch(url, requestInit).then((res) => {
-    if (!res.ok) {
-      throw new Error(`HTTP error ${res.status} on GET ${res.url}`)
-    }
+  try {
+    const data = await fetch(url, requestInit).then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error ${res.status} on GET ${res.url}`)
+      }
 
-    return res.text()
-  })
+      return res.text()
+    })
 
-  const parsedData = JSON.parse(data)
+    const parsedData = JSON.parse(data)
 
-  return parsedData
+    return parsedData
+  } catch (error) {
+    throw new Error(`HTTP error ${error} on GET ${url}`)
+  }
 }
 
 export async function fetchCollection<R extends Entity = Entity>(
