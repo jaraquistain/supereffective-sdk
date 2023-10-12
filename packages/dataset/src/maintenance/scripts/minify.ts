@@ -29,24 +29,9 @@ if (!inputDirArg || !outputDirArg) {
     }
 
     const outputPath = createOutputPath(file)
-
-    fs.readFile(file, 'utf8', (readErr, data) => {
-      if (readErr) {
-        console.error('Error reading file:', readErr)
-        process.exit(1)
-      }
-
-      const minifiedData = minify(data)
-      fs.mkdirSync(path.dirname(outputPath), { recursive: true })
-
-      fs.writeFile(outputPath, minifiedData, (writeErr) => {
-        if (writeErr) {
-          console.error('Error writing file:', writeErr)
-          process.exit(1)
-        }
-
-        console.log(`Minified ${outputPath}`)
-      })
-    })
+    const data = fs.readFileSync(file, 'utf8')
+    const minifiedData = minify(data)
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true })
+    fs.writeFileSync(outputPath, minifiedData)
   })
 })(path.resolve(inputDirArg), outputDirArg)
