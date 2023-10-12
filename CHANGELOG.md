@@ -1,5 +1,34 @@
 
 
+## v0.5.0
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.4.1...v0.5.0)
+
+### 🚀 Enhancements
+
+- **viewer:** Add table mode ([812bd83](https://github.com/itsjavi/supereffective-sdk/commit/812bd83))
+
+### 🩹 Fixes
+
+- Ci build ([ba88425](https://github.com/itsjavi/supereffective-sdk/commit/ba88425))
+- Build issues ([d65fa53](https://github.com/itsjavi/supereffective-sdk/commit/d65fa53))
+- Deploy gh-pages ([9742a75](https://github.com/itsjavi/supereffective-sdk/commit/9742a75))
+
+### 💅 Refactors
+
+- Reorganize dataset/admin files ([36947a2](https://github.com/itsjavi/supereffective-sdk/commit/36947a2))
+- **dataset:** Functional approach for the data clients ([9531ea1](https://github.com/itsjavi/supereffective-sdk/commit/9531ea1))
+- **dataset:** Make baseUrl mandatory and remove legacy client singletons ([4e66947](https://github.com/itsjavi/supereffective-sdk/commit/4e66947))
+- **viewer:** Use new functional clients ([a9d52e9](https://github.com/itsjavi/supereffective-sdk/commit/a9d52e9))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.4.1
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.4.0...v0.4.1)
