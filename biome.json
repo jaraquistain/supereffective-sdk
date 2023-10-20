@@ -27,12 +27,12 @@
       "correctness": {
         "noUnusedVariables": "warn",
         "noChildrenProp": "error",
-        "noPrecisionLoss": "warn"
+        "noPrecisionLoss": "warn",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "warn"
       },
       "nursery": {
         "useGroupedTypeImport": "warn",
-        "useHookAtTopLevel": "warn",
-        "useExhaustiveDependencies": "warn",
         "noDuplicateJsonKeys": "error"
       },
       "a11y": {
