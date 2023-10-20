@@ -8,7 +8,7 @@ export type PageProps<P extends Array<string> = [], S extends AppSearchParamKeys
     [key in P[number]]: string
   }
   searchParams: {
-    [key in S[number]]: string | undefined
+    [key2 in S[number]]: string | undefined
   }
 }
 
