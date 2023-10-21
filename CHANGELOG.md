@@ -1,5 +1,30 @@
 
 
+## v0.5.3
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.2...v0.5.3)
+
+### 🚀 Enhancements
+
+- Add initial dex entries as markdown ([c293c8b](https://github.com/itsjavi/supereffective-sdk/commit/c293c8b))
+
+### 🩹 Fixes
+
+- Biome config ([d4b6660](https://github.com/itsjavi/supereffective-sdk/commit/d4b6660))
+- Biome config ([27a4d89](https://github.com/itsjavi/supereffective-sdk/commit/27a4d89))
+
+### 🏡 Chore
+
+- **ui:** Add support workaround for RSC, bundling the src ([3aa51a9](https://github.com/itsjavi/supereffective-sdk/commit/3aa51a9))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.5.2
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.1...v0.5.2)
