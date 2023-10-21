@@ -2,7 +2,7 @@ import type { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType } fro
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type ResponsiveSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto' | 'full'
-export type Font = 'sans' | 'comic' | 'mono'
+export type FontType = 'sans' | 'comic' | 'mono'
 export type Orientation = 'vertical' | 'horizontal'
 
 export type PropsOf<T extends ElementType> = ComponentPropsWithoutRef<T>
