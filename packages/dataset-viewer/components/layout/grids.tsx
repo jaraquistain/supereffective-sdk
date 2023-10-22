@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
-import { FullGridRecipeProps, PropsOf, gridRecipe } from '@supeffective/ui'
 import { ReactElement } from 'react'
+import { FullGridRecipeProps, PropsOf, gridRecipe } from 'supeffective-ui'
 
 type GridProps = FullGridRecipeProps & PropsOf<'div'>
 

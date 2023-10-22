@@ -1,6 +1,7 @@
 {
-  "name": "@supeffective/ui",
+  "name": "supeffective-ui",
   "version": "0.5.3",
+  "private": true,
   "description": "supereffective.gg 'ui' package",
   "homepage": "https://github.com/itsjavi/supereffective-sdk#readme",
   "bugs": {

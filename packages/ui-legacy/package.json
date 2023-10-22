@@ -1,6 +1,7 @@
 {
-  "name": "@supeffective/ui-legacy",
+  "name": "supeffective-ui-legacy",
   "version": "0.5.3",
+  "private": true,
   "description": "supereffective.gg 'dex-tracker-ui' package",
   "homepage": "https://github.com/itsjavi/supereffective-dextracker#readme",
   "bugs": {

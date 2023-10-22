@@ -1,7 +1,7 @@
 'use client'
 
 import { BASE_ASSETS_URL } from '@/lib/constants'
-import { BaseAssetImg, PokeImg as BasePokeImg, PokeImgProps } from '@supeffective/ui'
+import { BaseAssetImg, PokeImg as BasePokeImg, PokeImgProps } from 'supeffective-ui'
 
 export const PokeImg = ({ assetId, ...rest }: PokeImgProps) => {
   return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_ASSETS_URL} variant="home2d-icon" />
