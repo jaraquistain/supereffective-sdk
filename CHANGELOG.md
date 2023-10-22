@@ -1,5 +1,25 @@
 
 
+## v0.6.0
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.3...v0.6.0)
+
+### 🚀 Enhancements
+
+- Add characters from Masters EX ([4a01313](https://github.com/itsjavi/supereffective-sdk/commit/4a01313))
+
+### 💅 Refactors
+
+- Deprecate ui packages and make them internal ([4d0ac75](https://github.com/itsjavi/supereffective-sdk/commit/4d0ac75))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.5.3
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.2...v0.5.3)
