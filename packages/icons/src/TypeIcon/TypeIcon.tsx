@@ -9,7 +9,7 @@ import { pokemonTypeComponents } from './svgComponents'
 import type { TypeIconProps } from './types'
 
 export function TypeIcon(props: TypeIconProps): ReactElement {
-  const { typeId, terastal, filled, colored, rounded, size = 'sm', className, ...rest } = props
+  const { typeId, terastal, filled, colored, rounded, theme = 'dark', size = 'sm', className, ...rest } = props
   const dataProps = {
     'data-type': typeId,
     'data-terastal': terastal ? true : undefined,
@@ -36,6 +36,7 @@ export function TypeIcon(props: TypeIconProps): ReactElement {
       filled,
       colored,
       rounded,
+      theme,
       terastal,
       size,
     }),
@@ -46,6 +47,7 @@ export function TypeIcon(props: TypeIconProps): ReactElement {
     filled,
     colored,
     rounded,
+    theme,
     terastal,
     size,
   })
@@ -56,6 +58,7 @@ export function TypeIcon(props: TypeIconProps): ReactElement {
       filled,
       colored,
       rounded,
+      theme,
       terastal,
       size,
     }),

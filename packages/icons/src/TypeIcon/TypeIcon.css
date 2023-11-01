@@ -1,11 +1,13 @@
 :root {
+  --pkm-type-color-text-light: #f2f2f2;
+  --pkm-type-color-text-dark: #191919;
   --pkm-type-color-normal: #949495;
   --pkm-type-color-normal-rgb: 148, 148, 149;
   --pkm-type-color-fire: #E56C3F;
   --pkm-type-color-fire-rgb: 229, 108, 63;
   --pkm-type-color-water: #5185C5;
   --pkm-type-color-water-rgb: 81, 133, 197;
-  --pkm-type-color-electric: #F6D851;
+  --pkm-type-color-electric: #f3d343;
   --pkm-type-color-electric-rgb: 246, 216, 81;
   --pkm-type-color-grass: #66A946;
   --pkm-type-color-grass-rgb: 102, 169, 70;
@@ -44,14 +46,21 @@
   user-select: none;
   aspect-ratio: 1;
   padding: 0.25rem;
-  color: currentColor;
+  color: var(--pkm-type-color-text-dark);
   text-align: center;
   vertical-align: middle;
 }
 
+.pkm-type--theme-dark {
+  color: var(--pkm-type-color-text-light);
+}
+
 .pkm-type--filled {
-  background-color: #777;
-  color: #000;
+  background-color: #000;
+}
+
+.pkm-type--theme-dark.pkm-type--filled {
+  background-color: var(--pkm-type-color-text-light);
 }
 
 .pkm-type--rounded {
@@ -64,11 +73,6 @@
   transform: scale(1.25);
   aspect-ratio: unset;
   vertical-align: top;
-}
-
-.pkm-type--filled.pkm-type--not-colored,
-.pkm-type--tera.pkm-type--not-colored {
-  color: currentColor;
 }
 
 .pkm-type--not-tera.pkm-type--not-filled {
@@ -154,6 +158,10 @@
 .pkm-type--filled.pkm-type--tera {
   background: none;
 }
+
+/* .pkm-type--filled.pkm-type--not-tera {
+  border: 0.7px solid rgba(0, 0, 0, 0.2);
+} */
 
 .pkm-type--not-filled.pkm-type--not-tera.pkm-type--colored,
 .pkm-type--tera.pkm-type--colored {
@@ -304,7 +312,18 @@
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
-  fill: currentcolor;
+  color: inherit;
+  fill: currentColor;
+  /* stroke: rgba(0, 0, 0, 0.3);
+  stroke-width: 0.7px; */
+}
+
+.pkm-type--theme-light.pkm-type--not-colored .pkm-type-teraglyph {
+  fill: var(--pkm-type-color-text-dark);
+}
+
+.pkm-type--theme-dark.pkm-type--not-colored .pkm-type-teraglyph {
+  fill: var(--pkm-type-color-text-light);
 }
 
 .pkm-type--size-xs .pkm-type-teraglyph {
@@ -339,6 +358,8 @@
   fill: currentColor;
   width: 100%;
   height: auto;
+  /* stroke: rgba(0, 0, 0, 0.3);
+  stroke-width: 0.7px; */
 }
 
 .pkm-type--tera .pkm-type-glyph,
@@ -347,15 +368,28 @@
 }
 
 .pkm-type--colored .pkm-type-glyph {
-  fill: #fff;
+  fill: var(--pkm-type-color-text-light);
+}
+
+.pkm-type--theme-dark.pkm-type--colored .pkm-type-glyph {
+  fill: var(--pkm-type-color-text-dark);
 }
 
 .pkm-type--colored.pkm-type--not-filled.pkm-type--not-tera .pkm-type-glyph {
   fill: currentColor;
 }
 
-.pkm-type--not-colored.pkm-type--tera .pkm-type-glyph {
-  fill: #777;
+.pkm-type--not-colored.pkm-type--filled.pkm-type--not-tera,
+.pkm-type--not-colored.pkm-type--tera {
+  .pkm-type-glyph {
+    fill: var(--pkm-type-color-text-light);
+  }
+
+  &.pkm-type--theme-dark {
+    .pkm-type-glyph {
+      fill: var(--pkm-type-color-text-dark);
+    }
+  }
 }
 
 .pkm-type--rounded.pkm-type--not-tera .pkm-type-glyph {

@@ -37,7 +37,7 @@
     "codegen": "pnpm codegen:svg-clean",
     "codegen:svg": "pnpm svgr --no-prettier --out-dir='src/generated' --typescript --ext=tsx ./svg",
     "codegen:svg-clean": "rm -rf src/generated && pnpm codegen:svg",
-    "dev": "pnpm codegen && tsup --watch",
+    "dev": "pnpm codegen && tsup --watch --no-clean",
     "typelint": "tsc --noEmit"
   },
   "devDependencies": {

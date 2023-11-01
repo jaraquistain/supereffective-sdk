@@ -7,6 +7,7 @@ export type TypeIconCvaParams = {
   filled?: boolean
   colored?: boolean
   rounded?: boolean
+  theme?: 'light' | 'dark'
   size?: Size
 }
 

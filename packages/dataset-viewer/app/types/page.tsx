@@ -3,12 +3,14 @@ import { TypeIcon, TypeIconCvaParams } from '@supeffective/icons'
 
 export default function Page() {
   const variants: Record<keyof TypeIconCvaParams, Array<TypeIconCvaParams[keyof TypeIconCvaParams]>> = {
+    typeId: pokemonTypes.map((t) => t.id),
+    // size: ['xs', 'sm', 'md', 'lg', 'xl'],
+    size: ['xl'],
+    terastal: [true, false],
     colored: [true, false],
     filled: [true, false],
     rounded: [true, false],
-    size: ['xs', 'sm', 'md', 'lg', 'xl'],
-    terastal: [true, false],
-    typeId: pokemonTypes.map((t) => t.id),
+    theme: ['light', 'dark'],
   }
 
   const allVariantCombinations: TypeIconCvaParams[] = Object.entries(variants).reduce(
@@ -39,7 +41,7 @@ export default function Page() {
             className="inline-flex flex-col gap-1 items-center justify-center text-center p-1 py-2 border"
           >
             <TypeIcon {...props} title={JSON.stringify(props, null, 2)} />
-            <span className="capitalize text-xs">
+            <span className="capitalize text-xs text-muted-foreground">
               {props.terastal && 'Tera '}
               {props.typeId}
             </span>

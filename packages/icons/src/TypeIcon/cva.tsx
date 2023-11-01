@@ -1,11 +1,12 @@
 import { cn } from '../utils'
 import type { TypeIconCvaParams } from './types'
-export function typeIconGlyphRecipe(params: TypeIconCvaParams) {
-  return baseIconRecipe('pkm-type-glyph', params)
+
+export function typeIconGlyphRecipe(_: TypeIconCvaParams) {
+  return 'pkm-type-glyph'
 }
 
-export function typeTeraIconBgRecipe(params: TypeIconCvaParams) {
-  return baseIconRecipe('pkm-type-teraglyph', params)
+export function typeTeraIconBgRecipe(_: TypeIconCvaParams) {
+  return 'pkm-type-teraglyph'
 }
 
 export function typeIconRecipe(params: TypeIconCvaParams) {
@@ -44,6 +45,8 @@ export function baseIconRecipe(baseName: string, params: TypeIconCvaParams) {
   } else {
     classNames.push(`${baseName}--size-default`)
   }
+
+  classNames.push(`${baseName}--theme-${params.theme ?? 'dark'}`)
 
   classNames.push(`${baseName}-${params.typeId}`)
 
