@@ -48,17 +48,17 @@
     "clsx": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.31",
+    "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
-    "@vitejs/plugin-react-swc": "^3.4.0",
-    "open-props": "^1.6.8",
+    "@vitejs/plugin-react-swc": "^3.4.1",
+    "open-props": "^1.6.10",
     "postcss-jit-props": "^1.0.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.4",
+    "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "vite-plugin-dts": "^3.6.0"
+    "vite-plugin-dts": "^3.6.3"
   },
   "peerDependencies": {
     "react": "^18.2.0",

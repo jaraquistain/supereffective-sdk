@@ -12,7 +12,10 @@ import {
 export const createLivingDexTypeValidator = (
   typeName: TypedCSVTypeToken | 'string:slug' | 'string:slug[]',
 ): ZodType => {
-  const slugType = z.string().regex(/[a-zA-Z0-9-_]+/).max(50)
+  const slugType = z
+    .string()
+    .regex(/[a-zA-Z0-9-_]+/)
+    .max(50)
 
   switch (typeName) {
     case 'boolean':
