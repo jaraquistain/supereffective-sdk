@@ -1,0 +1,30 @@
+name: "deploy-main-site"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+concurrency: "deploy-main-site"
+
+jobs:
+  deploy:
+    name: Trigger a Deployment of supereffective.gg
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_DEPLOY_URL: ${{ secrets.VERCEL_DEPLOY_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # needed to be able to reference prev commits
+
+      - name: Call site deployment Webhook only when there are changes
+        run: |
+          if ! (git diff --exit-code HEAD:packages HEAD~1:packages > /dev/null) ; then
+            echo " >> One or more files have changed. Triggering a deployment on supereffective.gg"
+            curl -s -X POST "${VERCEL_DEPLOY_URL}" > /dev/null
+            echo " >> Deployment triggered. Check the status on https://vercel.com/dashboard"
+            exit 0
+          fi
