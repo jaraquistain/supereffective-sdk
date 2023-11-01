@@ -3,4 +3,5 @@ data/pokemon_games.json
 data/pokedexes.json
 data/boxpresets.json
 data/legacy-*.json
+!data/legacy-game*.json
 data/compact-*.json
