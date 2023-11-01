@@ -1,5 +1,24 @@
 
 
+## v0.8.0
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.7.0...v0.8.0)
+
+### 💅 Refactors
+
+- Move TypeIcon to the icons package ([060b379](https://github.com/itsjavi/supereffective-sdk/commit/060b379))
+- Move TypeIcon to the icons package ([0dc0fa3](https://github.com/itsjavi/supereffective-sdk/commit/0dc0fa3))
+- Move TypeIcon to the icons package ([003e635](https://github.com/itsjavi/supereffective-sdk/commit/003e635))
+- Get rid of ui/dextracker packages ([2975ebe](https://github.com/itsjavi/supereffective-sdk/commit/2975ebe))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.7.0
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.6.0...v0.7.0)
