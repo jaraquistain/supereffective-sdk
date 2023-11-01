@@ -39,11 +39,13 @@
   "canBeAlpha": false,
   "debutIn": "sv",
   "obtainableIn": [
+    "go",
     "sv"
   ],
   "versionExclusiveIn": [],
   "eventOnlyIn": [],
   "storableIn": [
+    "go",
     "home",
     "sv"
   ],
