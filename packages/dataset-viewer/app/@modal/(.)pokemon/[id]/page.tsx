@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps<['id']>) {
       <div>
         <PokeImg3d assetId={pkm.nid} className="h-48 w-48 [&_img]:w-full" />
         <PokeImg3d assetId={pkm.nid} shiny className="h-48 w-48 [&_img]:w-full" />
-        <p>(WIP)</p>
+        {/* <p>(WIP)</p> */}
       </div>
     </ModalRoute>
   )
