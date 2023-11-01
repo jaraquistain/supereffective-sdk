@@ -1,5 +1,5 @@
+import { FullGridRecipeProps } from '@/styles'
 import { Pokemon } from '@supeffective/dataset'
-import { FullGridRecipeProps } from 'supeffective-ui'
 import { GridFull } from '../layout/grids'
 import { StatefulLink } from '../ui/stateful-link'
 import { PokeImg } from './images'

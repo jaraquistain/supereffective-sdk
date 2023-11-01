@@ -1,6 +1,5 @@
-import '@/styles/globals.css'
+import '@/styles/index.scss'
 import '@supeffective/icons/styles.css'
-import 'supeffective-ui/styles.css'
 
 import { Header } from '@/components/layout/main-header'
 import { ThemeProvider } from '@/components/theme-provider'
