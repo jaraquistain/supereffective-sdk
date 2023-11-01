@@ -1,0 +1,145 @@
+/* Type Icon Base */
+.pkm-type {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  fill: currentColor;
+}
+
+/* Type Icon Variants */
+.pkm-type[data-type='normal'] {}
+
+.pkm-type[data-type='fire'] {}
+
+.pkm-type[data-type='water'] {}
+
+/* ... Add more type-specific variants */
+
+.pkm-type[data-filled='true'] {
+  fill: #fff;
+}
+
+.pkm-type[data-colored='true'] {}
+
+.pkm-type[data-rounded='true'] {
+  transform: scale(0.9);
+}
+
+.pkm-type[data-terastal='true'] {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  transform: scale(0.7);
+  z-index: 1;
+}
+
+.pkm-type[data-size='xs'] {}
+
+.pkm-type[data-size='sm'] {}
+
+.pkm-type[data-size='md'] {}
+
+.pkm-type[data-size='lg'] {}
+
+.pkm-type[data-size='xl'] {}
+
+/* Compound Variants */
+.pkm-type[data-filled='false'][data-colored='false'][data-terastal='true'] {
+  fill: #fff;
+}
+
+.pkm-type[data-filled='false'][data-colored='true'][data-terastal='true'] {
+  fill: #fff;
+}
+
+.pkm-type[data-filled='true'][data-colored='true'][data-terastal='false'] {
+  fill: #fff;
+}
+
+.pkm-type[data-size='xs'][data-terastal='false'][data-filled='true'] {
+  transform: scale(0.75);
+}
+
+.pkm-type[data-size='sm'][data-terastal='false'][data-filled='true'] {
+  transform: scale(0.85);
+}
+
+.pkm-type[data-size='xs'][data-terastal='true'] {
+  top: 0;
+}
+
+.pkm-type[data-size='sm'][data-terastal='true'] {
+  top: 0;
+}
+
+.pkm-type[data-size='md'][data-terastal='true'] {
+  top: 1px;
+}
+
+.pkm-type[data-size='lg'][data-terastal='true'] {
+  top: 2px;
+}
+
+.pkm-type[data-size='xl'][data-terastal='true'] {
+  top: 2px;
+}
+
+/* Type Tera Icon Background */
+.pkm-type-bg {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  fill: currentColor;
+}
+
+/* Type Tera Icon Background Variants */
+.pkm-type-bg[data-type='normal'] {}
+
+.pkm-type-bg[data-type='fire'] {}
+
+.pkm-type-bg[data-type='water'] {}
+
+/* ... Add more type-specific variants */
+
+.pkm-type-bg[data-filled='true'] {}
+
+.pkm-type-bg[data-colored='true'] {}
+
+.pkm-type-bg[data-rounded='true'] {}
+
+.pkm-type-bg[data-terastal='true'] {}
+
+.pkm-type-bg[data-size='xs'] {
+  top: 0;
+}
+
+.pkm-type-bg[data-size='sm'] {
+  top: 0px;
+}
+
+.pkm-type-bg[data-size='md'] {
+  top: 1px;
+}
+
+.pkm-type-bg[data-size='lg'] {
+  top: 2px;
+}
+
+.pkm-type-bg[data-size='xl'] {
+  top: 2px;
+}
+
+/* Type Icon Compound Variants by Type */
+/* Define the specific type icon styles for different types here */
+
+/* Type Icon Compound Variants */
+/* Define the compound variants here */

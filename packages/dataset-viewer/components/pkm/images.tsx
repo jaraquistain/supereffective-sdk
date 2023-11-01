@@ -8,7 +8,7 @@ export const PokeImg = ({ assetId, ...rest }: PokeImgProps) => {
 }
 
 export const PokeImg3d = ({ assetId, ...rest }: PokeImgProps) => {
-  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_ASSETS_URL} variant="home3d-icon" />
+  return <BasePokeImg {...rest} assetId={assetId} baseUrl={BASE_ASSETS_URL} variant="home3d-icon-bordered" />
 }
 export const GameImg = ({ assetId, ...rest }: PokeImgProps) => {
   return (

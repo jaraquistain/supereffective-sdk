@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:vercel": "CI=1 && next build",
-    "dev": "open http://localhost:3000 && next dev",
+    "dev": "open http://localhost:3009/ && PORT=3009 next dev",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
     "start": "next start"
@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@supeffective/dataset": "workspace:*",
+    "@supeffective/icons": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.291.0",
@@ -24,7 +25,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "supeffective-ui": "workspace:*",
-    "supeffective-ui-legacy": "workspace:*",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7"
   },

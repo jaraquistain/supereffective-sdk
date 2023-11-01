@@ -123,6 +123,9 @@ importers:
       '@supeffective/dataset':
         specifier: workspace:*
         version: link:../dataset
+      '@supeffective/icons':
+        specifier: workspace:*
+        version: link:../icons
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -147,9 +150,6 @@ importers:
       supeffective-ui:
         specifier: workspace:*
         version: link:../ui
-      supeffective-ui-legacy:
-        specifier: workspace:*
-        version: link:../ui-legacy
       tailwind-merge:
         specifier: ^2.0.0
         version: 2.0.0
@@ -206,6 +206,9 @@ importers:
 
   packages/icons:
     devDependencies:
+      '@supeffective/dataset':
+        specifier: workspace:*
+        version: link:../dataset
       '@svgr/cli':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.2.2)
@@ -233,8 +236,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-
-  packages/testing: {}
 
   packages/ui:
     dependencies:

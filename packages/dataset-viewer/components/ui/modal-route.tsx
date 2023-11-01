@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useRouter } from 'next/navigation'
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
@@ -34,7 +27,7 @@ export default function ModalRoute({
       <DialogContent className={className}>
         <DialogHeader>
           {header && <DialogTitle>{header}</DialogTitle>}
-          <DialogDescription>{children}</DialogDescription>
+          {children}
           {footer && <DialogFooter>{footer}</DialogFooter>}
         </DialogHeader>
       </DialogContent>

@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import 'supeffective-ui-legacy/styles.css'
+import '@supeffective/icons/styles.css'
 import 'supeffective-ui/styles.css'
 
 import { Header } from '@/components/layout/main-header'

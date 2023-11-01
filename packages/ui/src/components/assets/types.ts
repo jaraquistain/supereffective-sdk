@@ -18,6 +18,7 @@ export type PokeImgProps = {
     | 'gen8-icon-trimmed'
     | 'home3d-icon'
     | 'home3d-icon-trimmed'
+    | 'home3d-icon-bordered'
     | 'home2d-icon'
     | 'home2d-icon-trimmed'
   shiny?: boolean
