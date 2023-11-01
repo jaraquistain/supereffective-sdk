@@ -31,6 +31,7 @@ export function Header() {
             <Link href="/marks" {...disabledProps}>
               Marks
             </Link>
+            <Link href="/types">Types</Link>
           </nav>
         </div>
         <div className="flex flex-1 items-center space-x-2 justify-end">

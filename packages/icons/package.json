@@ -37,6 +37,7 @@
     "codegen": "pnpm codegen:svg-clean",
     "codegen:svg": "pnpm svgr --no-prettier --out-dir='src/generated' --typescript --ext=tsx ./svg",
     "codegen:svg-clean": "rm -rf src/generated && pnpm codegen:svg",
+    "dev": "pnpm codegen && tsup --watch",
     "typelint": "tsc --noEmit"
   },
   "devDependencies": {
@@ -46,6 +47,8 @@
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
     "esbuild-plugin-svgj": "^1.0.3",
+    "postcss": "^8.4.31",
+    "postcss-nested": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
