@@ -1,23 +1,15 @@
-
-
 ## v0.8.0
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.7.0...v0.8.0)
 
 ### 💅 Refactors
 
-- Move TypeIcon to the icons package ([060b379](https://github.com/itsjavi/supereffective-sdk/commit/060b379))
-- Move TypeIcon to the icons package ([0dc0fa3](https://github.com/itsjavi/supereffective-sdk/commit/0dc0fa3))
 - Move TypeIcon to the icons package ([003e635](https://github.com/itsjavi/supereffective-sdk/commit/003e635))
-- Get rid of ui/dextracker packages ([2975ebe](https://github.com/itsjavi/supereffective-sdk/commit/2975ebe))
+- Remove ui/dextracker packages ([2975ebe](https://github.com/itsjavi/supereffective-sdk/commit/2975ebe)).
 
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.7.0
 
@@ -30,10 +22,6 @@
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.6.0
 
@@ -51,10 +39,6 @@
 
 - Javi Aguilar
 
-
-
-
-
 ## v0.5.3
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.2...v0.5.3)
@@ -70,15 +54,12 @@
 
 ### 🏡 Chore
 
-- **ui:** Add support workaround for RSC, bundling the src ([3aa51a9](https://github.com/itsjavi/supereffective-sdk/commit/3aa51a9))
+- **ui:** Add support workaround for RSC, bundling the src
+  ([3aa51a9](https://github.com/itsjavi/supereffective-sdk/commit/3aa51a9))
 
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.5.2
 
@@ -92,10 +73,6 @@
 
 - Javi Aguilar
 
-
-
-
-
 ## v0.5.1
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.0...v0.5.1)
@@ -107,10 +84,6 @@
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.5.0
 
@@ -129,17 +102,15 @@
 ### 💅 Refactors
 
 - Reorganize dataset/admin files ([36947a2](https://github.com/itsjavi/supereffective-sdk/commit/36947a2))
-- **dataset:** Functional approach for the data clients ([9531ea1](https://github.com/itsjavi/supereffective-sdk/commit/9531ea1))
-- **dataset:** Make baseUrl mandatory and remove legacy client singletons ([4e66947](https://github.com/itsjavi/supereffective-sdk/commit/4e66947))
+- **dataset:** Functional approach for the data clients
+  ([9531ea1](https://github.com/itsjavi/supereffective-sdk/commit/9531ea1))
+- **dataset:** Make baseUrl mandatory and remove legacy client singletons
+  ([4e66947](https://github.com/itsjavi/supereffective-sdk/commit/4e66947))
 - **viewer:** Use new functional clients ([a9d52e9](https://github.com/itsjavi/supereffective-sdk/commit/a9d52e9))
 
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.4.1
 
@@ -147,14 +118,18 @@
 
 ### 🚀 Enhancements
 
-- **viewer:** Implement pokemon parallel+intercepted routes with modals ([da92b7e](https://github.com/itsjavi/supereffective-sdk/commit/da92b7e))
-- **dataset:** Simplify female names and add region gens ([3cbb7ff](https://github.com/itsjavi/supereffective-sdk/commit/3cbb7ff))
+- **viewer:** Implement pokemon parallel+intercepted routes with modals
+  ([da92b7e](https://github.com/itsjavi/supereffective-sdk/commit/da92b7e))
+- **dataset:** Simplify female names and add region gens
+  ([3cbb7ff](https://github.com/itsjavi/supereffective-sdk/commit/3cbb7ff))
 - **viewer:** Add forms toggler ([40c4ff2](https://github.com/itsjavi/supereffective-sdk/commit/40c4ff2))
 - **viewer:** Add games ([68ee04d](https://github.com/itsjavi/supereffective-sdk/commit/68ee04d))
-- **dataset:** Add script to generate and validate presets ([d547fc9](https://github.com/itsjavi/supereffective-sdk/commit/d547fc9))
+- **dataset:** Add script to generate and validate presets
+  ([d547fc9](https://github.com/itsjavi/supereffective-sdk/commit/d547fc9))
 - Add local dev server for the data and assets ([288ed6a](https://github.com/itsjavi/supereffective-sdk/commit/288ed6a))
 - **viewer:** Add pokedex viewer ([be90b9d](https://github.com/itsjavi/supereffective-sdk/commit/be90b9d))
-- **data:** Add script to regenerate national dex and validate rest ([9d81020](https://github.com/itsjavi/supereffective-sdk/commit/9d81020))
+- **data:** Add script to regenerate national dex and validate rest
+  ([9d81020](https://github.com/itsjavi/supereffective-sdk/commit/9d81020))
 - Add Edit on Github buttons ([5312eac](https://github.com/itsjavi/supereffective-sdk/commit/5312eac))
 - Add preset viewer ([b7174f5](https://github.com/itsjavi/supereffective-sdk/commit/b7174f5))
 - Add ui-legacy package ([8f395a4](https://github.com/itsjavi/supereffective-sdk/commit/8f395a4))
@@ -177,10 +152,12 @@
 
 ### 💅 Refactors
 
-- **ui:** Stop using r1stack/react, tsup and panda-css in favor of vite + scss ([3cec191](https://github.com/itsjavi/supereffective-sdk/commit/3cec191))
+- **ui:** Stop using r1stack/react, tsup and panda-css in favor of vite + scss
+  ([3cec191](https://github.com/itsjavi/supereffective-sdk/commit/3cec191))
 - **ui:** Add open-props support ([7d684a0](https://github.com/itsjavi/supereffective-sdk/commit/7d684a0))
 - **ui:** Move old components to v1 ([de7de97](https://github.com/itsjavi/supereffective-sdk/commit/de7de97))
-- **ui:** Implement initial set of components using scss ([65788b1](https://github.com/itsjavi/supereffective-sdk/commit/65788b1))
+- **ui:** Implement initial set of components using scss
+  ([65788b1](https://github.com/itsjavi/supereffective-sdk/commit/65788b1))
 - **ui:** Better SSR/RSC support ([752935a](https://github.com/itsjavi/supereffective-sdk/commit/752935a))
 - Remove old code ([b3aeb79](https://github.com/itsjavi/supereffective-sdk/commit/b3aeb79))
 - **dataset:** Unify admin mutation scripts ([50988fd](https://github.com/itsjavi/supereffective-sdk/commit/50988fd))
@@ -205,10 +182,6 @@
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
-
-
 
 ## v0.4.0
 
@@ -240,8 +213,6 @@
 ### ❤️ Contributors
 
 - Javi Aguilar
-
-
 
 ## v0.3.0
 
@@ -305,8 +276,7 @@
 - Merge all packages ([f872371](https://github.com/itsjavi/supereffective-sdk/commit/f872371))
 - Dataset v2 ([90ea042](https://github.com/itsjavi/supereffective-sdk/commit/90ea042))
 - Split box presets ([171b554](https://github.com/itsjavi/supereffective-sdk/commit/171b554))
-- Split data in subfolders per region or game
-  ([2601c7a](https://github.com/itsjavi/supereffective-sdk/commit/2601c7a))
+- Split data in subfolders per region or game ([2601c7a](https://github.com/itsjavi/supereffective-sdk/commit/2601c7a))
 - Make box preset ids unique ([6d5ada1](https://github.com/itsjavi/supereffective-sdk/commit/6d5ada1))
 - Cleanup not needed repos ([d072a69](https://github.com/itsjavi/supereffective-sdk/commit/d072a69))
 - Repositories and data formatter ([511ea99](https://github.com/itsjavi/supereffective-sdk/commit/511ea99))
