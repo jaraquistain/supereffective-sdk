@@ -1,5 +1,21 @@
 
 
+## v0.7.0
+
+[compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.6.0...v0.7.0)
+
+### 🏡 Chore
+
+- Upgrade deps ([9f18d66](https://github.com/itsjavi/supereffective-sdk/commit/9f18d66))
+
+### ❤️ Contributors
+
+- Javi Aguilar
+
+
+
+
+
 ## v0.6.0
 
 [compare changes](https://github.com/itsjavi/supereffective-sdk/compare/v0.5.3...v0.6.0)
