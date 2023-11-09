@@ -8,6 +8,7 @@ import type { Entity } from '../repositories'
 export type NextCompatibleRequestInit = RequestInit & {
   next?: {
     tags?: Array<string>
+    revalidate?: number
   }
 }
 

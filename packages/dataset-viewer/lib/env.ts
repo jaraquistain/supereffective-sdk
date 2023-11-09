@@ -21,3 +21,7 @@ try {
 }
 
 export { envVars }
+
+export function isDevelopment() {
+  return process.env.DATASET_VIEWER_ENV === 'development'
+}

@@ -1,6 +1,6 @@
 import { PKM_LATEST_GAMESET, PKM_LATEST_GENERATION, PKM_LATEST_REGION } from '../../constants'
 import type { CompactPokemon, Pokemon, PokemonIndexItem } from '../../schemas'
-import { fetchCollection, fetchCollectionWithCache } from '../providers'
+import { type NextCompatibleRequestInit, fetchCollection, fetchCollectionWithCache } from '../providers'
 import type { SearchEngineIndex } from '../search'
 import { findResourceById, findResourcesByIds, getResource, getResourceById } from './_base'
 
@@ -11,29 +11,49 @@ const _memCache: {
   collection: new Map(),
 }
 
-export async function getAllPokemon(baseUrl: string): Promise<Pokemon[]> {
-  return fetchCollectionWithCache<Pokemon>(_memCache, 'pokemon.min.json', baseUrl)
+export async function getAllPokemon(baseUrl: string, params?: NextCompatibleRequestInit): Promise<Pokemon[]> {
+  return fetchCollectionWithCache<Pokemon>(_memCache, 'pokemon.min.json', baseUrl, params)
 }
 
-export async function getPokemonById(id: string, baseUrl: string): Promise<Pokemon> {
-  return getAllPokemon(baseUrl).then((records) => getResourceById(records, id, 'Pokemon'))
+export async function getPokemonById(
+  id: string,
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<Pokemon> {
+  return getAllPokemon(baseUrl, params).then((records) => getResourceById(records, id, 'Pokemon'))
 }
 
-export async function findPokemonById(id: string, baseUrl: string): Promise<Pokemon | undefined> {
-  return getAllPokemon(baseUrl).then((records) => findResourceById(records, id))
+export async function findPokemonById(
+  id: string,
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<Pokemon | undefined> {
+  return getAllPokemon(baseUrl, params).then((records) => findResourceById(records, id))
 }
 
-export async function findPokemonByIds(ids: Array<string>, baseUrl: string): Promise<Pokemon[]> {
-  return getAllPokemon(baseUrl).then((records) => findResourcesByIds(records, ids))
+export async function findPokemonByIds(
+  ids: Array<string>,
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<Pokemon[]> {
+  return getAllPokemon(baseUrl, params).then((records) => findResourcesByIds(records, ids))
 }
 
 // Memory-optimized functions (avoids fetching the whole collection):
-export async function fetchPokemonIndex(baseUrl: string): Promise<PokemonIndexItem[]> {
-  return fetchCollection<PokemonIndexItem>('pokemon-index.min.json', baseUrl)
+export async function fetchPokemonIndex(
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<PokemonIndexItem[]> {
+  return fetchCollection<PokemonIndexItem>('pokemon-index.min.json', baseUrl, params)
 }
 
-export async function fetchPokemon(id: string, regionId: string, baseUrl: string): Promise<Pokemon> {
-  return getResource<Pokemon>('pokemon', regionId, id, baseUrl, 'Pokemon')
+export async function fetchPokemon(
+  id: string,
+  regionId: string,
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<Pokemon> {
+  return getResource<Pokemon>('pokemon', regionId, id, baseUrl, 'Pokemon', params)
 }
 
 // --------------------------------  Placeholder Pokemon --------------------------------

@@ -1,4 +1,4 @@
-import { fetchResource } from '../providers'
+import { type NextCompatibleRequestInit, fetchResource } from '../providers'
 import type { Entity } from './_types'
 
 export function getSiblingEntities<R extends Entity = Entity>(
@@ -64,10 +64,11 @@ export async function findResource<R extends Entity = Entity>(
   groupId: string | null | undefined,
   id: string,
   baseUrl: string,
+  params?: NextCompatibleRequestInit,
 ): Promise<R | undefined> {
   const groupSegment = groupId ? `/${groupId}` : ''
 
-  return fetchResource<R>(`${dirName}${groupSegment}/${id}.min.json`, baseUrl).catch((e) => {
+  return fetchResource<R>(`${dirName}${groupSegment}/${id}.min.json`, baseUrl, params).catch((e) => {
     if (String(e).includes('HTTP error 404')) {
       return undefined
     }
@@ -82,8 +83,9 @@ export async function getResource<R extends Entity = Entity>(
   id: string,
   baseUrl: string,
   title = 'Resource',
+  params?: NextCompatibleRequestInit,
 ): Promise<R> {
-  const found = await findResource<R>(dirName, groupId, id, baseUrl)
+  const found = await findResource<R>(dirName, groupId, id, baseUrl, params)
 
   if (!found) {
     const groupSegment = groupId ? `/${groupId}` : ''

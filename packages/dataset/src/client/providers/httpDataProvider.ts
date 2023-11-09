@@ -13,13 +13,14 @@ function _buildRequestInit(relativePath: string): NextCompatibleRequestInit {
     // },
     next: {
       tags: [`dataset:${relativePath}`],
+      revalidate: 60,
     },
   }
 }
 
-async function _fetch<T>(relativePath: string, baseUrl: string): Promise<T> {
+async function _fetch<T>(relativePath: string, baseUrl: string, params?: NextCompatibleRequestInit): Promise<T> {
   const url = _resolveUri(relativePath, baseUrl)
-  const requestInit = _buildRequestInit(relativePath)
+  const requestInit = { ..._buildRequestInit(relativePath), ...params }
 
   try {
     const data = await fetch(url, requestInit).then((res) => {
@@ -41,27 +42,33 @@ async function _fetch<T>(relativePath: string, baseUrl: string): Promise<T> {
 export async function fetchCollection<R extends Entity = Entity>(
   relativePath: string,
   baseUrl: string,
+  params?: NextCompatibleRequestInit,
 ): Promise<Array<R>> {
-  return _fetch(relativePath, baseUrl)
+  return _fetch(relativePath, baseUrl, params)
 }
 
 export async function fetchCollectionWithCache<R extends Entity = Entity>(
   cache: InMemoryCache<R>,
   relativePath: string,
   baseUrl: string,
+  params?: NextCompatibleRequestInit,
 ): Promise<R[]> {
   const cacheId = baseUrl
   let data = cache.collection.get(cacheId)
 
   if (!data) {
     cache.collection = new Map() // reset cache for other baseUrls to avoid memory leaks
-    data = await fetchCollection<R>(relativePath, baseUrl)
+    data = await fetchCollection<R>(relativePath, baseUrl, params)
   }
 
   cache.collection.set(cacheId, data)
   return data
 }
 
-export async function fetchResource<R extends Entity = Entity>(relativePath: string, baseUrl: string): Promise<R> {
-  return _fetch(relativePath, baseUrl)
+export async function fetchResource<R extends Entity = Entity>(
+  relativePath: string,
+  baseUrl: string,
+  params?: NextCompatibleRequestInit,
+): Promise<R> {
+  return _fetch(relativePath, baseUrl, params)
 }

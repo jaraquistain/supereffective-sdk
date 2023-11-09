@@ -11,7 +11,7 @@
     "deps:upgrade": "pnpm --recursive update --latest",
     "dev": "pnpm --parallel --recursive dev",
     "dev:server": "pnpm --parallel --recursive dev:server",
-    "format": "pnpm lint-fix && pnpm format-package-json",
+    "format": "pnpm lint-fix && pnpm format-package-json && pnpm -r data:format",
     "format-package-json": "sort-package-json && pnpm -r exec sort-package-json",
     "hooks:pre-commit": "pnpm lint-staged",
     "hooks:pre-push": "pnpm quality-checks",
