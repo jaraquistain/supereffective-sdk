@@ -48,7 +48,6 @@
     "@types/jest": "^29.5.8",
     "@types/node": "^20.9.0",
     "changelogen": "^0.5.5",
-    "env-cmd": "^10.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "publint": "^0.2.5",

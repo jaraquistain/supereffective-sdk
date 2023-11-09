@@ -29,6 +29,7 @@ dist-ssr
 *.sw?
 
 # Development ignored files and folders
+.env
 .dev/
 .local/
 .ignore/

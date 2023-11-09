@@ -1,2 +1,4 @@
-export const BASE_DATA_URL = new URL(process.env.APP_DATA_URL ?? '/static/data').toString()
-export const BASE_ASSETS_URL = new URL(process.env.APP_ASSETS_URL ?? '/static/assets').toString()
+import { envVars } from './env'
+
+export const BASE_DATA_URL = envVars.NEXT_PUBLIC_DATASET_VIEWER_DATA_URL
+export const BASE_ASSETS_URL = envVars.NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL

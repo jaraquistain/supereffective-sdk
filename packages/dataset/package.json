@@ -37,7 +37,7 @@
     "data:update": "bun ./src/maintenance/scripts/import.ts",
     "dev": "concurrently \"pnpm dev:code\" \"pnpm dev:server\"",
     "dev:code": "tsup --watch --clean=false",
-    "dev:server": "bun src/maintenance/dev-server.ts",
+    "dev:server": "bun src/static-dev-server.ts",
     "typelint": "tsc --noEmit"
   },
   "dependencies": {

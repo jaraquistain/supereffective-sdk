@@ -1,35 +1,48 @@
-const isDev = process.env.CI !== '1'
+import { ZodError, z } from 'zod'
 
-const APP_DATA_URL = isDev ? 'http://localhost:4455/dist/data' : 'https://itsjavi.com/supereffective-sdk/data'
-const APP_ASSETS_URL = isDev ? 'http://localhost:4455/assets' : 'https://itsjavi.com/supereffective-assets/assets'
+const envVarsSchema = z.object({
+  PORT: z.string(),
+  DATASET_VIEWER_DATA_URL: z.string().url(),
+  DATASET_VIEWER_ASSETS_URL: z.string().url(),
+  NEXT_PUBLIC_DATASET_VIEWER_DATA_URL: z.string().url(),
+  NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL: z.string().url(),
+})
 
-console.log('CI is: ', process.env.CI)
-console.log('VERCEL is: ', process.env.VERCEL)
-console.log('VERCEL_ENV is: ', process.env.VERCEL_ENV)
-console.log('NODE_ENV is: ', process.env.NODE_ENV)
-console.log('APP_DATA_URL is: ', APP_DATA_URL)
-console.log('APP_ASSETS_URL is: ', APP_ASSETS_URL)
+/**
+ * @type {ReturnType<envVarsSchema['parse']>}
+ */
+let envVars = {}
+
+try {
+  envVars = process.env
+} catch (error) {
+  if (!(error instanceof ZodError)) {
+    throw error
+  }
+  throw new Error(`Invalid environment variables: ${JSON.stringify(error.format(), null, 2)}`)
+}
+
+console.log('>> Environment Variables are: ', {
+  NODE_ENV: String(process.env.NODE_ENV),
+  VERCEL_ENV: String(process.env.VERCEL_ENV),
+  VERCEL: String(process.env.VERCEL),
+  CI: String(process.env.CI),
+  DATASET_VIEWER_PORT: envVars.PORT,
+  DATASET_VIEWER_DATA_URL: envVars.DATASET_VIEWER_DATA_URL,
+  DATASET_VIEWER_ASSETS_URL: envVars.DATASET_VIEWER_ASSETS_URL,
+  NEXT_PUBLIC_DATASET_VIEWER_DATA_URL: envVars.NEXT_PUBLIC_DATASET_VIEWER_DATA_URL,
+  NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL: envVars.NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL,
+})
+
+// process.env.NEXT_PUBLIC_DATASET_VIEWER_DATA_URL = envVars.DATASET_VIEWER_DATA_URL
+// process.env.NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL = envVars.DATASET_VIEWER_ASSETS_URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    APP_DATA_URL,
-    APP_ASSETS_URL,
-    NEXT_PUBLIC_APP_DATA_URL: APP_DATA_URL,
-    NEXT_PUBLIC_APP_ASSETS_URL: APP_ASSETS_URL,
-  },
-  //   async rewrites() {
-  //     return [
-  //       {
-  //         source: '/static/data/:path*',
-  //         destination: `${APP_DATA_URL}/:path*`,
-  //       },
-  //       {
-  //         source: '/static/assets/:path*',
-  //         destination: `${APP_ASSETS_URL}/:path*`,
-  //       },
-  //     ]
-  //   },
+  // env: {
+  //   NEXT_PUBLIC_DATASET_VIEWER_DATA_URL: envVars.DATASET_VIEWER_DATA_URL,
+  //   NEXT_PUBLIC_DATASET_VIEWER_ASSETS_URL: envVars.DATASET_VIEWER_ASSETS_URL,
+  // },
 }
 
 export default nextConfig
