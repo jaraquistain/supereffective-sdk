@@ -9,6 +9,7 @@ export default async function GamePokeList({
   isNotStorable,
   isEventOnly,
   isTransferOnly,
+  isExclusive,
 }: {
   game: Game
   isObtainable?: boolean
@@ -16,6 +17,7 @@ export default async function GamePokeList({
   isNotStorable?: boolean
   isEventOnly?: boolean
   isTransferOnly?: boolean
+  isExclusive?: boolean
 }) {
   const pokemon = await getPokemonCollection()
 
@@ -33,6 +35,7 @@ export default async function GamePokeList({
           notStorableIn: isNotStorable ? game.id : undefined,
           eventOnlyIn: isEventOnly ? game.id : undefined,
           transferOnlyIn: isTransferOnly ? game.id : undefined,
+          exclusiveIn: isExclusive ? game.id : undefined,
         }}
       />
     </div>

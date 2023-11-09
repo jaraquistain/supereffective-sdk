@@ -27,6 +27,7 @@ export default function PokeGrid({
     notStorableIn?: string
     eventOnlyIn?: string
     transferOnlyIn?: string
+    exclusiveIn?: string
   }
   gridOptions?: FullGridRecipeProps
 }) {
@@ -68,6 +69,10 @@ export default function PokeGrid({
       if (filters.transferOnlyIn) {
         included =
           included && p.storableIn.includes(filters.transferOnlyIn) && !p.obtainableIn.includes(filters.transferOnlyIn)
+      }
+
+      if (filters.exclusiveIn) {
+        included = included && p.versionExclusiveIn.includes(filters.exclusiveIn)
       }
 
       if (filters.notStorableIn) {

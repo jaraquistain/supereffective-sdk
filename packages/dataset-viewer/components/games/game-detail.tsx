@@ -159,6 +159,15 @@ export default async function GameDetail({ game }: { game: Game }) {
           </Suspense>
         </div>
         <div className="w-full">
+          <div className="text-2xl font-semibold mb-2 flex gap-3">Version-exclusive Pokémon</div>
+          <p className="text-lg text-muted-foreground mb-2">
+            Pokémon that can only be obtained in one specific version of a game with two versions.
+          </p>
+          <Suspense fallback={<div>Loading...</div>}>
+            <GamePokeList game={game} isExclusive />
+          </Suspense>
+        </div>
+        <div className="w-full">
           <div className="text-2xl font-semibold mb-2 flex gap-3">Transfer-only Pokémon</div>
           <p className="text-lg text-muted-foreground mb-2">
             Pokémon that can only be obtained by transferring them from other games (unless they are event-only)

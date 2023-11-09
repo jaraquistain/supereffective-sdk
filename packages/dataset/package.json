@@ -36,10 +36,10 @@
     "data:generate": "bun ./src/maintenance/scripts/generate-all.ts",
     "data:minify": "bun ./src/maintenance/scripts/minify.ts ./data ./dist/data",
     "data:update": "bun ./src/maintenance/scripts/import.ts",
-    "dev": "concurrently \"pnpm dev:code\" \"pnpm dev:server\"",
-    "dev:code": "tsup --watch --clean=false",
-    "dev:server": "bun src/static-dev-server.ts",
-    "typelint": "tsc --noEmit"
+    "dev": "concurrently \"pnpm watch-code\" \"pnpm static-dev-server\"",
+    "static-dev-server": "bun src/static-dev-server.ts",
+    "typelint": "tsc --noEmit",
+    "watch-code": "tsup --watch --clean=false"
   },
   "dependencies": {
     "zod": "^3.22.4"

@@ -30,9 +30,10 @@ export default function Page() {
   )
 
   return (
-    <div className="flex-1 w-full text-left">
-      <h1>Types</h1>
-      All combinations:
+    <div className="flex-1 flex flex-col w-full text-left gap-4">
+      <h1 className="text-4xl font-extrabold tracking-tighter">Types</h1>
+      <h2 className="text-2xl font-bold tracking-tighter">Icon components</h2>
+      <p>Here are all combinations (hover to see the props values):</p>
       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
         {allVariantCombinations.map((props, i) => (
           <span
